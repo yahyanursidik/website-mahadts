@@ -67,6 +67,8 @@
   --spacing-xs: 4px;
   --spacing-base: 8px;
   --spacing-sm: 12px;
+  --spacing-margin-mobile: 24px;
+  --spacing-margin-desktop: 64px;
   --spacing-md: 24px;
   --spacing-lg: 48px;
   --spacing-xl: 80px;
