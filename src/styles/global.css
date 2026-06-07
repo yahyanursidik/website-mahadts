@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #ecffe2;
+  --color-inverse-on-surface: #dff8d4;
+  --color-surface-tint: #456735;
+  --color-primary-fixed: #c6eeaf;
+  --color-error-container: #ffdad6;
+  --color-on-tertiary-container: #4d3e00;
+  --color-on-background: #0c200a;
+  --color-on-surface: #0c200a;
+  --color-surface-container-highest: #d1eac6;
+  --color-secondary: #954a00;
+  --color-surface-container: #dcf5d1;
+  --color-secondary-container: #ff8e30;
+  --color-on-secondary-container: #663100;
+  --color-surface-container-high: #d6efcc;
+  --color-secondary-fixed-dim: #ffb785;
+  --color-tertiary-fixed: #ffe17b;
+  --color-outline: #73796d;
+  --color-primary: #2f5021;
+  --color-inverse-surface: #21351d;
+  --color-surface-variant: #d1eac6;
+  --color-on-primary-fixed: #062100;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-primary: #ffffff;
+  --color-on-error: #ffffff;
+  --color-on-secondary-fixed-variant: #713700;
+  --color-tertiary-fixed-dim: #e8c43c;
+  --color-on-secondary: #ffffff;
+  --color-primary-container: #466836;
+  --color-tertiary-container: #caa81e;
+  --color-on-primary-fixed-variant: #2e4f20;
+  --color-outline-variant: #c3c8bb;
+  --color-on-primary-container: #bee5a7;
+  --color-surface: #ecffe2;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-fixed: #231b00;
+  --color-on-surface-variant: #43483e;
+  --color-tertiary: #715c00;
+  --color-on-secondary-fixed: #301400;
+  --color-surface-bright: #ecffe2;
+  --color-primary-fixed-dim: #abd295;
+  --color-secondary-fixed: #ffdcc6;
+  --color-surface-container-low: #e2fbd7;
+  --color-error: #ba1a1a;
+  --color-inverse-primary: #abd295;
+  --color-on-error-container: #93000a;
+  --color-surface-dim: #c8e1be;
+  --color-on-tertiary-fixed-variant: #564500;
+  
+  --radius-DEFAULT: 0.125rem;
+  --radius-lg: 0.25rem;
+  --radius-xl: 0.5rem;
+  --radius-full: 0.75rem;
+
+  --spacing-gutter: 24px;
+  --spacing-lg: 48px;
+  --spacing-base: 8px;
+  --spacing-xl: 80px;
+  --spacing-margin-desktop: 64px;
+  --spacing-margin-mobile: 16px;
+  --spacing-xs: 4px;
+  --spacing-sm: 12px;
+  --spacing-md: 24px;
+
+  --font-body-lg: "Inter", sans-serif;
+  --font-headline-md: "Source Serif 4", serif;
+  --font-body-md: "Inter", sans-serif;
+  --font-headline-lg: "Source Serif 4", serif;
+  --font-label-lg: "Inter", sans-serif;
+  --font-headline-lg-mobile: "Source Serif 4", serif;
+  --font-label-sm: "Inter", sans-serif;
+  --font-body-sm: "Inter", sans-serif;
+  --font-display-lg: "Source Serif 4", serif;
+}
+
+@layer utilities {
+  .text-body-lg {
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+  }
+  .text-headline-md {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+  }
+  .text-body-md {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+  }
+  .text-headline-lg {
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 600;
+  }
+  .text-label-lg {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+  .text-headline-lg-mobile {
+    font-size: 28px;
+    line-height: 36px;
+    font-weight: 600;
+  }
+  .text-label-sm {
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 500;
+  }
+  .text-body-sm {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+  .text-display-lg {
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+}
+
+.pattern-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 3.33331L23.3333 16.6666L36.6667 20L23.3333 23.3333L20 36.6666L16.6667 23.3333L3.33333 20L16.6667 16.6666L20 3.33331Z' fill='%23456735' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+.pattern-overlay-white {
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 3.33331L23.3333 16.6666L36.6667 20L23.3333 23.3333L20 36.6666L16.6667 23.3333L3.33333 20L16.6667 16.6666L20 3.33331Z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+}

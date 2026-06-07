@@ -1,0 +1,364 @@
+<!DOCTYPE html><html lang="id" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Program SMA Tahfizh - MTQ Tarbiyah Sunnah</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#ecffe2",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#ffe17b",
+                    "inverse-surface": "#21351d",
+                    "outline": "#73796d",
+                    "tertiary-container": "#caa81e",
+                    "on-secondary-fixed": "#301400",
+                    "on-secondary-container": "#663100",
+                    "primary-fixed-dim": "#abd295",
+                    "on-surface": "#0c200a",
+                    "surface-tint": "#456735",
+                    "on-secondary": "#ffffff",
+                    "surface": "#ecffe2",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-variant": "#d1eac6",
+                    "secondary": "#954a00",
+                    "on-primary-fixed-variant": "#2e4f20",
+                    "inverse-on-surface": "#dff8d4",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "primary": "#2f5021",
+                    "inverse-primary": "#abd295",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-fixed": "#231b00",
+                    "surface-container": "#dcf5d1",
+                    "primary-container": "#466836",
+                    "outline-variant": "#c3c8bb",
+                    "background": "#ecffe2",
+                    "tertiary-fixed-dim": "#e8c43c",
+                    "on-primary-fixed": "#062100",
+                    "secondary-fixed": "#ffdcc6",
+                    "surface-dim": "#c8e1be",
+                    "on-tertiary-fixed-variant": "#564500",
+                    "on-surface-variant": "#43483e",
+                    "secondary-container": "#ff8e30",
+                    "tertiary": "#715c00",
+                    "on-secondary-fixed-variant": "#713700",
+                    "on-primary-container": "#bee5a7",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#ffb785",
+                    "on-background": "#0c200a",
+                    "surface-container-low": "#e2fbd7",
+                    "primary-fixed": "#c6eeaf",
+                    "on-tertiary-container": "#4d3e00",
+                    "surface-container-highest": "#d1eac6",
+                    "error-container": "#ffdad6",
+                    "surface-container-high": "#d6efcc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "base": "8px",
+                    "sm": "12px",
+                    "lg": "48px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "xl": "80px",
+                    "margin-desktop": "64px",
+                    "xs": "4px",
+                    "md": "24px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Source Serif 4"],
+                    "label-lg": ["Inter"],
+                    "headline-md": ["Source Serif 4"],
+                    "headline-lg-mobile": ["Source Serif 4"],
+                    "display-lg": ["Source Serif 4"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Custom Ambient Shadow for Interactive Elements */
+        .ambient-shadow:hover {
+            box-shadow: 0px 4px 20px rgba(47, 80, 33, 0.08);
+            transform: translateY(-2px);
+        }
+        
+        /* Subtle Islamic Geometric Pattern Overlay */
+        .islamic-pattern-overlay {
+            background-image: radial-gradient(var(--tw-colors-primary-container) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.03;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased font-body-md">
+<!-- Navigation Header -->
+<header class="bg-surface border-b border-outline-variant sticky top-0 z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto h-20">
+<!-- Brand Logo -->
+<div class="font-headline-md text-headline-md font-bold text-primary">
+                MTQ Tarbiyah Sunnah
+            </div>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex space-x-gutter items-center">
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200 cursor-pointer font-body-md text-body-md" href="#">Beranda</a>
+<!-- Active Item -->
+<a class="text-primary font-bold border-b-2 border-primary pb-1 hover:text-secondary transition-colors duration-200 cursor-pointer font-body-md text-body-md" href="#">Program</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200 cursor-pointer font-body-md text-body-md" href="#">Pendaftaran</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200 cursor-pointer font-body-md text-body-md" href="#">Tahfiz</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200 cursor-pointer font-body-md text-body-md" href="#">Berita</a>
+<a class="text-on-surface-variant font-medium hover:text-secondary transition-colors duration-200 cursor-pointer font-body-md text-body-md" href="#">Tentang Kami</a>
+</nav>
+<!-- Trailing Action -->
+<div class="hidden md:block">
+<button class="bg-primary text-on-primary font-label-lg text-label-lg px-md py-sm rounded-lg hover:bg-primary-container transition-colors duration-200 cursor-pointer active:opacity-80">
+                    Daftar Sekarang
+                </button>
+</div>
+<!-- Mobile Menu Icon -->
+<button class="md:hidden text-on-surface-variant p-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+<img alt="" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida/AP1WRLsoN003K1-XgkIFAadcGIc_x4OqQfglK73QyUuWzQ_AoU-6NV4cND5wlnjA9OtY_zKW9HCHY93k3h6A6D9O4Rj15ZeqsnKHDkw-CzF5AdcnOSVqUU8oG5Y7Mh-6QrnwtY3qh2IVvqG35FcqE5XTVanWB38GpdjL4rpoHpvcE95vNomQ5OAdDxQ6BXAG5jaH-Oyw9tp6kSiMx_PPpZABrGccXgPojdireoBNSfu5FMn5Ia84WxPek7emIRg">
+<!-- Gradient Overlay for readability -->
+<div class="absolute inset-0 bg-inverse-surface/60 mix-blend-multiply"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+</div>
+<!-- Hero Content -->
+<div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto flex flex-col items-center gap-md">
+<span class="inline-block py-xs px-sm bg-surface-container-high/80 backdrop-blur-sm text-primary font-label-sm text-label-sm rounded-full border border-outline-variant/30">
+                    Pendidikan Menengah Atas
+                </span>
+<h1 class="font-display-lg text-display-lg text-on-primary drop-shadow-md">
+                    SMA Tahfizh
+                </h1>
+<p class="font-body-lg text-body-lg text-surface-container-highest max-w-2xl drop-shadow-sm">
+                    Mencetak generasi rabbani yang tidak hanya hafal Al-Qur'an, tetapi juga memiliki kematangan ilmu syar'i, fasih berbahasa Arab, dan siap menjadi teladan umat.
+                </p>
+<div class="flex flex-col sm:flex-row gap-sm mt-lg">
+<button class="bg-secondary text-on-secondary font-label-lg text-label-lg px-lg py-sm rounded-lg hover:bg-secondary-container hover:text-on-secondary-container transition-colors duration-200 shadow-md">
+                        Daftar SPMB
+                    </button>
+<button class="bg-transparent border border-surface-container text-on-primary font-label-lg text-label-lg px-lg py-sm rounded-lg hover:bg-surface-container-highest/20 transition-colors duration-200 backdrop-blur-sm">
+                        Unduh Brosur
+                    </button>
+</div>
+</div>
+</section>
+<!-- Target Capaian Utama (Bento Grid) -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto relative">
+<div class="absolute inset-0 islamic-pattern-overlay -z-10"></div>
+<div class="text-center mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-sm">Target Capaian Utama</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Fokus kurikulum terpadu untuk membentuk pondasi keilmuan yang kokoh berlandaskan pemahaman salafus shalih.</p>
+<!-- Divider -->
+<div class="flex items-center justify-center mt-lg opacity-60">
+<div class="h-px w-16 bg-outline-variant"></div>
+<span class="material-symbols-outlined text-outline mx-sm" style="font-size: 16px;">hotel_class</span>
+<div class="h-px w-16 bg-outline-variant"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Card 1: Hafalan (Spans 8 cols on desktop) -->
+<div class="md:col-span-8 bg-surface-container-lowest border border-surface-variant rounded-xl p-lg ambient-shadow transition-all duration-300 flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 rounded-bl-full -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+<div>
+<div class="w-12 h-12 bg-primary-fixed text-on-primary-fixed rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Hafalan 10 Juz</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Target capaian hafalan ditekankan pada kualitas <span class="font-medium text-primary">mutqin</span> (kuat dan lancar) serta pemahaman makna ayat-ayat yang dihafal, bukan sekadar mengejar kuantitas.
+                        </p>
+</div>
+</div>
+<!-- Card 2: Bahasa Arab (Spans 4 cols on desktop) -->
+<div class="md:col-span-4 bg-surface-container-low border border-surface-variant rounded-xl p-lg ambient-shadow transition-all duration-300 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 bg-secondary-fixed text-on-secondary-fixed rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">forum</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Bahasa Arab Aktif</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                            Kemampuan muhadatsah (berbicara), qira'ah (membaca), dan kitabah (menulis) ditekankan sebagai alat utama untuk menggali ilmu agama secara mandiri dari literatur asli.
+                        </p>
+</div>
+</div>
+<!-- Card 3: Ilmu Syar'i (Spans full width, image on side) -->
+<div class="md:col-span-12 bg-surface-container-lowest border border-surface-variant rounded-xl overflow-hidden ambient-shadow transition-all duration-300 flex flex-col md:flex-row items-center">
+<div class="p-lg md:w-3/5">
+<div class="w-12 h-12 bg-tertiary-fixed text-on-tertiary-fixed rounded-lg flex items-center justify-center mb-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Ilmu Syar'i Mendalam</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Penguatan fondasi aqidah yang lurus, pemahaman fiqh ibadah dan muamalah, serta pembelajaran sirah nabawiyah untuk meneladani kehidupan Rasulullah ﷺ dan para sahabat.
+                        </p>
+</div>
+<div class="md:w-2/5 h-64 md:h-full bg-surface-variant relative overflow-hidden w-full">
+<!-- Decorative abstract pattern instead of heavy image request to keep it clean -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary-container/20 to-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary/20" style="font-size: 120px; font-variation-settings: 'FILL' 0;">mosque</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Program Unggulan Section -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop bg-surface-container-low border-y border-outline-variant/30">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-xl">
+<div class="md:w-1/2">
+<span class="font-label-lg text-label-lg text-secondary tracking-widest uppercase mb-sm block">Program Unggulan</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-md">Kaderisasi Imam &amp; Khatib</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">
+                        Sebuah inisiatif khusus untuk mempersiapkan santri SMA agar siap terjun ke tengah masyarakat. Program ini membekali mereka dengan:
+                    </p>
+<ul class="space-y-sm mb-lg">
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">Keberanian dan retorika dakwah yang hikmah.</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">Penguasaan fikih ibadah praktis kemasyarakatan.</span>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-body-md text-body-md text-on-surface">Praktek langsung menjadi imam rawatib dan khatib Jumat.</span>
+</li>
+</ul>
+<button class="border border-primary text-primary font-label-lg text-label-lg px-md py-sm rounded-lg hover:bg-primary/5 transition-colors duration-200">
+                        Pelajari Silabus
+                    </button>
+</div>
+<div class="md:w-1/2 relative">
+<div class="aspect-square rounded-full bg-primary-fixed-dim/20 absolute -inset-4 blur-3xl -z-10"></div>
+<div class="bg-surface rounded-xl border border-outline-variant/50 p-sm shadow-sm">
+<!-- Placeholder for a contextual image of a student preaching or learning -->
+<img class="w-full h-auto rounded-lg object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlNk_5qPAJ8eYbacwVo1Wn_YmZ2190lBybDMc5GtULmwzoRc0IsGeZNDkjQd1DgNthJejYDXY1dZt3OhlZpnqOaofdT1sX2TT1ULFfdbNvnTeJzghAQGEONoy6C9nGMHawb1GM04e5SelN86WRFIOr3ZuJGuAuajWOLzOOsj__OfzmZcEsXwR9C-CD_CDzqlWqnGPy7Q6llNCU7qjI1r77mKTEQ1q3YbJ5469WqtEnYfQwdr6FboXMBQDejtig9hqz0UUvnmLtMwo" alt="Male students (santri ikhwan) studying the Quran in a modern Islamic school setting.">
+</div>
+</div>
+</div>
+</section>
+<!-- Profil Lulusan SMA -->
+<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<div class="text-center mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-sm">Profil Lulusan</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Menyiapkan pemuda muslim yang beradab, berilmu, dan siap menghadapi tantangan masa depan.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Lulusan 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-lg text-center flex flex-col items-center hover:bg-surface-container-low transition-colors duration-300">
+<div class="w-16 h-16 bg-surface-variant rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 0;">school</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Siap Studi Lanjut</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        Memiliki bekal akademis dan hafalan Al-Qur'an yang memadai untuk melanjutkan pendidikan ke universitas Islam terkemuka di dalam maupun luar negeri.
+                    </p>
+</div>
+<!-- Lulusan 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-lg text-center flex flex-col items-center hover:bg-surface-container-low transition-colors duration-300">
+<div class="w-16 h-16 bg-surface-variant rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 0;">local_library</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Pemahaman Syar'i Matang</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        Mampu memahami dasar-dasar agama dan teks-teks syar'i secara mandiri sesuai dengan manhaj salafus shalih.
+                    </p>
+</div>
+<!-- Lulusan 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-lg text-center flex flex-col items-center hover:bg-surface-container-low transition-colors duration-300">
+<div class="w-16 h-16 bg-surface-variant rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 0;">self_improvement</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Kedewasaan Adab</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        Menampilkan akhlak mulia, kemandirian dalam beribadah dan bersikap, serta rasa tanggung jawab yang tinggi terhadap diri dan umat.
+                    </p>
+</div>
+</div>
+<div class="mt-xl text-center">
+<button class="bg-primary text-on-primary font-label-lg text-label-lg px-xl py-md rounded-lg hover:bg-primary-container transition-colors duration-200 shadow-md">
+                    Mulai Pendaftaran Sekarang
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-high w-full">
+<div class="w-full py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto flex flex-col gap-xl">
+<div class="flex flex-col md:flex-row justify-between gap-xl">
+<!-- Brand & Address -->
+<div class="md:w-1/3">
+<div class="font-headline-md text-headline-md font-bold text-primary mb-md">
+                        MTQ Tarbiyah Sunnah
+                    </div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-sm">
+                        Desa Selacau, Kampung Lembur Tengah RT.01/ RW.05, Kec. Batujajar, Kab. Bandung Barat.
+                    </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant font-medium">
+                        WA: +62 812 1000 1476
+                    </p>
+</div>
+<!-- Links -->
+<div class="flex flex-col gap-sm md:w-1/3 md:items-end">
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary transition-colors duration-200 cursor-pointer" href="#">Kebijakan Privasi</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary transition-colors duration-200 cursor-pointer" href="#">Syarat &amp; Ketentuan</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary transition-colors duration-200 cursor-pointer" href="#">Hubungi Kami</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant hover:text-secondary transition-colors duration-200 cursor-pointer" href="#">Lokasi Kampus</a>
+</div>
+</div>
+<!-- Copyright Divider -->
+<div class="h-px w-full bg-outline-variant/30"></div>
+<!-- Copyright -->
+<div class="text-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+                    © 2024 Ma'had Tahfizhul Qur'an Tarbiyah Sunnah. All Rights Reserved.
+                </span>
+</div>
+</div>
+</footer>
+
+
+</body></html>
