@@ -79,10 +79,10 @@ const regularArticles = sortedArticles.slice(1);
 <time datetime={featuredArticle.data.date}>{new Date(featuredArticle.data.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
 </div>
 <h2 class="font-headline-lg text-headline-lg text-primary mb-md hover:text-secondary transition-colors cursor-pointer">
-    <a href={`/artikel/${featuredArticle.slug}`}>{featuredArticle.data.title}</a>
+    <a href={`/artikel/${featuredArticle.id}`}>{featuredArticle.data.title}</a>
 </h2>
 <p class="font-body-md text-body-md text-on-surface-variant mb-lg line-clamp-3">{featuredArticle.data.summary}</p>
-<a class="text-secondary font-label-lg text-label-lg flex items-center gap-2 hover:gap-3 transition-all w-fit" href={`/artikel/${featuredArticle.slug}`}>
+<a class="text-secondary font-label-lg text-label-lg flex items-center gap-2 hover:gap-3 transition-all w-fit" href={`/artikel/${featuredArticle.id}`}>
     Baca Selengkapnya <span class="material-symbols-outlined">arrow_forward</span>
 </a>
 </div>
@@ -104,10 +104,10 @@ const regularArticles = sortedArticles.slice(1);
 <time datetime={article.data.date}>{new Date(article.data.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
 </div>
 <h2 class="font-headline-md text-headline-md text-primary mb-sm hover:text-secondary transition-colors cursor-pointer line-clamp-2">
-    <a href={`/artikel/${article.slug}`}>{article.data.title}</a>
+    <a href={`/artikel/${article.id}`}>{article.data.title}</a>
 </h2>
 <p class="font-body-md text-body-md text-on-surface-variant mb-md line-clamp-2 flex-grow">{article.data.summary}</p>
-<a class="text-primary font-label-lg text-label-lg flex items-center gap-1 hover:text-secondary transition-colors w-fit mt-auto" href={`/artikel/${article.slug}`}>
+<a class="text-primary font-label-lg text-label-lg flex items-center gap-1 hover:text-secondary transition-colors w-fit mt-auto" href={`/artikel/${article.id}`}>
     Baca <span class="material-symbols-outlined text-[18px]">chevron_right</span>
 </a>
 </div>
