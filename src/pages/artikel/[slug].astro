@@ -19,11 +19,11 @@ const { Content } = await render(entry);
 <div class="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop py-lg">
     
 <div class="mb-md">
-    <span class="bg-surface-container-low text-primary font-label-sm text-label-sm px-3 py-1 rounded-full shadow-sm">
+    <span class="bg-surface-container-low text-primary text-label-sm px-3 py-1 rounded-full shadow-sm">
         {entry.data.category || 'Artikel'}
     </span>
-    <h1 class="font-display-lg text-display-lg text-primary mt-sm mb-xs">{entry.data.title}</h1>
-    <div class="flex items-center gap-2 text-outline font-label-sm text-label-sm">
+    <h1 class="text-display-lg text-primary mt-sm mb-xs">{entry.data.title}</h1>
+    <div class="flex items-center gap-2 text-outline text-label-sm">
         <span class="material-symbols-outlined text-[16px]">calendar_today</span>
         <time datetime={entry.data.date}>{new Date(entry.data.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
     </div>
@@ -35,12 +35,12 @@ const { Content } = await render(entry);
     </div>
 )}
 
-<article class="prose prose-lg prose-headings:font-headline-md prose-headings:text-primary prose-a:text-secondary max-w-none text-on-surface-variant font-body-md">
+<article class="prose prose-lg prose-headings:font-sans prose-headings:font-bold prose-headings:text-primary prose-a:text-secondary max-w-none text-on-surface-variant text-body-md">
     <Content />
 </article>
 
 <div class="mt-xl pt-md border-t border-surface-variant text-center">
-    <a href="/artikel" class="bg-primary text-on-primary font-label-lg text-label-lg px-lg py-sm rounded-lg hover:bg-surface-tint transition-colors">
+    <a href="/artikel" class="bg-primary text-on-primary text-label-md px-lg py-sm rounded-lg hover:bg-surface-tint transition-colors">
         Kembali ke Artikel
     </a>
 </div>

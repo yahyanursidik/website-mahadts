@@ -12,26 +12,26 @@ import pengaturanUtama from '../content/pengaturanUtama/data.json';
 <div class="w-full md:w-1/2 flex-shrink-0 md:flex-shrink">
 <div class="inline-flex items-center gap-2 bg-surface-container-high px-sm py-xs rounded-full border border-surface-variant mb-md">
 <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-<span class="font-label-sm text-label-sm text-primary">Pendaftaran Dibuka - T.A 2024/2025</span>
+<span class="text-label-sm text-primary">Pendaftaran Dibuka - T.A 2024/2025</span>
 </div>
-<h1 class="font-display-lg text-display-lg leading-[1.1] text-on-surface mb-md">
+<h1 class="text-display-lg leading-[1.1] text-on-surface mb-md">
     Sistem Penerimaan <span class="text-primary block mt-1">Murid Baru</span>
 </h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg leading-relaxed">
+<p class="text-body-lg text-on-surface-variant mb-lg leading-relaxed">
     Bergabunglah bersama Ma'had Tahfizhul Qur'an Tarbiyah Sunnah. Mencetak generasi Qur'ani yang bermanhaj salafus shalih, berakhlak mulia, dan unggul dalam akademik.
 </p>
 <div class="flex flex-col sm:flex-row gap-3 md:gap-md">
-<a href="#alur-pendaftaran" class="bg-secondary text-on-secondary font-label-lg text-label-lg px-lg py-3 md:py-sm rounded-lg hover:bg-secondary-container hover:text-on-secondary-container transition-all shadow-[0_4px_20px_rgba(149,74,0,0.2)] flex justify-center items-center gap-2">
+<a href="#alur-pendaftaran" class="bg-secondary text-on-secondary text-label-md px-lg py-3 md:py-sm rounded-lg hover:bg-secondary-container hover:text-on-secondary-container transition-all shadow-[0_4px_20px_rgba(149,74,0,0.2)] flex justify-center items-center gap-2">
     Daftar Sekarang
     <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
 </a>
 {pengaturanUtama.linkBrosur ? (
-  <a href={pengaturanUtama.linkBrosur} target="_blank" rel="noopener noreferrer" class="border border-primary text-primary font-label-lg text-label-lg px-lg py-3 md:py-sm rounded-lg hover:bg-primary hover:text-on-primary transition-colors flex justify-center items-center gap-2">
+  <a href={pengaturanUtama.linkBrosur} target="_blank" rel="noopener noreferrer" class="border border-primary text-primary text-label-md px-lg py-3 md:py-sm rounded-lg hover:bg-primary hover:text-on-primary transition-colors flex justify-center items-center gap-2">
       Download Brosur
       <span class="material-symbols-outlined text-[18px]">download</span>
   </a>
 ) : (
-  <a href="http://wa.me/6281210001476" target="_blank" rel="noopener noreferrer" class="border border-primary text-primary font-label-lg text-label-lg px-lg py-3 md:py-sm rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors flex justify-center items-center gap-2">
+  <a href="http://wa.me/6281210001476" target="_blank" rel="noopener noreferrer" class="border border-primary text-primary text-label-md px-lg py-3 md:py-sm rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors flex justify-center items-center gap-2">
       Konsultasi Admin
       <span class="material-symbols-outlined text-[18px]">chat</span>
   </a>
@@ -47,8 +47,8 @@ import pengaturanUtama from '../content/pengaturanUtama/data.json';
 <section class="py-xl px-margin-mobile md:px-margin-desktop bg-surface">
 <div class="max-w-7xl mx-auto">
 <div class="text-center mb-xl">
-<h2 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Alur Pendaftaran</h2>
-<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">
+<h2 class="text-headline-lg text-on-surface mb-sm">Alur Pendaftaran</h2>
+<p class="text-body-md text-on-surface-variant max-w-2xl mx-auto">
     Pahami langkah-langkah mudah untuk mendaftar sebagai santri baru di MTQ Tarbiyah Sunnah.
 </p>
 </div>
@@ -57,59 +57,59 @@ import pengaturanUtama from '../content/pengaturanUtama/data.json';
 <div class="hidden lg:block absolute top-1/2 left-0 w-full h-[2px] bg-surface-variant -translate-y-1/2 z-0"></div>
 <!-- Step 1 -->
 <div class="relative z-10 bg-surface-container-lowest p-md rounded-xl border border-surface-variant shadow-sm hover:shadow-[0_4px_20px_rgba(70,104,54,0.08)] transition-all flex flex-col items-center text-center">
-<div class="w-12 h-12 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center font-headline-md text-headline-md mb-md border-4 border-surface">
+<div class="w-12 h-12 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center text-headline-md mb-md border-4 border-surface">
     1
 </div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Informasi</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Membaca brosur dan syarat pendaftaran secara seksama.</p>
+<h3 class="text-headline-md text-on-surface mb-xs">Informasi</h3>
+<p class="text-[14px] font-sans text-on-surface-variant">Membaca brosur dan syarat pendaftaran secara seksama.</p>
 </div>
 <!-- Step 2 -->
 <div class="relative z-10 bg-surface-container-lowest p-md rounded-xl border border-surface-variant shadow-sm hover:shadow-[0_4px_20px_rgba(70,104,54,0.08)] transition-all flex flex-col items-center text-center">
-<div class="w-12 h-12 bg-surface-container-high text-on-surface rounded-full flex items-center justify-center font-headline-md text-headline-md mb-md border-4 border-surface">
+<div class="w-12 h-12 bg-surface-container-high text-on-surface rounded-full flex items-center justify-center text-headline-md mb-md border-4 border-surface">
     2
 </div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Formulir Online</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Mengisi data diri melalui portal SPMB resmi.</p>
+<h3 class="text-headline-md text-on-surface mb-xs">Formulir Online</h3>
+<p class="text-[14px] font-sans text-on-surface-variant">Mengisi data diri melalui portal SPMB resmi.</p>
 </div>
 <!-- Step 3 -->
 <div class="relative z-10 bg-surface-container-lowest p-md rounded-xl border border-surface-variant shadow-sm hover:shadow-[0_4px_20px_rgba(70,104,54,0.08)] transition-all flex flex-col items-center text-center">
-<div class="w-12 h-12 bg-surface-container-high text-on-surface rounded-full flex items-center justify-center font-headline-md text-headline-md mb-md border-4 border-surface">
+<div class="w-12 h-12 bg-surface-container-high text-on-surface rounded-full flex items-center justify-center text-headline-md mb-md border-4 border-surface">
     3
 </div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Berkas</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Mengunggah dokumen persyaratan yang dibutuhkan.</p>
+<h3 class="text-headline-md text-on-surface mb-xs">Berkas</h3>
+<p class="text-[14px] font-sans text-on-surface-variant">Mengunggah dokumen persyaratan yang dibutuhkan.</p>
 </div>
 <!-- Step 4 -->
 <div class="relative z-10 bg-surface-container-lowest p-md rounded-xl border border-surface-variant shadow-sm hover:shadow-[0_4px_20px_rgba(70,104,54,0.08)] transition-all flex flex-col items-center text-center">
-<div class="w-12 h-12 bg-surface-container-high text-on-surface rounded-full flex items-center justify-center font-headline-md text-headline-md mb-md border-4 border-surface">
+<div class="w-12 h-12 bg-surface-container-high text-on-surface rounded-full flex items-center justify-center text-headline-md mb-md border-4 border-surface">
     4
 </div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Seleksi</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Mengikuti tes akademik dan kepesantrenan.</p>
+<h3 class="text-headline-md text-on-surface mb-xs">Seleksi</h3>
+<p class="text-[14px] font-sans text-on-surface-variant">Mengikuti tes akademik dan kepesantrenan.</p>
 </div>
 <!-- Step 5 -->
 <div class="relative z-10 bg-surface-container-lowest p-md rounded-xl border border-surface-variant shadow-sm hover:shadow-[0_4px_20px_rgba(70,104,54,0.08)] transition-all flex flex-col items-center text-center">
-<div class="w-12 h-12 bg-surface-container-high text-on-surface rounded-full flex items-center justify-center font-headline-md text-headline-md mb-md border-4 border-surface">
+<div class="w-12 h-12 bg-surface-container-high text-on-surface rounded-full flex items-center justify-center text-headline-md mb-md border-4 border-surface">
     5
 </div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Wawancara</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Sesi wawancara calon santri dan orang tua.</p>
+<h3 class="text-headline-md text-on-surface mb-xs">Wawancara</h3>
+<p class="text-[14px] font-sans text-on-surface-variant">Sesi wawancara calon santri dan orang tua.</p>
 </div>
 <!-- Step 6 -->
 <div class="relative z-10 bg-surface-container-lowest p-md rounded-xl border border-surface-variant shadow-sm hover:shadow-[0_4px_20px_rgba(70,104,54,0.08)] transition-all flex flex-col items-center text-center">
-<div class="w-12 h-12 bg-surface-container-high text-on-surface rounded-full flex items-center justify-center font-headline-md text-headline-md mb-md border-4 border-surface">
+<div class="w-12 h-12 bg-surface-container-high text-on-surface rounded-full flex items-center justify-center text-headline-md mb-md border-4 border-surface">
     6
 </div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Pengumuman</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Hasil seleksi diumumkan melalui portal dan email.</p>
+<h3 class="text-headline-md text-on-surface mb-xs">Pengumuman</h3>
+<p class="text-[14px] font-sans text-on-surface-variant">Hasil seleksi diumumkan melalui portal dan email.</p>
 </div>
 <!-- Step 7 -->
 <div class="relative z-10 bg-surface-container-lowest p-md rounded-xl border border-surface-variant shadow-sm hover:shadow-[0_4px_20px_rgba(70,104,54,0.08)] transition-all flex flex-col items-center text-center">
-<div class="w-12 h-12 bg-secondary text-on-secondary rounded-full flex items-center justify-center font-headline-md text-headline-md mb-md border-4 border-surface">
+<div class="w-12 h-12 bg-secondary text-on-secondary rounded-full flex items-center justify-center text-headline-md mb-md border-4 border-surface">
     7
 </div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Daftar Ulang</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">Penyelesaian administrasi bagi yang lulus seleksi.</p>
+<h3 class="text-headline-md text-on-surface mb-xs">Daftar Ulang</h3>
+<p class="text-[14px] font-sans text-on-surface-variant">Penyelesaian administrasi bagi yang lulus seleksi.</p>
 </div>
 </div>
 </div>

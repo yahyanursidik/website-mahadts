@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import pengaturanHalaman from '../../content/pengaturanHalaman/data.json';
+import pengaturanUtama from '../../content/pengaturanUtama/data.json';
 ---
 
 <Layout title="Program SMA Tahfizh - MTQ Tarbiyah Sunnah">
@@ -16,20 +17,20 @@ import pengaturanHalaman from '../../content/pengaturanHalaman/data.json';
 </div>
 <!-- Hero Content -->
 <div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto flex flex-col items-center gap-md">
-<span class="inline-block py-xs px-sm bg-surface-container-high/80 backdrop-blur-sm text-primary font-label-sm text-label-sm rounded-full border border-outline-variant/30">
+<span class="inline-block py-xs px-sm bg-surface-container-high/80 backdrop-blur-sm text-primary text-label-sm rounded-full border border-outline-variant/30">
     Pendidikan Menengah Atas
 </span>
-<h1 class="font-display-lg text-display-lg text-on-primary drop-shadow-md">
+<h1 class="text-display-lg text-on-primary drop-shadow-md">
     SMA Tahfizh
 </h1>
-<p class="font-body-lg text-body-lg text-surface-container-highest max-w-2xl drop-shadow-sm">
+<p class="text-body-lg text-surface-container-highest max-w-2xl drop-shadow-sm">
     Mencetak generasi rabbani yang tidak hanya hafal Al-Qur'an, tetapi juga memiliki kematangan ilmu syar'i, fasih berbahasa Arab, dan siap menjadi teladan umat.
 </p>
 <div class="flex flex-col sm:flex-row gap-sm mt-lg">
-<a href="/spmb" class="bg-secondary text-on-secondary font-label-lg text-label-lg px-lg py-sm rounded-lg hover:bg-secondary-container hover:text-on-secondary-container transition-colors duration-200 shadow-md">
+<a href="/spmb" class="bg-secondary text-on-secondary text-label-md px-lg py-sm rounded-lg hover:bg-secondary-container hover:text-on-secondary-container transition-colors duration-200 shadow-md">
     Daftar SPMB
 </a>
-<a href="#" class="bg-transparent border border-surface-container text-on-primary font-label-lg text-label-lg px-lg py-sm rounded-lg hover:bg-surface-container-highest/20 transition-colors duration-200 backdrop-blur-sm">
+<a href={pengaturanUtama.linkBrosur || "#"} target={pengaturanUtama.linkBrosur ? "_blank" : undefined} rel={pengaturanUtama.linkBrosur ? "noopener noreferrer" : undefined} class="btn-secondary !bg-transparent !border-surface-container !text-on-primary hover:!bg-surface-container-highest/20 transition-colors duration-200 backdrop-blur-sm">
     Unduh Brosur
 </a>
 </div>
@@ -39,8 +40,8 @@ import pengaturanHalaman from '../../content/pengaturanHalaman/data.json';
 <section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto relative">
 <div class="absolute inset-0 islamic-pattern-overlay -z-10"></div>
 <div class="text-center mb-xl">
-<h2 class="font-headline-lg text-headline-lg text-primary mb-sm">Target Capaian Utama</h2>
-<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Fokus kurikulum terpadu untuk membentuk pondasi keilmuan yang kokoh berlandaskan pemahaman salafus shalih.</p>
+<h2 class="text-headline-lg text-primary mb-sm">Target Capaian Utama</h2>
+<p class="text-body-md text-on-surface-variant max-w-2xl mx-auto">Fokus kurikulum terpadu untuk membentuk pondasi keilmuan yang kokoh berlandaskan pemahaman salafus shalih.</p>
 <!-- Divider -->
 <div class="flex items-center justify-center mt-lg opacity-60">
 <div class="h-px w-16 bg-outline-variant"></div>
@@ -56,8 +57,8 @@ import pengaturanHalaman from '../../content/pengaturanHalaman/data.json';
 <div class="w-12 h-12 bg-primary-fixed text-on-primary-fixed rounded-lg flex items-center justify-center mb-md">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_book</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Hafalan 10 Juz</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">
+<h3 class="text-headline-md text-on-surface mb-sm">Hafalan 10 Juz</h3>
+<p class="text-body-md text-on-surface-variant">
     Target capaian hafalan ditekankan pada kualitas <span class="font-medium text-primary">mutqin</span> (kuat dan lancar) serta pemahaman makna ayat-ayat yang dihafal, bukan sekadar mengejar kuantitas.
 </p>
 </div>
@@ -68,8 +69,8 @@ import pengaturanHalaman from '../../content/pengaturanHalaman/data.json';
 <div class="w-12 h-12 bg-secondary-fixed text-on-secondary-fixed rounded-lg flex items-center justify-center mb-md">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">forum</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Bahasa Arab Aktif</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
+<h3 class="text-headline-md text-on-surface mb-sm">Bahasa Arab Aktif</h3>
+<p class="text-[14px] font-sans text-on-surface-variant">
     Kemampuan muhadatsah (berbicara), qira'ah (membaca), dan kitabah (menulis) ditekankan sebagai alat utama untuk menggali ilmu agama secara mandiri dari literatur asli.
 </p>
 </div>
@@ -80,8 +81,8 @@ import pengaturanHalaman from '../../content/pengaturanHalaman/data.json';
 <div class="w-12 h-12 bg-tertiary-fixed text-on-tertiary-fixed rounded-lg flex items-center justify-center mb-md">
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Ilmu Syar'i Mendalam</h3>
-<p class="font-body-md text-body-md text-on-surface-variant">
+<h3 class="text-headline-md text-on-surface mb-sm">Ilmu Syar'i Mendalam</h3>
+<p class="text-body-md text-on-surface-variant">
     Penguatan fondasi aqidah yang lurus, pemahaman fiqh ibadah dan muamalah, serta pembelajaran sirah nabawiyah untuk meneladani kehidupan Rasulullah ﷺ dan para sahabat.
 </p>
 </div>
@@ -98,26 +99,26 @@ import pengaturanHalaman from '../../content/pengaturanHalaman/data.json';
 <section class="py-xl px-margin-mobile md:px-margin-desktop bg-surface-container-low border-y border-outline-variant/30">
 <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-xl">
 <div class="md:w-1/2">
-<span class="font-label-lg text-label-lg text-secondary tracking-widest uppercase mb-sm block">Program Unggulan</span>
-<h2 class="font-headline-lg text-headline-lg text-on-surface mb-md">Kaderisasi Imam &amp; Khatib</h2>
-<p class="font-body-md text-body-md text-on-surface-variant mb-lg">
+<span class="text-label-md text-secondary tracking-widest uppercase mb-sm block">Program Unggulan</span>
+<h2 class="text-headline-lg text-on-surface mb-md">Kaderisasi Imam &amp; Khatib</h2>
+<p class="text-body-md text-on-surface-variant mb-lg">
     Sebuah inisiatif khusus untuk mempersiapkan santri SMA agar siap terjun ke tengah masyarakat. Program ini membekali mereka dengan:
 </p>
 <ul class="space-y-sm mb-lg">
 <li class="flex items-start gap-sm">
 <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-<span class="font-body-md text-body-md text-on-surface">Keberanian dan retorika dakwah yang hikmah.</span>
+<span class="text-body-md text-on-surface">Keberanian dan retorika dakwah yang hikmah.</span>
 </li>
 <li class="flex items-start gap-sm">
 <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-<span class="font-body-md text-body-md text-on-surface">Penguasaan fikih ibadah praktis kemasyarakatan.</span>
+<span class="text-body-md text-on-surface">Penguasaan fikih ibadah praktis kemasyarakatan.</span>
 </li>
 <li class="flex items-start gap-sm">
 <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-<span class="font-body-md text-body-md text-on-surface">Praktek langsung menjadi imam rawatib dan khatib Jumat.</span>
+<span class="text-body-md text-on-surface">Praktek langsung menjadi imam rawatib dan khatib Jumat.</span>
 </li>
 </ul>
-<button class="border border-primary text-primary font-label-lg text-label-lg px-md py-sm rounded-lg hover:bg-primary/5 transition-colors duration-200">
+<button class="border border-primary text-primary text-label-md px-md py-sm rounded-lg hover:bg-primary/5 transition-colors duration-200">
     Pelajari Silabus
 </button>
 </div>
@@ -133,8 +134,8 @@ import pengaturanHalaman from '../../content/pengaturanHalaman/data.json';
 <!-- Profil Lulusan SMA -->
 <section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
 <div class="text-center mb-xl">
-<h2 class="font-headline-lg text-headline-lg text-primary mb-sm">Profil Lulusan</h2>
-<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">Menyiapkan pemuda muslim yang beradab, berilmu, dan siap menghadapi tantangan masa depan.</p>
+<h2 class="text-headline-lg text-primary mb-sm">Profil Lulusan</h2>
+<p class="text-body-md text-on-surface-variant max-w-2xl mx-auto">Menyiapkan pemuda muslim yang beradab, berilmu, dan siap menghadapi tantangan masa depan.</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
 <!-- Lulusan 1 -->
@@ -142,8 +143,8 @@ import pengaturanHalaman from '../../content/pengaturanHalaman/data.json';
 <div class="w-16 h-16 bg-surface-variant rounded-full flex items-center justify-center mb-md">
 <span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 0;">school</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Siap Studi Lanjut</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
+<h3 class="text-headline-md text-on-surface mb-sm">Siap Studi Lanjut</h3>
+<p class="text-[14px] font-sans text-on-surface-variant">
     Memiliki bekal akademis dan hafalan Al-Qur'an yang memadai untuk melanjutkan pendidikan ke universitas Islam terkemuka di dalam maupun luar negeri.
 </p>
 </div>
@@ -152,8 +153,8 @@ import pengaturanHalaman from '../../content/pengaturanHalaman/data.json';
 <div class="w-16 h-16 bg-surface-variant rounded-full flex items-center justify-center mb-md">
 <span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 0;">local_library</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Pemahaman Syar'i Matang</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
+<h3 class="text-headline-md text-on-surface mb-sm">Pemahaman Syar'i Matang</h3>
+<p class="text-[14px] font-sans text-on-surface-variant">
     Mampu memahami dasar-dasar agama dan teks-teks syar'i secara mandiri sesuai dengan manhaj salafus shalih.
 </p>
 </div>
@@ -162,14 +163,14 @@ import pengaturanHalaman from '../../content/pengaturanHalaman/data.json';
 <div class="w-16 h-16 bg-surface-variant rounded-full flex items-center justify-center mb-md">
 <span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 0;">self_improvement</span>
 </div>
-<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Kedewasaan Adab</h3>
-<p class="font-body-sm text-body-sm text-on-surface-variant">
+<h3 class="text-headline-md text-on-surface mb-sm">Kedewasaan Adab</h3>
+<p class="text-[14px] font-sans text-on-surface-variant">
     Menampilkan akhlak mulia, kemandirian dalam beribadah dan bersikap, serta rasa tanggung jawab yang tinggi terhadap diri dan umat.
 </p>
 </div>
 </div>
 <div class="mt-xl text-center">
-<a href="/spmb" class="inline-block bg-primary text-on-primary font-label-lg text-label-lg px-xl py-md rounded-lg hover:bg-primary-container transition-colors duration-200 shadow-md">
+<a href="/spmb" class="inline-block bg-primary text-on-primary text-label-md px-xl py-md rounded-lg hover:bg-primary-container transition-colors duration-200 shadow-md">
     Mulai Pendaftaran Sekarang
 </a>
 </div>
