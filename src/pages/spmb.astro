@@ -1,37 +1,44 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import pengaturanHalaman from '../content/pengaturanHalaman/data.json';
+import pengaturanUtama from '../content/pengaturanUtama/data.json';
 ---
 
 <Layout title="SPMB - MTQ Tarbiyah Sunnah">
 <main class="flex-grow pt-[80px]">
 <!-- Hero Section -->
 <section class="relative pt-xl pb-lg px-margin-mobile md:px-margin-desktop overflow-hidden bg-surface-container-lowest border-b border-surface-variant">
-<div class="absolute inset-0 pattern-bg opacity-50 z-0"></div>
-<div class="max-w-7xl mx-auto relative z-10 grid grid-cols-1 md:grid-cols-2 gap-lg items-center">
-<div>
+<div class="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row gap-lg md:gap-xl items-center">
+<div class="w-full md:w-1/2 flex-shrink-0 md:flex-shrink">
 <div class="inline-flex items-center gap-2 bg-surface-container-high px-sm py-xs rounded-full border border-surface-variant mb-md">
 <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
 <span class="font-label-sm text-label-sm text-primary">Pendaftaran Dibuka - T.A 2024/2025</span>
 </div>
-<h1 class="font-display-lg text-display-lg text-on-surface mb-md">
-    Sistem Penerimaan <br> <span class="text-primary">Murid Baru</span>
+<h1 class="font-display-lg text-display-lg leading-[1.1] text-on-surface mb-md">
+    Sistem Penerimaan <span class="text-primary block mt-1">Murid Baru</span>
 </h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg max-w-lg">
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg leading-relaxed">
     Bergabunglah bersama Ma'had Tahfizhul Qur'an Tarbiyah Sunnah. Mencetak generasi Qur'ani yang bermanhaj salafus shalih, berakhlak mulia, dan unggul dalam akademik.
 </p>
-<div class="flex flex-col sm:flex-row gap-md">
-<button class="bg-secondary text-on-secondary font-label-lg text-label-lg px-lg py-sm rounded-lg hover:bg-secondary-container hover:text-on-secondary-container transition-all shadow-[0_4px_20px_rgba(149,74,0,0.2)] flex justify-center items-center gap-2">
+<div class="flex flex-col sm:flex-row gap-3 md:gap-md">
+<a href="#alur-pendaftaran" class="bg-secondary text-on-secondary font-label-lg text-label-lg px-lg py-3 md:py-sm rounded-lg hover:bg-secondary-container hover:text-on-secondary-container transition-all shadow-[0_4px_20px_rgba(149,74,0,0.2)] flex justify-center items-center gap-2">
     Daftar Sekarang
     <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</button>
-<a href="/hubungi-kami" class="border border-primary text-primary font-label-lg text-label-lg px-lg py-sm rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors flex justify-center items-center gap-2">
-    Konsultasi Admin
-    <span class="material-symbols-outlined text-[18px]">chat</span>
 </a>
+{pengaturanUtama.linkBrosur ? (
+  <a href={pengaturanUtama.linkBrosur} target="_blank" rel="noopener noreferrer" class="border border-primary text-primary font-label-lg text-label-lg px-lg py-3 md:py-sm rounded-lg hover:bg-primary hover:text-on-primary transition-colors flex justify-center items-center gap-2">
+      Download Brosur
+      <span class="material-symbols-outlined text-[18px]">download</span>
+  </a>
+) : (
+  <a href="http://wa.me/6281210001476" target="_blank" rel="noopener noreferrer" class="border border-primary text-primary font-label-lg text-label-lg px-lg py-3 md:py-sm rounded-lg hover:bg-primary-container hover:text-on-primary-container transition-colors flex justify-center items-center gap-2">
+      Konsultasi Admin
+      <span class="material-symbols-outlined text-[18px]">chat</span>
+  </a>
+)}
 </div>
 </div>
-<div class="hidden md:block relative h-[400px] rounded-xl overflow-hidden shadow-lg border border-surface-variant">
+<div class="w-full md:w-1/2 relative h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-lg border border-surface-variant flex-shrink-0">
 <img alt="Siswa belajar" class="w-full h-full object-cover" src={pengaturanHalaman.heroSpmb || "https://lh3.googleusercontent.com/aida-public/AB6AXuDSnJ1rELwyPcMK5jGXCCi64OO_mpGhJd-mxHg7ujV7Ut1PFDVwJMwr09Wbu9lnWT_qVPcuf59Y_E5ncnIqTyc8wv0p3dSMc3K0FXesaYMjr5qNB6v6nMZSa2oTgEiJ9_rIfVrlkELp3Bsi0JI6b1TEm_WOOXlAR60-gblkUn8y7Si8bCSgruoWmogsgRIVNnm6S8Ya4RYuyKUHgmMwgtR9GB5xFksu12HY-2W4qd1qAVxGNDO9Dl-0gJZjeZFovbpp4kUGD9YdDqg"}>
 </div>
 </div>
