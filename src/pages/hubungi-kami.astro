@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import pengaturanUtama from '../content/pengaturanUtama/data.json';
 ---
 
 <Layout title="Kontak - MTQ Tarbiyah Sunnah">
-<main class="flex-grow pt-xl pb-xl bg-surface-container-lowest">
+<main class="flex-grow pt-[80px] pb-xl bg-surface-container-lowest">
 <!-- Hero Section -->
-<section class="relative bg-surface-container-low py-xl overflow-hidden mt-16 md:mt-24">
+<section class="relative bg-surface-container-low py-xl overflow-hidden">
 <div class="absolute inset-0 bg-islamic-pattern pointer-events-none" style="background-image: url(&quot;data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23466836' fill-opacity='0.05'%3E%3Cpath d='M30 0l15 15-15 15L15 15zM0 30l15-15 15 15-15 15zM30 60l15-15-15-15-15 15zM60 30l-15-15-15 15 15 15z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E&quot;);"></div>
 <div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop relative z-10 text-center">
 <h1 class="font-display-lg text-display-lg text-primary mb-sm">Hubungi Kami</h1>
@@ -47,7 +48,7 @@ import Layout from '../layouts/Layout.astro';
 <a class="flex items-center gap-sm p-sm border border-[#E9EEE7] rounded-xl bg-surface-container-lowest hover:border-primary hover:shadow-[0px_4px_20px_rgba(70,104,54,0.08)] transition-all group" href="https://wa.me/6281210001476"><div class="w-12 h-12 bg-[#25D366] bg-opacity-10 rounded-full flex items-center justify-center text-[#25D366] group-hover:bg-[#25D366] group-hover:text-white transition-colors"><span class="material-symbols-outlined">chat</span></div><div><div class="font-label-sm text-label-sm text-on-surface-variant">WhatsApp Admin</div><div class="font-headline-md text-headline-md text-primary">+62 812 1000 1476</div></div></a>
 <a class="flex items-center gap-sm p-sm border border-[#E9EEE7] rounded-xl bg-surface-container-lowest hover:border-primary hover:shadow-[0px_4px_20px_rgba(70,104,54,0.08)] transition-all group" href="mailto:info@tarbiyahsunnah.id"><div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors"><span class="material-symbols-outlined">mail</span></div><div><div class="font-label-sm text-label-sm text-on-surface-variant">Email Resmi</div><div class="font-headline-md text-headline-md text-primary" style="font-size: 18px; line-height: 24px;">info@tarbiyahsunnah.id</div></div></a></div>
 <!-- Contact Form & Direct Links -->
-<div class="lg:col-span-12 w-full"><div class="bg-surface-container-lowest border border-[#E9EEE7] rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(70,104,54,0.08)]"><div class="p-md border-b border-outline-variant flex justify-between items-center"><h2 class="font-headline-md text-headline-md text-primary">Lokasi Ma'had</h2><button class="bg-primary text-on-primary font-label-sm text-label-sm px-md py-1 rounded hover:bg-surface-tint transition-colors flex items-center gap-xs"><span class="material-symbols-outlined" style="font-size: 18px;">directions</span> Petunjuk Arah</button></div><div class="h-[500px] relative bg-surface-variant"><iframe allowfullscreen="" class="grayscale-[20%] contrast-[90%]" height="100%" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.558344343434!2d107.485!3d-6.943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNTYnMzQuOCJTIDEwN8KwMjknMDYuMCJF!5e0!3m2!1sid!2sid!4v1620000000000!5m2!1sid!2sid" style="border:0;" width="100%"></iframe></div></div></div>
+<div class="lg:col-span-12 w-full"><div class="bg-surface-container-lowest border border-[#E9EEE7] rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(70,104,54,0.08)]"><div class="p-md border-b border-outline-variant flex justify-between items-center"><h2 class="font-headline-md text-headline-md text-primary">Lokasi Ma'had</h2><button class="bg-primary text-on-primary font-label-sm text-label-sm px-md py-1 rounded hover:bg-surface-tint transition-colors flex items-center gap-xs"><span class="material-symbols-outlined" style="font-size: 18px;">directions</span> Petunjuk Arah</button></div><div class="h-[500px] relative bg-surface-variant"><iframe allowfullscreen="" class="grayscale-[20%] contrast-[90%]" height="100%" loading="lazy" src={pengaturanUtama.googleMapsUrl} style="border:0;" width="100%"></iframe></div></div></div>
 </div>
 </div>
 </main>

@@ -1,28 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import pengaturanHalaman from '../content/pengaturanHalaman/data.json';
 ---
 
 <Layout title="Profil Ma'had - MTQ Tarbiyah Sunnah">
 <main class="flex-grow pt-[80px]">
 <!-- Hero Section -->
-<header class="relative w-full py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-lg bg-surface-container-low rounded-xl mt-md">
-<div class="absolute inset-0 islamic-pattern opacity-50"></div>
-<div class="relative z-10 w-full md:w-1/2 flex justify-center order-2 md:order-1">
-<img alt="Modern mosque landscape at sunrise" class="w-full h-auto object-cover rounded-lg shadow-sm max-w-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZ8xqf-Edcqfj6AdYWdTRkSocGXc8qRtnJc2WJFhM6T7I1LTA4hDlPDkDKxfXD7U_XQmKzW2PRCuyqS-LMWmyA4mbHJ3MXHDQN-uh89Kr95pFqS1B_mWv7cfHXGyVMLpXBI-i892-ziY4frSj8YNoWHK0OBSj7T7Wd31h1SApLaUS241S1ytEB01C2LluaqxaryNkP9rRnRH7FScjfMuBo23dNfSiCcqgitFUMO2TYfKnr_27taIzSw62llzBg0CPd2O0YfI3cRB7znA">
+<header class="relative w-full h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Modern mosque landscape at sunrise" class="w-full h-full object-cover object-center" src={pengaturanHalaman.heroProfil || "https://lh3.googleusercontent.com/aida-public/AB6AXuAZ8xqf-Edcqfj6AdYWdTRkSocGXc8qRtnJc2WJFhM6T7I1LTA4hDlPDkDKxfXD7U_XQmKzW2PRCuyqS-LMWmyA4mbHJ3MXHDQN-uh89Kr95pFqS1B_mWv7cfHXGyVMLpXBI-i892-ziY4frSj8YNoWHK0OBSj7T7Wd31h1SApLaUS241S1ytEB01C2LluaqxaryNkP9rRnRH7FScjfMuBo23dNfSiCcqgitFUMO2TYfKnr_27taIzSw62llzBg0CPd2O0YfI3cRB7znA"}>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/80 to-transparent"></div>
 </div>
-<div class="relative z-10 w-full md:w-1/2 flex flex-col items-start text-left order-1 md:order-2">
-<h1 class="font-display-lg text-display-lg md:text-display-lg text-primary mb-sm">Membentuk Generasi Qur'ani</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-md">
+<div class="relative z-10 max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop text-center mt-xl">
+<h1 class="font-display-lg text-display-lg md:text-display-lg text-primary mb-sm drop-shadow-sm">Membentuk Generasi Qur'ani</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-md max-w-2xl mx-auto">
     Ma'had Tahfizhul Qur'an Tarbiyah Sunnah berdedikasi untuk mencetak hafizh bersanad yang berpegang teguh pada manhaj salaf, memadukan tradisi keilmuan Islam klasik dengan profesionalisme pendidikan modern.
 </p>
-<a href="/program/smp" class="bg-secondary text-on-secondary font-label-lg text-label-lg px-md py-sm rounded shadow-sm hover:shadow-[0px_4px_20px_rgba(70,104,54,0.08)] transition-shadow">Pelajari Program Kami</a>
+<a href="/program/smp" class="inline-block bg-secondary text-on-secondary font-label-lg text-label-lg px-md py-sm rounded shadow-sm hover:shadow-[0px_4px_20px_rgba(70,104,54,0.08)] transition-shadow">Pelajari Program Kami</a>
 </div>
 </header>
 <!-- Sejarah Section -->
 <section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
 <div class="flex flex-col md:flex-row gap-lg items-center bg-surface-container-lowest border border-outline-variant p-lg rounded-xl shadow-[0px_4px_20px_rgba(70,104,54,0.08)]">
 <div class="w-full md:w-1/2">
-<div class="w-full h-64 md:h-96 rounded-xl bg-surface-variant bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLsoN003K1-XgkIFAadcGIc_x4OqQfglK73QyUuWzQ_AoU-6NV4cND5wlnjA9OtY_zKW9HCHY93k3h6A6D9O4Rj15ZeqsnKHDkw-CzF5AdcnOSVqUU8oG5Y7Mh-6QrnwtY3qh2IVvqG35FcqE5XTVanWB38GpdjL4rpoHpvcE95vNomQ5OAdDxQ6BXAG5jaH-Oyw9tp6kSiMx_PPpZABrGccXgPojdireoBNSfu5FMn5Ia84WxPek7emIRg');">
+<div class="w-full h-64 md:h-96 rounded-xl bg-surface-variant bg-cover bg-center" style={`background-image: url('${pengaturanHalaman.gambarSejarahProfil || "https://lh3.googleusercontent.com/aida/AP1WRLsoN003K1-XgkIFAadcGIc_x4OqQfglK73QyUuWzQ_AoU-6NV4cND5wlnjA9OtY_zKW9HCHY93k3h6A6D9O4Rj15ZeqsnKHDkw-CzF5AdcnOSVqUU8oG5Y7Mh-6QrnwtY3qh2IVvqG35FcqE5XTVanWB38GpdjL4rpoHpvcE95vNomQ5OAdDxQ6BXAG5jaH-Oyw9tp6kSiMx_PPpZABrGccXgPojdireoBNSfu5FMn5Ia84WxPek7emIRg"}');`}>
 </div>
 </div>
 <div class="w-full md:w-1/2">

@@ -1,24 +1,73 @@
 ---
 // Header.astro
 ---
-<header class="bg-surface dark:bg-background border-b border-surface-variant dark:border-outline-variant fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-desktop py-4 max-w-7xl mx-auto md:px-margin-desktop px-margin-mobile">
-<div class="flex items-center gap-sm">
-<img alt="MTQ Tarbiyah Sunnah Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2gCqUKXMjjkKY3_N4liYLt2Uzlki1DCGKQb0QzdU_uAStJmKIW2EcG8RuV9dhjiVQSQa_evX6XuJnYOJSVw9rdv5LUzTot9NJW31El9ean3nz6zX1E0zNIh8ugm2SWbWMWRO4Hz6WuVHe-1fnKatvo4SF6Lus-NwrM3I2-CkAAOKvJCXXKjESM7aGec5gYWH1ohOAbBV9N0Uv2QvuFP5iLZpZhJD1ExTugAC9RYaqgrHhDzs7HY4atYNf3gunau4JK4xkDZuXpQI"/>
-<span class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary hidden md:block">MTQ Tarbiyah Sunnah</span>
-</div>
-<nav class="hidden md:flex items-center gap-md">
-<a class="text-on-surface-variant dark:text-surface-variant font-label-lg text-label-lg hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="/">Beranda</a>
-<a class="text-on-surface-variant dark:text-surface-variant font-label-lg text-label-lg hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="/profil-mahad">Profil Ma'had</a>
-<a class="text-on-surface-variant dark:text-surface-variant font-label-lg text-label-lg hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="/program/smp">Program SMP</a>
-<a class="text-on-surface-variant dark:text-surface-variant font-label-lg text-label-lg hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="/program/sma">Program SMA</a>
-<a class="text-on-surface-variant dark:text-surface-variant font-label-lg text-label-lg hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="/spmb">SPMB</a>
-<a class="text-on-surface-variant dark:text-surface-variant font-label-lg text-label-lg hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="/artikel">Artikel</a>
-<a class="text-on-surface-variant dark:text-surface-variant font-label-lg text-label-lg hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200" href="/hubungi-kami">Hubungi Kami</a>
-</nav>
-<div class="flex items-center gap-sm">
-<a href="/spmb" class="bg-secondary text-on-secondary px-md py-sm rounded font-label-lg text-label-lg hover:bg-secondary-container hover:text-on-secondary-container transition-colors shadow-sm hidden md:block">Daftar SPMB</a>
-<button class="md:hidden text-primary">
-<span class="material-symbols-outlined">menu</span>
-</button>
-</div>
+<header class="bg-surface border-b border-surface-variant fixed top-0 left-0 w-full z-50">
+  <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-7xl mx-auto w-full">
+    <a href="/" class="flex items-center gap-sm hover:opacity-90 transition-opacity">
+      <img alt="MTQ Tarbiyah Sunnah Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2gCqUKXMjjkKY3_N4liYLt2Uzlki1DCGKQb0QzdU_uAStJmKIW2EcG8RuV9dhjiVQSQa_evX6XuJnYOJSVw9rdv5LUzTot9NJW31El9ean3nz6zX1E0zNIh8ugm2SWbWMWRO4Hz6WuVHe-1fnKatvo4SF6Lus-NwrM3I2-CkAAOKvJCXXKjESM7aGec5gYWH1ohOAbBV9N0Uv2QvuFP5iLZpZhJD1ExTugAC9RYaqgrHhDzs7HY4atYNf3gunau4JK4xkDZuXpQI"/>
+      <span class="font-headline-md text-headline-md font-bold text-primary hidden md:block">MTQ Tarbiyah Sunnah</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-md">
+      <a class="text-on-surface font-label-lg text-label-lg hover:text-primary transition-colors duration-200" href="/">Beranda</a>
+      <a class="text-on-surface font-label-lg text-label-lg hover:text-primary transition-colors duration-200" href="/profil-mahad">Profil Ma'had</a>
+      <div class="relative group py-2">
+        <button class="text-on-surface font-label-lg text-label-lg group-hover:text-primary transition-colors duration-200 flex items-center gap-1">
+          Program
+          <span class="material-symbols-outlined text-[16px]">expand_more</span>
+        </button>
+        <div class="absolute left-0 top-full w-48 bg-surface-container-lowest border border-surface-variant rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
+          <a href="/program/smp" class="block px-4 py-3 text-on-surface hover:bg-surface-container hover:text-primary font-label-lg text-label-lg border-b border-surface-variant/50">Program SMP</a>
+          <a href="/program/sma" class="block px-4 py-3 text-on-surface hover:bg-surface-container hover:text-primary font-label-lg text-label-lg">Program SMA</a>
+        </div>
+      </div>
+      <a class="text-on-surface font-label-lg text-label-lg hover:text-primary transition-colors duration-200" href="/artikel">Artikel</a>
+      <a class="text-on-surface font-label-lg text-label-lg hover:text-primary transition-colors duration-200" href="/hubungi-kami">Hubungi Kami</a>
+    </nav>
+    <div class="flex items-center gap-sm">
+      <a href="/spmb" class="bg-secondary text-on-secondary px-md py-sm rounded font-label-lg text-label-lg hover:bg-secondary-container hover:text-on-secondary-container transition-colors shadow-sm hidden md:block">Daftar SPMB</a>
+      <button id="mobile-menu-btn" class="md:hidden text-primary p-2 focus:outline-none">
+        <span class="material-symbols-outlined" id="mobile-menu-icon">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="absolute top-[72px] left-0 w-full bg-surface border-b border-surface-variant shadow-lg hidden flex-col transition-all duration-300 md:hidden z-40">
+    <nav class="flex flex-col px-margin-mobile py-4 gap-4">
+      <a class="text-on-surface font-label-lg text-label-lg hover:text-primary transition-colors" href="/">Beranda</a>
+      <a class="text-on-surface font-label-lg text-label-lg hover:text-primary transition-colors" href="/profil-mahad">Profil Ma'had</a>
+      <div class="flex flex-col gap-2">
+        <span class="text-on-surface font-label-lg text-label-lg font-bold">Program</span>
+        <a class="pl-4 text-on-surface-variant font-label-lg text-label-lg hover:text-primary transition-colors" href="/program/smp">- Program SMP</a>
+        <a class="pl-4 text-on-surface-variant font-label-lg text-label-lg hover:text-primary transition-colors" href="/program/sma">- Program SMA</a>
+      </div>
+      <a class="text-on-surface font-label-lg text-label-lg hover:text-primary transition-colors" href="/artikel">Artikel</a>
+      <a class="text-on-surface font-label-lg text-label-lg hover:text-primary transition-colors" href="/hubungi-kami">Hubungi Kami</a>
+      <a class="text-primary font-label-lg text-label-lg font-bold mt-2" href="/spmb">Daftar SPMB</a>
+    </nav>
+  </div>
 </header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('mobile-menu-icon');
+
+    if (btn && menu && icon) {
+      btn.addEventListener('click', () => {
+        const isHidden = menu.classList.contains('hidden');
+        
+        if (isHidden) {
+          menu.classList.remove('hidden');
+          menu.classList.add('flex');
+          icon.textContent = 'close';
+        } else {
+          menu.classList.add('hidden');
+          menu.classList.remove('flex');
+          icon.textContent = 'menu';
+        }
+      });
+    }
+  });
+</script>

@@ -1,5 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import pengaturanBeranda from '../content/pengaturanBeranda/data.json';
+
+const slideshowImages = pengaturanBeranda.slideshow || [];
 ---
 
 <Layout title="Beranda - MTQ Tarbiyah Sunnah">
@@ -8,15 +11,11 @@ import Layout from '../layouts/Layout.astro';
 <section class="relative w-full h-[600px] md:h-[700px] overflow-hidden group">
 <!-- Slider Images -->
 <div class="w-full h-full relative" id="hero-slider">
-<div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100 slider-slide">
-<img alt="Students studying the Quran" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN3Ma2OUEBH-p4UdZMl9RlrHipV8OOd5iVTIxvaTXbM-lc_kEG9OW3BBya0-7XdfS5ogOKGSQ8O3p_J1UOpv1KcNOQlkjIx0iwudULx2sqxaH5HwdMTXkbeLI5chEwksDaUdoGno0vBv1WCMxgH_oz3tAvQbmFjxv37ZgFMtsLCbRy9zL7DyUSBXGpb8qWTGIo8ngX7FRPSK5MphPlaCsdAwSMmspTWMqPRhr0e6qLE5IQveyc13EQvvqtOxtuBpxMHfBpOwEApt4"/>
+{slideshowImages.map((src, index) => (
+<div class={`absolute inset-0 transition-opacity duration-1000 ease-in-out slider-slide ${index === 0 ? 'opacity-100' : 'opacity-0'}`}>
+<img alt={`Slideshow image ${index + 1}`} class="w-full h-full object-cover" src={src}/>
 </div>
-<div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 slider-slide">
-<img alt="Modern mosque at sunrise" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqx1T7SZaiyYsh2K71BfaJa0VxZUeHRvbVy1mg8G4aR-FgLc6iG2hVfqgQhHpMRJnj4rLjCEU8xMERpPQqAGVo_rDuhz_b2josn32KTcxOEdKJ0sw7CuPBSBxF6Bf79hpjbBBpKF5odFyXpMyv70cJz7ol_MwHtfJhF1_ykQZ7tgcFUJVDbOWd5VHdA40luqEzB6M284iF0M3s0IPRRJ8wjgSWLxqleoISHEFihl4jt0RXvp4SPNX1carQJgbZ91rOXWJQDjRKElc"/>
-</div>
-<div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0 slider-slide">
-<img alt="Open Quran on a wooden stand" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg6fh4eH1SFWl7T99teJQ9sS5o7bTnhioT0AqDg9ge3Xj5PSXUim0xM7VzoRDgjqUtbzbjWPqX29UqwvMNK-n9-hF9o5G_6CJEwiwz7BID2BDGFh5ovKLADMxLb2TPLL8m3555ltJlA1ofxknoyIgDWGJQyslXPNjN-x3J-XpopE9IY5I0Z7Gd3TE2GMZxyVrBENEt4VM5GtCuZgTBXrdXnrDpHEYi0c3M1atJUuRyyVzE0Fkxhg2VkdJlV1REOVHPfpDbYmjzWbU"/>
-</div>
+))}
 </div>
 <!-- Overlay Content -->
 <div class="absolute inset-0 flex items-center justify-center z-10 px-margin-mobile md:px-margin-desktop">
@@ -39,9 +38,9 @@ import Layout from '../layouts/Layout.astro';
 </button>
 <!-- Dots -->
 <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-<button class="w-3 h-3 rounded-full bg-white transition-all slider-dot" data-index="0"></button>
-<button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-all slider-dot" data-index="1"></button>
-<button class="w-3 h-3 rounded-full bg-white/50 hover:bg-white/80 transition-all slider-dot" data-index="2"></button>
+{slideshowImages.map((_, index) => (
+<button class={`w-3 h-3 rounded-full transition-all slider-dot ${index === 0 ? 'bg-white' : 'bg-white/50 hover:bg-white/80'}`} data-index={index}></button>
+))}
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", () => {

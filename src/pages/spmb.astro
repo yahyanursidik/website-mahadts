@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import pengaturanHalaman from '../content/pengaturanHalaman/data.json';
 ---
 
 <Layout title="SPMB - MTQ Tarbiyah Sunnah">
@@ -31,7 +32,7 @@ import Layout from '../layouts/Layout.astro';
 </div>
 </div>
 <div class="hidden md:block relative h-[400px] rounded-xl overflow-hidden shadow-lg border border-surface-variant">
-<img alt="Siswa belajar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSnJ1rELwyPcMK5jGXCCi64OO_mpGhJd-mxHg7ujV7Ut1PFDVwJMwr09Wbu9lnWT_qVPcuf59Y_E5ncnIqTyc8wv0p3dSMc3K0FXesaYMjr5qNB6v6nMZSa2oTgEiJ9_rIfVrlkELp3Bsi0JI6b1TEm_WOOXlAR60-gblkUn8y7Si8bCSgruoWmogsgRIVNnm6S8Ya4RYuyKUHgmMwgtR9GB5xFksu12HY-2W4qd1qAVxGNDO9Dl-0gJZjeZFovbpp4kUGD9YdDqg">
+<img alt="Siswa belajar" class="w-full h-full object-cover" src={pengaturanHalaman.heroSpmb || "https://lh3.googleusercontent.com/aida-public/AB6AXuDSnJ1rELwyPcMK5jGXCCi64OO_mpGhJd-mxHg7ujV7Ut1PFDVwJMwr09Wbu9lnWT_qVPcuf59Y_E5ncnIqTyc8wv0p3dSMc3K0FXesaYMjr5qNB6v6nMZSa2oTgEiJ9_rIfVrlkELp3Bsi0JI6b1TEm_WOOXlAR60-gblkUn8y7Si8bCSgruoWmogsgRIVNnm6S8Ya4RYuyKUHgmMwgtR9GB5xFksu12HY-2W4qd1qAVxGNDO9Dl-0gJZjeZFovbpp4kUGD9YdDqg"}>
 </div>
 </div>
 </section>

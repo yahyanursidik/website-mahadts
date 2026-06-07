@@ -1,8 +1,76 @@
-import { config, fields, collection } from '@keystatic/core';
+import { config, fields, collection, singleton } from '@keystatic/core';
 
 export default config({
   storage: {
     kind: 'local',
+  },
+  singletons: {
+    pengaturanUtama: singleton({
+      label: 'Pengaturan Utama',
+      path: 'src/content/pengaturanUtama/data',
+      format: { data: 'json' },
+      schema: {
+        favicon: fields.image({
+          label: 'Favicon',
+          directory: 'public/images/settings',
+          publicPath: '/images/settings',
+        }),
+        googleMapsUrl: fields.text({
+          label: 'Google Maps Embed URL',
+          description: 'URL iframe untuk peta (ambil dari atribut src di Google Maps Embed)',
+        }),
+      },
+    }),
+    pengaturanBeranda: singleton({
+      label: 'Pengaturan Beranda',
+      path: 'src/content/pengaturanBeranda/data',
+      format: { data: 'json' },
+      schema: {
+        slideshow: fields.array(
+          fields.image({
+            label: 'Gambar Slideshow',
+            directory: 'public/images/slideshow',
+            publicPath: '/images/slideshow',
+          }),
+          {
+            label: 'Slideshow Beranda',
+            itemLabel: props => 'Gambar',
+          }
+        ),
+      },
+    }),
+    pengaturanHalaman: singleton({
+      label: 'Gambar Hero Halaman',
+      path: 'src/content/pengaturanHalaman/data',
+      format: { data: 'json' },
+      schema: {
+        heroProfil: fields.image({
+          label: 'Hero Profil Ma\'had',
+          directory: 'public/images/hero',
+          publicPath: '/images/hero',
+        }),
+        heroSmp: fields.image({
+          label: 'Hero Program SMP',
+          directory: 'public/images/hero',
+          publicPath: '/images/hero',
+        }),
+        heroSma: fields.image({
+          label: 'Hero Program SMA',
+          directory: 'public/images/hero',
+          publicPath: '/images/hero',
+        }),
+        heroSpmb: fields.image({
+          label: 'Hero SPMB',
+          directory: 'public/images/hero',
+          publicPath: '/images/hero',
+        }),
+        gambarSejarahProfil: fields.image({
+          label: 'Gambar Bagian Sejarah Profil',
+          directory: 'public/images/halaman',
+          publicPath: '/images/halaman',
+        }),
+      },
+    }),
   },
   collections: {
     artikel: collection({

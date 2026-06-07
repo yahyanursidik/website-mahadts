@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import pengaturanHalaman from '../../content/pengaturanHalaman/data.json';
 ---
 
 <Layout title="Program SMP - MTQ Tarbiyah Sunnah">
@@ -7,7 +8,7 @@ import Layout from '../../layouts/Layout.astro';
 <!-- Hero Section -->
 <section class="relative w-full h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
 <div class="absolute inset-0 z-0">
-<img alt="" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida/AP1WRLszwn5N-x9727cd7uNdMM0yrkccUouVYTKKXHz4avJ4m5djA1Avzj1uq8dK8cAPW5tOqSH1PevKcHlNgq56QuogIJm07ABO_8nP1LrmmtpR-E10w8X4KJWMnDVX27yrC_TmJqNH6tWSaIRBJiN7ow32uwgftGY6Tdw050Vp1w9ML0Cg2T1Z_y3pUBgJrD3BagRhLVFhKZ9-n9hYHmsTo8m0_qS12zapqP3D6giZtXSOySmabe31m4TLtKs"/>
+<img alt="" class="w-full h-full object-cover object-center" src={pengaturanHalaman.heroSmp || "https://lh3.googleusercontent.com/aida/AP1WRLszwn5N-x9727cd7uNdMM0yrkccUouVYTKKXHz4avJ4m5djA1Avzj1uq8dK8cAPW5tOqSH1PevKcHlNgq56QuogIJm07ABO_8nP1LrmmtpR-E10w8X4KJWMnDVX27yrC_TmJqNH6tWSaIRBJiN7ow32uwgftGY6Tdw050Vp1w9ML0Cg2T1Z_y3pUBgJrD3BagRhLVFhKZ9-n9hYHmsTo8m0_qS12zapqP3D6giZtXSOySmabe31m4TLtKs"}/>
 <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/80 to-transparent"></div>
 </div>
 <div class="relative z-10 max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop text-center mt-xl">

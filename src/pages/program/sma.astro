@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import pengaturanHalaman from '../../content/pengaturanHalaman/data.json';
 ---
 
 <Layout title="Program SMA Tahfizh - MTQ Tarbiyah Sunnah">
@@ -8,7 +9,7 @@ import Layout from '../../layouts/Layout.astro';
 <section class="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
 <!-- Background Image -->
 <div class="absolute inset-0 z-0">
-<img alt="" class="w-full h-full object-cover object-center" src="https://lh3.googleusercontent.com/aida/AP1WRLsoN003K1-XgkIFAadcGIc_x4OqQfglK73QyUuWzQ_AoU-6NV4cND5wlnjA9OtY_zKW9HCHY93k3h6A6D9O4Rj15ZeqsnKHDkw-CzF5AdcnOSVqUU8oG5Y7Mh-6QrnwtY3qh2IVvqG35FcqE5XTVanWB38GpdjL4rpoHpvcE95vNomQ5OAdDxQ6BXAG5jaH-Oyw9tp6kSiMx_PPpZABrGccXgPojdireoBNSfu5FMn5Ia84WxPek7emIRg">
+<img alt="" class="w-full h-full object-cover object-center" src={pengaturanHalaman.heroSma || "https://lh3.googleusercontent.com/aida/AP1WRLsoN003K1-XgkIFAadcGIc_x4OqQfglK73QyUuWzQ_AoU-6NV4cND5wlnjA9OtY_zKW9HCHY93k3h6A6D9O4Rj15ZeqsnKHDkw-CzF5AdcnOSVqUU8oG5Y7Mh-6QrnwtY3qh2IVvqG35FcqE5XTVanWB38GpdjL4rpoHpvcE95vNomQ5OAdDxQ6BXAG5jaH-Oyw9tp6kSiMx_PPpZABrGccXgPojdireoBNSfu5FMn5Ia84WxPek7emIRg"}>
 <!-- Gradient Overlay for readability -->
 <div class="absolute inset-0 bg-inverse-surface/60 mix-blend-multiply"></div>
 <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
