@@ -19,6 +19,10 @@ export default config({
           label: 'Google Maps Embed URL',
           description: 'URL iframe untuk peta (ambil dari atribut src di Google Maps Embed)',
         }),
+        linkBrosur: fields.text({
+          label: 'Link Brosur SPMB',
+          description: 'Tautan untuk mengunduh atau melihat brosur SPMB (misal: link Google Drive atau PDF)',
+        }),
       },
     }),
     pengaturanBeranda: singleton({
