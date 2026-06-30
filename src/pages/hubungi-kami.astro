@@ -13,43 +13,150 @@ import pengaturanUtama from '../content/pengaturanUtama/data.json';
 <p class="text-body-lg text-on-surface-variant max-w-2xl mx-auto">Kami siap melayani pertanyaan dan memberikan informasi seputar Ma'had Tahfizhul Qur'an Tarbiyah Sunnah.</p>
 </div>
 </section>
-<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-lg">
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
-<!-- Contact Info & Map -->
-<div class="lg:col-span-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md mb-lg">
-<!-- Address Card -->
-<div class="bg-surface-container-lowest border border-[#E9EEE7] rounded-xl p-md shadow-[0px_4px_20px_rgba(70,104,54,0.08)] hover:-translate-y-1 transition-transform duration-300">
-<div class="flex items-start gap-sm mb-sm">
-<div class="bg-surface-container w-10 h-10 rounded-full flex items-center justify-center text-primary flex-shrink-0">
-<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
-</div>
-<div>
-<h3 class="text-headline-md text-primary mb-xs">Alamat Ma'had</h3>
-<p class="text-body-md text-on-surface-variant">Desa Selacau, Kampung Lembur Tengah RT.01/ RW.05, Kec. Batujajar, Kab. Bandung Barat</p>
-</div>
-</div>
-</div>
-<!-- Visit Info Card -->
-<div class="bg-surface-container border border-[#E9EEE7] rounded-xl p-md">
-<div class="flex items-start gap-sm mb-sm">
-<div class="bg-surface-container-lowest w-10 h-10 rounded-full flex items-center justify-center text-secondary flex-shrink-0">
-<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
-</div>
-<div>
-<h3 class="text-headline-md text-secondary mb-xs">Informasi Kunjungan</h3>
-<p class="text-body-md text-on-surface-variant mb-2">Untuk kenyamanan bersama, kunjungan ke Ma'had harus dikonfirmasi minimal <strong>H-1</strong> sebelum kedatangan.</p>
-<div class="inline-block bg-secondary-fixed text-on-secondary-fixed text-label-sm px-3 py-1 rounded-full">
-    Senin - Sabtu | 08:00 - 15:00 WIB
-</div>
-</div>
-</div>
-</div>
-<!-- Map Placeholder -->
-<a class="flex items-center gap-sm p-sm border border-[#E9EEE7] rounded-xl bg-surface-container-lowest hover:border-primary hover:shadow-[0px_4px_20px_rgba(70,104,54,0.08)] transition-all group" href="https://wa.me/6281210001476"><div class="w-12 h-12 bg-[#25D366] bg-opacity-10 rounded-full flex items-center justify-center text-[#25D366] group-hover:bg-[#25D366] group-hover:text-white transition-colors"><span class="material-symbols-outlined">chat</span></div><div><div class="text-label-sm text-on-surface-variant">WhatsApp Admin</div><div class="text-headline-md text-primary">+62 812 1000 1476</div></div></a>
-<a class="flex items-center gap-sm p-sm border border-[#E9EEE7] rounded-xl bg-surface-container-lowest hover:border-primary hover:shadow-[0px_4px_20px_rgba(70,104,54,0.08)] transition-all group" href="mailto:info@tarbiyahsunnah.id"><div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors"><span class="material-symbols-outlined">mail</span></div><div><div class="text-label-sm text-on-surface-variant">Email Resmi</div><div class="text-headline-md text-primary" style="font-size: 18px; line-height: 24px;">info@tarbiyahsunnah.id</div></div></a></div>
-<!-- Contact Form & Direct Links -->
-<div class="lg:col-span-12 w-full"><div class="bg-surface-container-lowest border border-[#E9EEE7] rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(70,104,54,0.08)]"><div class="p-md border-b border-outline-variant flex justify-between items-center"><h2 class="text-headline-md text-primary">Lokasi Ma'had</h2><button class="bg-primary text-on-primary text-label-sm px-md py-1 rounded hover:bg-surface-tint transition-colors flex items-center gap-xs"><span class="material-symbols-outlined" style="font-size: 18px;">directions</span> Petunjuk Arah</button></div><div class="h-[500px] relative bg-surface-variant"><iframe allowfullscreen="" class="grayscale-[20%] contrast-[90%]" height="100%" loading="lazy" src={pengaturanUtama.googleMapsUrl} style="border:0;" width="100%"></iframe></div></div></div>
-</div>
+
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-lg relative">
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-md py-sm rounded-lg shadow-lg flex items-center gap-sm transition-all duration-300 translate-y-20 opacity-0 z-50 pointer-events-none">
+        <span class="material-symbols-outlined text-[#25D366]">check_circle</span>
+        <span id="toast-message" class="text-body-md font-medium">Berhasil disalin!</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-md mb-lg">
+        <!-- Address Card -->
+        <div class="bg-surface-container-lowest border border-[#E9EEE7] rounded-xl p-md shadow-[0px_4px_20px_rgba(70,104,54,0.08)] hover:-translate-y-1 transition-transform duration-300 relative group h-full flex flex-col justify-between">
+            <div>
+                <div class="flex items-start gap-sm mb-sm">
+                    <div class="bg-surface-container w-10 h-10 rounded-full flex items-center justify-center text-primary flex-shrink-0">
+                        <span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+                    </div>
+                    <div class="pr-8">
+                        <h3 class="text-headline-md text-primary mb-xs">Alamat Ma'had</h3>
+                        <p class="text-body-md text-on-surface-variant" id="alamat-text">Desa Selacau, Kampung Lembur Tengah RT.01/ RW.05, Kec. Batujajar, Kab. Bandung Barat</p>
+                    </div>
+                </div>
+            </div>
+            <button onclick="copyToClipboard('alamat-text', 'Alamat berhasil disalin!')" class="absolute top-md right-md text-outline hover:text-primary transition-colors flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container active:scale-95" title="Salin Alamat">
+                <span class="material-symbols-outlined text-[20px]">content_copy</span>
+            </button>
+        </div>
+
+        <!-- Visit Info Card -->
+        <div class="bg-surface-container border border-[#E9EEE7] rounded-xl p-md h-full flex flex-col justify-between">
+            <div class="flex items-start gap-sm mb-sm">
+                <div class="bg-surface-container-lowest w-10 h-10 rounded-full flex items-center justify-center text-secondary flex-shrink-0">
+                    <span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+                </div>
+                <div>
+                    <h3 class="text-headline-md text-secondary mb-xs">Informasi Kunjungan</h3>
+                    <p class="text-body-md text-on-surface-variant mb-3">Untuk kenyamanan bersama, kunjungan ke Ma'had harus dikonfirmasi minimal <strong>H-1</strong> sebelum kedatangan.</p>
+                    <div class="inline-block bg-secondary-fixed text-on-secondary-fixed text-label-sm px-4 py-2 rounded-full font-medium">
+                        Senin - Sabtu | 08:00 - 15:00 WIB
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WhatsApp Card -->
+        <div class="bg-surface-container-lowest border border-[#E9EEE7] rounded-xl p-md shadow-[0px_4px_20px_rgba(70,104,54,0.08)] hover:-translate-y-1 transition-all duration-300 relative h-full flex flex-col justify-between">
+            <div>
+                <div class="flex items-start gap-sm mb-4">
+                    <div class="w-10 h-10 bg-[#25D366] bg-opacity-10 rounded-full flex items-center justify-center text-[#25D366] flex-shrink-0">
+                        <span class="material-symbols-outlined">chat</span>
+                    </div>
+                    <div>
+                        <h3 class="text-label-lg text-on-surface-variant mb-1 uppercase tracking-wider">WhatsApp Admin</h3>
+                        <p class="text-headline-md text-primary font-bold" id="wa-text">+62 812 1000 1476</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-3 mt-4">
+                <a href="https://wa.me/6281210001476?text=Bismillah,%20Admin%20Ma'had%20Tarbiyah%20Sunnah,%20saya%20ingin%20bertanya%20mengenai%20..." target="_blank" rel="noopener noreferrer" class="flex-grow bg-[#25D366] text-white text-center font-medium py-2.5 rounded-lg hover:bg-[#20b858] transition-colors flex items-center justify-center gap-2 shadow-sm">
+                    <span class="material-symbols-outlined text-[20px]">send</span> Hubungi via WA
+                </a>
+                <button onclick="copyToClipboard('wa-text', 'Nomor WhatsApp berhasil disalin!')" class="w-11 h-11 border border-[#E9EEE7] text-outline hover:text-primary hover:border-primary transition-colors flex items-center justify-center rounded-lg hover:bg-surface-container-low active:scale-95" title="Salin Nomor WA">
+                    <span class="material-symbols-outlined text-[20px]">content_copy</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Email Card -->
+        <div class="bg-surface-container-lowest border border-[#E9EEE7] rounded-xl p-md shadow-[0px_4px_20px_rgba(70,104,54,0.08)] hover:-translate-y-1 transition-all duration-300 relative h-full flex flex-col justify-between">
+            <div>
+                <div class="flex items-start gap-sm mb-4">
+                    <div class="w-10 h-10 bg-primary bg-opacity-10 rounded-full flex items-center justify-center text-primary flex-shrink-0">
+                        <span class="material-symbols-outlined">mail</span>
+                    </div>
+                    <div>
+                        <h3 class="text-label-lg text-on-surface-variant mb-1 uppercase tracking-wider">Email Resmi</h3>
+                        <p class="text-headline-md text-primary font-bold" id="email-text">mahad@tarbiyahsunnah.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-3 mt-4">
+                <a href="mailto:mahad@tarbiyahsunnah.com" class="flex-grow bg-primary text-on-primary text-center font-medium py-2.5 rounded-lg hover:bg-surface-tint transition-colors flex items-center justify-center gap-2 shadow-sm">
+                    <span class="material-symbols-outlined text-[20px]">open_in_new</span> Kirim Email
+                </a>
+                <button onclick="copyToClipboard('email-text', 'Alamat Email berhasil disalin!')" class="w-11 h-11 border border-[#E9EEE7] text-outline hover:text-primary hover:border-primary transition-colors flex items-center justify-center rounded-lg hover:bg-surface-container-low active:scale-95" title="Salin Email">
+                    <span class="material-symbols-outlined text-[20px]">content_copy</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map Section -->
+    <div class="w-full bg-surface-container-lowest border border-[#E9EEE7] rounded-xl overflow-hidden shadow-[0px_4px_20px_rgba(70,104,54,0.08)]">
+        <div class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest">
+            <h2 class="text-headline-md text-primary flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary">map</span> Lokasi Ma'had
+            </h2>
+            <a href="https://maps.google.com/?q=-6.943000,107.485000" target="_blank" rel="noopener noreferrer" class="bg-primary text-on-primary text-label-sm px-4 py-2 rounded-lg hover:bg-surface-tint transition-colors flex items-center gap-xs shadow-sm active:scale-95">
+                <span class="material-symbols-outlined" style="font-size: 18px;">directions</span> Petunjuk Arah
+            </a>
+        </div>
+        <div class="h-[450px] md:h-[500px] relative bg-surface-variant">
+            <iframe allowfullscreen="" class="grayscale-[10%] contrast-[95%]" height="100%" loading="lazy" src={pengaturanUtama.googleMapsUrl} style="border:0;" width="100%"></iframe>
+        </div>
+    </div>
 </div>
 </main>
 </Layout>
+
+<script is:inline>
+    let toastTimeout;
+    
+    function copyToClipboard(elementId, successMessage) {
+        const textElement = document.getElementById(elementId);
+        if (!textElement) return;
+        
+        const textToCopy = textElement.innerText;
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            showToast(successMessage);
+        }).catch(err => {
+            console.error('Gagal menyalin teks: ', err);
+            showToast('Gagal menyalin teks. Silakan salin manual.');
+        });
+    }
+
+    function showToast(message) {
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+        
+        toastMessage.innerText = message;
+        
+        // Tampilkan toast dengan animasi naik
+        toast.classList.remove('translate-y-20', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        
+        // Hapus timeout sebelumnya jika ada (biar tidak tumpang tindih jika diklik berkali-kali)
+        if (toastTimeout) {
+            clearTimeout(toastTimeout);
+        }
+        
+        // Sembunyikan setelah 2.5 detik
+        toastTimeout = setTimeout(() => {
+            toast.classList.remove('translate-y-0', 'opacity-100');
+            toast.classList.add('translate-y-20', 'opacity-0');
+        }, 2500);
+    }
+</script>

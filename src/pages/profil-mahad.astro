@@ -4,132 +4,210 @@ import pengaturanHalaman from '../content/pengaturanHalaman/data.json';
 ---
 
 <Layout title="Profil Ma'had - MTQ Tarbiyah Sunnah">
+<style>
+  .fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  .delay-1 { animation-delay: 0.2s; }
+  .delay-2 { animation-delay: 0.4s; }
+  
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
 <main class="flex-grow pt-[80px]">
-<!-- Hero Section -->
-<header class="relative w-full h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
-<div class="absolute inset-0 z-0">
-<img alt="Modern mosque landscape at sunrise" class="w-full h-full object-cover object-center" src={pengaturanHalaman.heroProfil || "https://lh3.googleusercontent.com/aida-public/AB6AXuAZ8xqf-Edcqfj6AdYWdTRkSocGXc8qRtnJc2WJFhM6T7I1LTA4hDlPDkDKxfXD7U_XQmKzW2PRCuyqS-LMWmyA4mbHJ3MXHDQN-uh89Kr95pFqS1B_mWv7cfHXGyVMLpXBI-i892-ziY4frSj8YNoWHK0OBSj7T7Wd31h1SApLaUS241S1ytEB01C2LluaqxaryNkP9rRnRH7FScjfMuBo23dNfSiCcqgitFUMO2TYfKnr_27taIzSw62llzBg0CPd2O0YfI3cRB7znA"}>
-<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/80 to-transparent"></div>
-</div>
-<div class="relative z-10 max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop text-center mt-xl">
-<h1 class="text-display-lg md:text-display-lg text-primary mb-sm drop-shadow-sm">Membentuk Generasi Qur'ani</h1>
-<p class="text-body-lg text-on-surface-variant mb-md max-w-2xl mx-auto">
-    Ma'had Tahfizhul Qur'an Tarbiyah Sunnah berdedikasi untuk mencetak hafizh bersanad yang berpegang teguh pada manhaj salaf, memadukan tradisi keilmuan Islam klasik dengan profesionalisme pendidikan modern.
-</p>
-<a href="/program/smp" class="inline-block bg-secondary text-on-secondary text-label-md px-md py-sm rounded shadow-sm hover:shadow-[0px_4px_20px_rgba(70,104,54,0.08)] transition-shadow">Pelajari Program Kami</a>
-</div>
-</header>
-<!-- Sejarah Section -->
-<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
-<div class="flex flex-col md:flex-row gap-lg items-center bg-surface-container-lowest border border-outline-variant p-lg rounded-xl shadow-[0px_4px_20px_rgba(70,104,54,0.08)]">
-<div class="w-full md:w-1/2">
-<div class="w-full h-64 md:h-96 rounded-xl bg-surface-variant bg-cover bg-center" style={`background-image: url('${pengaturanHalaman.gambarSejarahProfil || "https://lh3.googleusercontent.com/aida/AP1WRLsoN003K1-XgkIFAadcGIc_x4OqQfglK73QyUuWzQ_AoU-6NV4cND5wlnjA9OtY_zKW9HCHY93k3h6A6D9O4Rj15ZeqsnKHDkw-CzF5AdcnOSVqUU8oG5Y7Mh-6QrnwtY3qh2IVvqG35FcqE5XTVanWB38GpdjL4rpoHpvcE95vNomQ5OAdDxQ6BXAG5jaH-Oyw9tp6kSiMx_PPpZABrGccXgPojdireoBNSfu5FMn5Ia84WxPek7emIRg"}');`}>
-</div>
-</div>
-<div class="w-full md:w-1/2">
-<span class="inline-block bg-primary-container text-on-primary-container text-label-sm px-sm py-xs rounded-full mb-sm">Sejarah Kami</span>
-<h2 class="text-headline-lg md:text-headline-lg text-primary mb-sm">Berakar pada Sunnah, Berkembang dalam Ilmu</h2>
-<p class="text-body-md text-on-surface-variant mb-4">
-    Di bawah naungan Yayasan Tarbiyah Sunnah Bandung, Ma’had Tahfizhul Qur’an Tarbiyah Sunnah hadir untuk menghidupkan tradisi pendidikan Al-Qur’an yang berlandaskan Sunnah, melalui pembelajaran tahfizh, tajwid, talaqqi, dan pembinaan adab terhadap kalamullah.
-</p>
-<p class="text-body-md text-on-surface-variant mb-4">
-    Ma’had ini merupakan pengembangan dari program Tadribut Du’at, sebuah program kaderisasi yang bertujuan menyiapkan para da’i dengan bekal hafalan Al-Qur’an, dasar-dasar ilmu syar’i, bahasa Arab, adab, dan kesiapan berdakwah di tengah masyarakat.
-</p>
-<p class="text-body-md text-on-surface-variant">
-    Kini, semangat tersebut dikembangkan dalam bentuk pendidikan jenjang SMP dan SMA khusus putra, dengan memadukan tahfizh Al-Qur’an, ilmu diniyah, bahasa Arab, pendidikan umum, serta kehidupan asrama yang membina kemandirian dan akhlak Islami.
-</p>
-</div>
-</div>
-</section>
-<!-- Visi Misi Section - Bento Grid -->
-<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto bg-surface-container rounded-xl relative overflow-hidden">
-<div class="absolute inset-0 islamic-pattern opacity-30"></div>
-<div class="relative z-10">
-<div class="text-center mb-lg">
-<h2 class="text-headline-lg md:text-headline-lg text-primary mb-sm">Visi &amp; Misi</h2>
-<div class="w-24 h-1 bg-secondary mx-auto mb-sm"></div>
-<p class="text-body-lg text-on-surface-variant max-w-2xl mx-auto">Landasan utama pergerakan dakwah dan pendidikan kami.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-md mt-md">
-<!-- Visi Card -->
-<div class="md:col-span-2 card-level-1 p-md md:p-lg border border-outline-variant flex flex-col md:flex-row items-start md:items-center gap-md transition-shadow hover:shadow-level-2">
-<div class="w-14 h-14 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-on-secondary-container text-2xl">visibility</span>
-</div>
-<div>
-<h3 class="text-headline-md text-primary mb-1">Visi Utama</h3>
-<p class="text-body-md text-on-surface-variant italic leading-relaxed">"Menjadi lembaga pendidikan Islam yang unggul dalam mencetak penghafal Al-Qur’an yang berakidah Ahlussunnah wal Jamaah, berakhlak mulia, mampu berbahasa Arab, berilmu, dan mandiri."</p>
-</div>
-</div>
-<!-- Misi SMP -->
-<div class="card-level-1 p-md md:p-lg border border-outline-variant transition-shadow hover:shadow-level-2">
-<div class="flex items-center gap-3 mb-md pb-sm border-b border-surface-variant">
-<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-on-primary-container">school</span>
-</div>
-<h3 class="text-headline-md text-primary">Misi Program SMP</h3>
-</div>
-<ol class="list-decimal list-outside ml-4 space-y-3 text-body-md text-on-surface-variant">
-<li>Menanamkan akidah Ahlussunnah wal Jamaah dan membimbing santri dalam adab dan akhlak Islami.</li>
-<li>Membimbing santri menghafal Al-Qur’an dengan target 20 juz.</li>
-<li>Menumbuhkan kecintaan terhadap bahasa Arab dan memperkenalkan dasar-dasar keterampilan berbahasa.</li>
-<li>Memberikan pemahaman dasar ilmu-ilmu syar’i dan pengetahuan umum.</li>
-<li>Membina kemandirian, kedisiplinan, dan tanggung jawab melalui kehidupan asrama dan program pesantren.</li>
-</ol>
-</div>
-<!-- Misi SMA -->
-<div class="card-level-1 p-md md:p-lg border border-outline-variant transition-shadow hover:shadow-level-2">
-<div class="flex items-center gap-3 mb-md pb-sm border-b border-surface-variant">
-<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined text-on-secondary-container">menu_book</span>
-</div>
-<h3 class="text-headline-md text-primary">Misi Program SMA</h3>
-</div>
-<ol class="list-decimal list-outside ml-4 space-y-3 text-body-md text-on-surface-variant">
-<li>Menanamkan akidah Ahlussunnah wal Jamaah dan membimbing santri dalam adab dan akhlak Islami.</li>
-<li>Menguatkan dan memperdalam pemahaman terhadap ilmu syar’i.</li>
-<li>Membimbing santri menghafal Al-Qur’an dengan target 10 juz.</li>
-<li>Meningkatkan kemampuan dan pemahaman bahasa Arab.</li>
-<li>Melatih para santri untuk mampu menjadi imam dan khatib.</li>
-<li>Membina kemandirian, kedewasaan, dan kesiapan untuk studi ke jenjang berikutnya.</li>
-</ol>
-</div>
-</div>
-</div>
-</section>
-<!-- Struktur Kepengurusan Section -->
-<section class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
-<div class="text-center mb-lg">
-<h2 class="text-headline-lg md:text-headline-lg text-primary mb-sm">Struktur Kepengurusan</h2>
-<div class="w-24 h-1 bg-secondary mx-auto mb-sm"></div>
-<p class="text-body-lg text-on-surface-variant max-w-2xl mx-auto">Didukung oleh tenaga pendidik yang kompeten dan berpengalaman.</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
-<!-- Card 1 -->
-<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-[0px_4px_20px_rgba(70,104,54,0.08)] flex flex-col items-center text-center">
-<div class="w-24 h-24 rounded-full bg-surface-variant flex items-center justify-center mb-sm text-primary">
-<span class="material-symbols-outlined text-4xl">person</span>
-</div>
-<h4 class="text-headline-md text-on-surface mb-xs text-lg">Ustadz Abu Haidar As-Sundawy</h4>
-<p class="text-label-md text-secondary">Pembina</p>
-</div>
-<!-- Card 2 -->
-<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-[0px_4px_20px_rgba(70,104,54,0.08)] flex flex-col items-center text-center">
-<div class="w-24 h-24 rounded-full bg-surface-variant flex items-center justify-center mb-sm text-primary">
-<span class="material-symbols-outlined text-4xl">school</span>
-</div>
-<h4 class="text-headline-md text-on-surface mb-xs text-lg">Ustadz Mochammad Hilman Al Fiqhy, M.A.</h4>
-<p class="text-label-md text-secondary">Ketua Bidang Pendidikan</p>
-</div>
-<!-- Card 3 -->
-<div class="bg-surface-container-lowest p-md rounded-xl border border-outline-variant shadow-[0px_4px_20px_rgba(70,104,54,0.08)] flex flex-col items-center text-center">
-<div class="w-24 h-24 rounded-full bg-surface-variant flex items-center justify-center mb-sm text-primary">
-<span class="material-symbols-outlined text-4xl">account_balance</span>
-</div>
-<h4 class="text-headline-md text-on-surface mb-xs text-lg">Ustadz Haidar Askarulqohar, Lc.</h4>
-<p class="text-label-md text-secondary">Mudir</p>
-</div>
-</div>
-</section>
+  <!-- Hero Section -->
+  <header class="relative w-full h-[60vh] min-h-[400px] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img alt="Modern mosque landscape at sunrise" class="w-full h-full object-cover object-center transform scale-105 transition-transform duration-[10s] hover:scale-110" src={pengaturanHalaman.heroProfil || "https://lh3.googleusercontent.com/aida-public/AB6AXuAZ8xqf-Edcqfj6AdYWdTRkSocGXc8qRtnJc2WJFhM6T7I1LTA4hDlPDkDKxfXD7U_XQmKzW2PRCuyqS-LMWmyA4mbHJ3MXHDQN-uh89Kr95pFqS1B_mWv7cfHXGyVMLpXBI-i892-ziY4frSj8YNoWHK0OBSj7T7Wd31h1SApLaUS241S1ytEB01C2LluaqxaryNkP9rRnRH7FScjfMuBo23dNfSiCcqgitFUMO2TYfKnr_27taIzSw62llzBg0CPd2O0YfI3cRB7znA"}>
+      <div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/80 to-transparent"></div>
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop text-center mt-xl">
+      <h1 class="text-display-lg md:text-display-lg text-primary mb-sm drop-shadow-sm fade-in-up">Membentuk Generasi Qur'ani</h1>
+      <p class="text-body-lg text-on-surface-variant mb-md max-w-2xl mx-auto fade-in-up delay-1">
+        Ma'had Tahfizhul Qur'an Tarbiyah Sunnah berdedikasi untuk mencetak hafizh bersanad yang berpegang teguh pada manhaj salaf, memadukan tradisi keilmuan Islam klasik dengan profesionalisme pendidikan modern.
+      </p>
+      <div class="fade-in-up delay-2">
+        <a href="/program/smp" class="inline-block bg-primary text-on-primary text-label-md px-lg py-sm rounded-lg shadow-sm hover:bg-primary/90 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">Pelajari Program Kami</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky Navigation -->
+  <div class="sticky top-[72px] z-40 bg-surface/90 backdrop-blur-md border-b border-surface-variant shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-3 flex justify-center md:justify-start gap-6 md:gap-12 overflow-x-auto no-scrollbar">
+      <a href="#sejarah" class="text-label-md font-medium text-on-surface-variant hover:text-primary whitespace-nowrap transition-colors">Sejarah</a>
+      <a href="#visi-misi" class="text-label-md font-medium text-on-surface-variant hover:text-primary whitespace-nowrap transition-colors">Visi & Misi</a>
+      <a href="#struktur" class="text-label-md font-medium text-on-surface-variant hover:text-primary whitespace-nowrap transition-colors">Struktur Kepengurusan</a>
+    </div>
+  </div>
+
+  <!-- Sejarah Section -->
+  <section id="sejarah" class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto scroll-mt-24">
+    <div class="flex flex-col md:flex-row gap-lg items-center bg-surface-container-lowest border border-outline-variant p-lg rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 group">
+      <div class="w-full md:w-1/2 overflow-hidden rounded-xl">
+        <div class="w-full h-64 md:h-96 bg-surface-variant bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={`background-image: url('${pengaturanHalaman.gambarSejarahProfil || "https://lh3.googleusercontent.com/aida/AP1WRLsoN003K1-XgkIFAadcGIc_x4OqQfglK73QyUuWzQ_AoU-6NV4cND5wlnjA9OtY_zKW9HCHY93k3h6A6D9O4Rj15ZeqsnKHDkw-CzF5AdcnOSVqUU8oG5Y7Mh-6QrnwtY3qh2IVvqG35FcqE5XTVanWB38GpdjL4rpoHpvcE95vNomQ5OAdDxQ6BXAG5jaH-Oyw9tp6kSiMx_PPpZABrGccXgPojdireoBNSfu5FMn5Ia84WxPek7emIRg"}');`}>
+        </div>
+      </div>
+      <div class="w-full md:w-1/2">
+        <span class="inline-block bg-primary-container text-on-primary-container text-label-sm px-sm py-xs rounded-full mb-sm font-medium">Sejarah Kami</span>
+        <h2 class="text-headline-lg md:text-headline-lg text-primary mb-sm leading-tight">Berakar pada Sunnah, Berkembang dalam Ilmu</h2>
+        <p class="text-body-md text-on-surface-variant mb-4 leading-relaxed">
+          Di bawah naungan Yayasan Tarbiyah Sunnah Bandung, Ma’had Tahfizhul Qur’an Tarbiyah Sunnah hadir untuk menghidupkan tradisi pendidikan Al-Qur’an yang berlandaskan Sunnah, melalui pembelajaran tahfizh, tajwid, talaqqi, dan pembinaan adab terhadap kalamullah.
+        </p>
+        <p class="text-body-md text-on-surface-variant mb-4 leading-relaxed">
+          Ma’had ini merupakan pengembangan dari program Tadribut Du’at, sebuah program kaderisasi yang bertujuan menyiapkan para da’i dengan bekal hafalan Al-Qur’an, dasar-dasar ilmu syar’i, bahasa Arab, adab, dan kesiapan berdakwah di tengah masyarakat.
+        </p>
+        <p class="text-body-md text-on-surface-variant leading-relaxed">
+          Kini, semangat tersebut dikembangkan dalam bentuk pendidikan jenjang SMP dan SMA khusus putra, dengan memadukan tahfizh Al-Qur’an, ilmu diniyah, bahasa Arab, pendidikan umum, serta kehidupan asrama yang membina kemandirian dan akhlak Islami.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visi Misi Section - Bento Grid -->
+  <section id="visi-misi" class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto bg-surface-container rounded-2xl relative overflow-hidden scroll-mt-24 mb-xl">
+    <div class="absolute inset-0 islamic-pattern opacity-30"></div>
+    <div class="relative z-10">
+      <div class="text-center mb-lg">
+        <h2 class="text-headline-lg md:text-headline-lg text-primary mb-sm">Visi &amp; Misi</h2>
+        <div class="w-24 h-1.5 bg-primary/20 mx-auto mb-sm rounded-full overflow-hidden">
+          <div class="w-1/2 h-full bg-primary rounded-full"></div>
+        </div>
+        <p class="text-body-lg text-on-surface-variant max-w-2xl mx-auto">Landasan utama pergerakan dakwah dan pendidikan kami.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-md mt-md">
+        <!-- Visi Card -->
+        <div class="md:col-span-2 bg-surface-container-lowest p-md md:p-lg rounded-xl border border-outline-variant flex flex-col md:flex-row items-start md:items-center gap-md transition-all duration-300 hover:shadow-md hover:-translate-y-1 group">
+          <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors duration-300">
+            <span class="material-symbols-outlined text-primary text-3xl group-hover:text-on-primary transition-colors duration-300">visibility</span>
+          </div>
+          <div>
+            <h3 class="text-headline-md text-primary mb-2">Visi Utama</h3>
+            <p class="text-body-lg text-on-surface-variant italic leading-relaxed font-medium">"Menjadi lembaga pendidikan Islam yang unggul dalam mencetak penghafal Al-Qur’an yang berakidah Ahlussunnah wal Jamaah, berakhlak mulia, mampu berbahasa Arab, berilmu, dan mandiri."</p>
+          </div>
+        </div>
+        
+        <!-- Misi SMP -->
+        <div class="bg-surface-container-lowest p-md md:p-lg rounded-xl border border-outline-variant transition-all duration-300 hover:shadow-md hover:-translate-y-1 group">
+          <div class="flex items-center gap-3 mb-md pb-sm border-b border-surface-variant">
+            <div class="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0 group-hover:bg-secondary transition-colors duration-300">
+              <span class="material-symbols-outlined text-secondary group-hover:text-on-secondary transition-colors duration-300">school</span>
+            </div>
+            <h3 class="text-headline-md text-primary">Misi Program SMP</h3>
+          </div>
+          <ul class="space-y-4 text-body-md text-on-surface-variant">
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+              <span>Menanamkan akidah Ahlussunnah wal Jamaah dan membimbing santri dalam adab dan akhlak Islami.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+              <span>Membimbing santri menghafal Al-Qur’an dengan target 20 juz.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+              <span>Menumbuhkan kecintaan terhadap bahasa Arab dan memperkenalkan dasar-dasar keterampilan berbahasa.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+              <span>Memberikan pemahaman dasar ilmu-ilmu syar’i dan pengetahuan umum.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">check_circle</span>
+              <span>Membina kemandirian, kedisiplinan, dan tanggung jawab melalui kehidupan asrama dan program pesantren.</span>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Misi SMA -->
+        <div class="bg-surface-container-lowest p-md md:p-lg rounded-xl border border-outline-variant transition-all duration-300 hover:shadow-md hover:-translate-y-1 group">
+          <div class="flex items-center gap-3 mb-md pb-sm border-b border-surface-variant">
+            <div class="w-12 h-12 rounded-xl bg-tertiary/10 flex items-center justify-center shrink-0 group-hover:bg-tertiary transition-colors duration-300">
+              <span class="material-symbols-outlined text-tertiary group-hover:text-on-tertiary transition-colors duration-300">menu_book</span>
+            </div>
+            <h3 class="text-headline-md text-primary">Misi Program SMA</h3>
+          </div>
+          <ul class="space-y-4 text-body-md text-on-surface-variant">
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5">check_circle</span>
+              <span>Menanamkan akidah Ahlussunnah wal Jamaah dan membimbing santri dalam adab dan akhlak Islami.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5">check_circle</span>
+              <span>Menguatkan dan memperdalam pemahaman terhadap ilmu syar’i.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5">check_circle</span>
+              <span>Membimbing santri menghafal Al-Qur’an dengan target 10 juz.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5">check_circle</span>
+              <span>Meningkatkan kemampuan dan pemahaman bahasa Arab.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5">check_circle</span>
+              <span>Melatih para santri untuk mampu menjadi imam dan khatib.</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5">check_circle</span>
+              <span>Membina kemandirian, kedewasaan, dan kesiapan untuk studi ke jenjang berikutnya.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Struktur Kepengurusan Section -->
+  <section id="struktur" class="py-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto scroll-mt-24 mb-xl">
+    <div class="text-center mb-lg">
+      <h2 class="text-headline-lg md:text-headline-lg text-primary mb-sm">Struktur Kepengurusan</h2>
+      <div class="w-24 h-1.5 bg-primary/20 mx-auto mb-sm rounded-full overflow-hidden">
+        <div class="w-1/2 h-full bg-primary rounded-full"></div>
+      </div>
+      <p class="text-body-lg text-on-surface-variant max-w-2xl mx-auto">Didukung oleh asatidzah dan pengurus yang kompeten serta berpengalaman.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div class="bg-surface-container-lowest p-lg rounded-2xl border border-outline-variant shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2 flex flex-col items-center text-center group">
+        <div class="w-28 h-28 rounded-full bg-primary/5 flex items-center justify-center mb-4 text-primary group-hover:scale-110 group-hover:bg-primary/10 transition-all duration-300">
+          <span class="material-symbols-outlined text-5xl">person</span>
+        </div>
+        <h4 class="text-headline-md text-primary mb-1 text-xl font-bold">Ustadz Abu Haidar As-Sundawy</h4>
+        <p class="text-label-md text-secondary font-medium bg-secondary/10 px-4 py-1 rounded-full mt-2">Pembina</p>
+      </div>
+      
+      <!-- Card 2 -->
+      <div class="bg-surface-container-lowest p-lg rounded-2xl border border-outline-variant shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2 flex flex-col items-center text-center group">
+        <div class="w-28 h-28 rounded-full bg-primary/5 flex items-center justify-center mb-4 text-primary group-hover:scale-110 group-hover:bg-primary/10 transition-all duration-300">
+          <span class="material-symbols-outlined text-5xl">school</span>
+        </div>
+        <h4 class="text-headline-md text-primary mb-1 text-xl font-bold">Ustadz Mochammad Hilman Al Fiqhy, M.A.</h4>
+        <p class="text-label-md text-secondary font-medium bg-secondary/10 px-4 py-1 rounded-full mt-2">Ketua Bidang Pendidikan</p>
+      </div>
+      
+      <!-- Card 3 -->
+      <div class="bg-surface-container-lowest p-lg rounded-2xl border border-outline-variant shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2 flex flex-col items-center text-center group">
+        <div class="w-28 h-28 rounded-full bg-primary/5 flex items-center justify-center mb-4 text-primary group-hover:scale-110 group-hover:bg-primary/10 transition-all duration-300">
+          <span class="material-symbols-outlined text-5xl">account_balance</span>
+        </div>
+        <h4 class="text-headline-md text-primary mb-1 text-xl font-bold">Ustadz Haidar Askarulqohar, Lc.</h4>
+        <p class="text-label-md text-secondary font-medium bg-secondary/10 px-4 py-1 rounded-full mt-2">Mudir</p>
+      </div>
+    </div>
+  </section>
 </main>
 </Layout>
