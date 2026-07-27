@@ -4,7 +4,7 @@ import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
   const articles = await getCollection('artikel');
-  return articles.map(entry => ({
+  return articles.map((entry) => ({
     params: { slug: entry.id },
     props: { entry },
   }));
@@ -12,39 +12,124 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const publishedDate = new Date(entry.data.date).toLocaleDateString('id-ID', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
 ---
 
 <Layout title={`${entry.data.title} - MTQ Tarbiyah Sunnah`}>
-<main class="flex-grow pt-[80px] pb-xl bg-surface-container-lowest">
-<div class="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop py-lg">
-    
-<div class="mb-md">
-    <span class="bg-surface-container-low text-primary text-label-sm px-3 py-1 rounded-full shadow-sm">
-        {entry.data.category || 'Artikel'}
-    </span>
-    <h1 class="text-display-lg text-primary mt-sm mb-xs">{entry.data.title}</h1>
-    <div class="flex items-center gap-2 text-outline text-label-sm">
-        <span class="material-symbols-outlined text-[16px]">calendar_today</span>
-        <time datetime={entry.data.date}>{new Date(entry.data.date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
-    </div>
-</div>
+  <main>
+    <article>
+      <header class="article-hero page-shell">
+        <a class="back-link" href="/artikel"><span aria-hidden="true">←</span> Semua artikel</a>
+        <p class="article-meta">
+          <span>{entry.data.category || 'Artikel'}</span>
+          <time datetime={String(entry.data.date)}>{publishedDate}</time>
+        </p>
+        <h1>{entry.data.title}</h1>
+        {entry.data.summary && <p class="lede">{entry.data.summary}</p>}
+      </header>
 
-{entry.data.coverImage && (
-    <div class="w-full h-64 md:h-[400px] rounded-xl overflow-hidden mb-lg shadow-sm border border-surface-variant">
-        <img src={entry.data.coverImage} alt={entry.data.title} class="w-full h-full object-cover" />
-    </div>
-)}
+      {entry.data.coverImage && (
+        <figure class="article-cover page-shell">
+          <img
+            src={entry.data.coverImage}
+            alt=""
+            width="1280"
+            height="720"
+            loading="eager"
+          />
+        </figure>
+      )}
 
-<article class="prose prose-lg prose-headings:font-sans prose-headings:font-bold prose-headings:text-primary prose-a:text-secondary max-w-none text-on-surface-variant text-body-md">
-    <Content />
-</article>
+      <div class="article-layout page-shell">
+        <aside class="article-aside">
+          <p class="eyebrow">Diterbitkan</p>
+          <p>{publishedDate}</p>
+          <p>{entry.data.category || 'Artikel'}</p>
+        </aside>
+        <div class="article-prose">
+          <Content />
+        </div>
+      </div>
 
-<div class="mt-xl pt-md border-t border-surface-variant text-center">
-    <a href="/artikel" class="bg-primary text-on-primary text-label-md px-lg py-sm rounded-lg hover:bg-surface-tint transition-colors">
-        Kembali ke Artikel
-    </a>
-</div>
-
-</div>
-</main>
+      <footer class="article-footer page-shell">
+        <p>Selesai membaca?</p>
+        <a class="button button--secondary" href="/artikel">Kembali ke indeks artikel</a>
+      </footer>
+    </article>
+  </main>
 </Layout>
+
+<style>
+  /* hallmark: scope=artikel-detail | critique=P5 H4 E4 S5 R5 V4 */
+  .article-hero {
+    padding-block: clamp(3.5rem, 8vw, 8rem) clamp(2.5rem, 5vw, 5rem);
+    text-align: center;
+  }
+  .back-link {
+    display: inline-flex;
+    gap: var(--space-2);
+    margin-bottom: clamp(2.5rem, 6vw, 6rem);
+    color: var(--color-ink-2);
+    font-weight: 700;
+    text-decoration-thickness: .08em;
+    text-underline-offset: .2em;
+  }
+  .article-meta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin: 0 0 var(--space-5);
+    color: var(--color-ink-2);
+    font: 700 var(--text-xs)/1.4 var(--font-body);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .article-meta span { color: var(--color-accent); }
+  .article-hero h1 {
+    max-width: 18ch;
+    margin-inline: auto;
+    font-size: var(--text-display-s);
+    line-height: 1.06;
+  }
+  .article-hero .lede { max-width: 44rem; margin: var(--space-5) auto 0; }
+  .article-cover { max-width: 80rem; }
+  .article-cover img {
+    width: 100%;
+    max-height: 42rem;
+    object-fit: cover;
+  }
+  .article-layout {
+    display: grid;
+    grid-template-columns: minmax(10rem, .45fr) minmax(0, 1.55fr);
+    gap: clamp(3rem, 8vw, 8rem);
+    max-width: 72rem;
+    padding-block: clamp(3rem, 7vw, 7rem);
+  }
+  .article-aside {
+    padding-top: var(--space-2xs);
+    color: var(--color-ink-2);
+    font-size: var(--text-sm);
+  }
+  .article-aside p { margin: 0 0 var(--space-3); }
+  .article-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-5);
+    align-items: center;
+    max-width: 72rem;
+    padding-block: var(--space-7);
+    border-top: 1px solid var(--color-rule);
+  }
+  .article-footer p { margin: 0; color: var(--color-ink-2); }
+  @media (max-width: 48rem) {
+    .article-layout { grid-template-columns: 1fr; gap: var(--space-7); }
+    .article-aside { display: none; }
+    .article-footer { align-items: stretch; flex-direction: column; }
+    .article-footer .button { width: 100%; }
+  }
+</style>

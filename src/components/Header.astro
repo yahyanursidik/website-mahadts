@@ -1,75 +1,153 @@
 ---
-// Header.astro
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => href === '/'
+  ? pathname === '/'
+  : pathname === href || pathname.startsWith(`${href}/`);
 ---
-<header class="bg-surface border-b border-surface-variant fixed top-0 left-0 w-full z-50">
-  <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-7xl mx-auto w-full">
-    <a href="/" class="flex items-center gap-sm hover:opacity-90 transition-opacity">
-      <img alt="MTQ Tarbiyah Sunnah Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2gCqUKXMjjkKY3_N4liYLt2Uzlki1DCGKQb0QzdU_uAStJmKIW2EcG8RuV9dhjiVQSQa_evX6XuJnYOJSVw9rdv5LUzTot9NJW31El9ean3nz6zX1E0zNIh8ugm2SWbWMWRO4Hz6WuVHe-1fnKatvo4SF6Lus-NwrM3I2-CkAAOKvJCXXKjESM7aGec5gYWH1ohOAbBV9N0Uv2QvuFP5iLZpZhJD1ExTugAC9RYaqgrHhDzs7HY4atYNf3gunau4JK4xkDZuXpQI"/>
-      <span class="text-headline-md font-bold text-primary hidden md:block">MTQ Tarbiyah Sunnah</span>
-    </a>
-    <nav class="hidden md:flex items-center gap-md">
-      <a class="text-on-surface text-label-md hover:text-primary transition-colors duration-200" href="/">Beranda</a>
-      <a class="text-on-surface text-label-md hover:text-primary transition-colors duration-200" href="/profil-mahad">Profil Ma'had</a>
-      <div class="relative group py-2">
-        <button class="text-on-surface text-label-md group-hover:text-primary transition-colors duration-200 flex items-center gap-1">
-          Program
-          <span class="material-symbols-outlined text-[16px]">expand_more</span>
-        </button>
-        <div class="absolute left-0 top-full w-48 bg-surface-container-lowest border border-surface-variant rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
-          <a href="/program/smp" class="block px-4 py-3 text-on-surface hover:bg-surface-container hover:text-primary text-label-md border-b border-surface-variant/50">Program SMP</a>
-          <a href="/program/sma" class="block px-4 py-3 text-on-surface hover:bg-surface-container hover:text-primary text-label-md">Program SMA</a>
-        </div>
-      </div>
+<header class="site-nav" id="site-nav">
+  <div class="site-nav__banner" id="site-banner">
+    <p>
+      Penerimaan murid baru sedang dibuka.
+      <a href="/spmb">Lihat informasi SPMB <span aria-hidden="true">→</span></a>
+    </p>
+    <button class="site-nav__banner-close" id="banner-close" type="button" aria-label="Tutup pengumuman">
+      <span class="material-symbols-outlined" aria-hidden="true">close</span>
+    </button>
+  </div>
 
-      <a class="text-on-surface text-label-md hover:text-primary transition-colors duration-200" href="/hubungi-kami">Hubungi Kami</a>
-    </nav>
-    <div class="flex items-center gap-sm">
-      <a href="/spmb" class="btn-tertiary hidden md:inline-flex">Daftar SPMB</a>
-      <button id="mobile-menu-btn" class="md:hidden text-primary p-2 focus:outline-none">
-        <span class="material-symbols-outlined" id="mobile-menu-icon">menu</span>
-      </button>
+  <div class="site-nav__bar">
+    <div class="site-nav__inner">
+      <a class="site-brand" href="/" aria-label="MTQ Tarbiyah Sunnah — Beranda">
+        <img src="/images/settings/favicon.png" width="784" height="560" alt="" />
+        <span>
+          <strong>MTQ</strong>
+          <small>Tarbiyah Sunnah</small>
+        </span>
+      </a>
+
+      <nav class="site-nav__links" aria-label="Navigasi utama">
+        <a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Beranda</a>
+        <a href="/profil-mahad" aria-current={isCurrent('/profil-mahad') ? 'page' : undefined}>Profil</a>
+        <details class="site-nav__program">
+          <summary aria-current={pathname.startsWith('/program') ? 'page' : undefined}>
+            Program
+            <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+          </summary>
+          <div class="site-nav__dropdown">
+            <a href="/program/smp" aria-current={isCurrent('/program/smp') ? 'page' : undefined}>
+              <span>Program SMP</span>
+              <small>Tahfizh dan akademik tingkat menengah pertama</small>
+            </a>
+            <a href="/program/sma" aria-current={isCurrent('/program/sma') ? 'page' : undefined}>
+              <span>Program SMA</span>
+              <small>Persiapan studi lanjut dengan pembinaan terpadu</small>
+            </a>
+          </div>
+        </details>
+        <a href="/artikel" aria-current={isCurrent('/artikel') ? 'page' : undefined}>Artikel</a>
+        <a href="/hubungi-kami" aria-current={isCurrent('/hubungi-kami') ? 'page' : undefined}>Kontak</a>
+      </nav>
+
+      <div class="site-nav__actions">
+        <a class="button button--primary site-nav__cta" href="/spmb" aria-current={isCurrent('/spmb') ? 'page' : undefined}>
+          Daftar SPMB
+        </a>
+        <button class="site-nav__menu-button" id="mobile-menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka menu">
+          <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+        </button>
+      </div>
     </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="absolute top-[72px] left-0 w-full bg-surface border-b border-surface-variant shadow-lg hidden flex-col transition-all duration-300 md:hidden z-40">
-    <nav class="flex flex-col">
-      <a class="px-margin-mobile py-4 text-on-surface text-label-md hover:text-primary transition-colors border-b border-surface-variant/50" href="/">Beranda</a>
-      <a class="px-margin-mobile py-4 text-on-surface text-label-md hover:text-primary transition-colors border-b border-surface-variant/50" href="/profil-mahad">Profil Ma'had</a>
-      <div class="flex flex-col px-margin-mobile py-4 border-b border-surface-variant/50 gap-2">
-        <span class="text-on-surface text-label-md font-bold">Program</span>
-        <a class="pl-4 py-2 text-on-surface-variant text-label-md hover:text-primary transition-colors flex items-center gap-2" href="/program/smp"><span class="w-1.5 h-1.5 rounded-full bg-surface-variant"></span> Program SMP</a>
-        <a class="pl-4 py-2 text-on-surface-variant text-label-md hover:text-primary transition-colors flex items-center gap-2" href="/program/sma"><span class="w-1.5 h-1.5 rounded-full bg-surface-variant"></span> Program SMA</a>
-      </div>
-
-      <a class="px-margin-mobile py-4 text-on-surface text-label-md hover:text-primary transition-colors border-b border-surface-variant/50" href="/hubungi-kami">Hubungi Kami</a>
-      <div class="p-margin-mobile">
-        <a class="btn-tertiary w-full text-center block" href="/spmb">Daftar SPMB</a>
-      </div>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <nav aria-label="Navigasi seluler">
+      <a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Beranda</a>
+      <a href="/profil-mahad" aria-current={isCurrent('/profil-mahad') ? 'page' : undefined}>Profil Ma’had</a>
+      <span class="mobile-menu__label">Program</span>
+      <a href="/program/smp" aria-current={isCurrent('/program/smp') ? 'page' : undefined}>Program SMP</a>
+      <a href="/program/sma" aria-current={isCurrent('/program/sma') ? 'page' : undefined}>Program SMA</a>
+      <a href="/artikel" aria-current={isCurrent('/artikel') ? 'page' : undefined}>Artikel</a>
+      <a href="/hubungi-kami" aria-current={isCurrent('/hubungi-kami') ? 'page' : undefined}>Hubungi Kami</a>
+      <a class="button button--primary" href="/spmb">Daftar SPMB</a>
     </nav>
   </div>
 </header>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('mobile-menu-btn');
-    const menu = document.getElementById('mobile-menu');
-    const icon = document.getElementById('mobile-menu-icon');
+  const initNavigation = () => {
+    const header = document.getElementById('site-nav');
+    const bannerClose = document.getElementById('banner-close');
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = menuButton?.querySelector('.material-symbols-outlined');
+    let previousY = window.scrollY;
 
-    if (btn && menu && icon) {
-      btn.addEventListener('click', () => {
-        const isHidden = menu.classList.contains('hidden');
-        
-        if (isHidden) {
-          menu.classList.remove('hidden');
-          menu.classList.add('flex');
-          icon.textContent = 'close';
-        } else {
-          menu.classList.add('hidden');
-          menu.classList.remove('flex');
-          icon.textContent = 'menu';
-        }
-      });
+    if (!header || header.dataset.navigationReady === 'true') return;
+    header.dataset.navigationReady = 'true';
+
+    const closeMobileMenu = () => {
+      if (!menuButton || !mobileMenu) return;
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', 'Buka menu');
+      mobileMenu.hidden = true;
+      if (menuIcon) menuIcon.textContent = 'menu';
+    };
+
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      const scrollingDown = currentY > previousY;
+      header.classList.toggle('is-compact', currentY > 48 && scrollingDown);
+      if (currentY < 16) header.classList.remove('is-compact');
+      previousY = currentY;
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    bannerClose?.addEventListener('click', () => {
+      header.classList.add('is-dismissed');
+      document.documentElement.style.setProperty('--banner-h', '0px');
+      sessionStorage.setItem('mtq-banner-dismissed', 'true');
+    });
+
+    if (sessionStorage.getItem('mtq-banner-dismissed') === 'true') {
+      header.classList.add('is-dismissed');
+      document.documentElement.style.setProperty('--banner-h', '0px');
     }
-  });
+
+    menuButton?.addEventListener('click', () => {
+      if (!mobileMenu) return;
+      const willOpen = mobileMenu.hidden;
+      mobileMenu.hidden = !willOpen;
+      menuButton.setAttribute('aria-expanded', String(willOpen));
+      menuButton.setAttribute('aria-label', willOpen ? 'Tutup menu' : 'Buka menu');
+      if (menuIcon) menuIcon.textContent = willOpen ? 'close' : 'menu';
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeMobileMenu();
+        document.querySelectorAll<HTMLDetailsElement>('.site-nav__program[open]').forEach((detail) => {
+          detail.open = false;
+        });
+      }
+    });
+
+    document.addEventListener('click', (event) => {
+      const target = event.target as Node;
+      document.querySelectorAll<HTMLDetailsElement>('.site-nav__program[open]').forEach((detail) => {
+        if (!detail.contains(target)) detail.open = false;
+      });
+    });
+
+    mobileMenu?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMobileMenu);
+    });
+  };
+
+  document.addEventListener('astro:page-load', initNavigation);
+  if (document.readyState !== 'loading') {
+    initNavigation();
+  } else {
+    document.addEventListener('DOMContentLoaded', initNavigation, { once: true });
+  }
 </script>
