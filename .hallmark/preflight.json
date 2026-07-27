@@ -1,0 +1,20 @@
+{
+  "date": "2026-07-27",
+  "framework": "Astro 7 with Tailwind CSS 4",
+  "font_stack": [
+    "Merriweather 700",
+    "Plus Jakarta Sans 400/600/700"
+  ],
+  "palette": "Existing green/orange brand palette, migrated to OKLCH tokens",
+  "motion": "motion-cut; no animation library installed",
+  "spacing": "Existing 4px-based scale",
+  "assets": "Local hero and slideshow WebP photography",
+  "preserve": [
+    "routes",
+    "content collections",
+    "Keystatic integration",
+    "brand palette",
+    "font pairing",
+    "local photography"
+  ]
+}
