@@ -23,6 +23,10 @@ export default config({
           label: 'Link Brosur SPMB',
           description: 'Tautan untuk mengunduh atau melihat brosur SPMB (misal: link Google Drive atau PDF)',
         }),
+        linkSpmb: fields.text({
+          label: 'Link Portal SPMB',
+          description: 'Tautan utama menuju portal pendaftaran murid baru',
+        }),
       },
     }),
     pengaturanBeranda: singleton({

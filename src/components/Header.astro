@@ -1,14 +1,17 @@
 ---
+import pengaturanUtama from '../content/pengaturanUtama/data.json';
+
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isCurrent = (href: string) => href === '/'
   ? pathname === '/'
   : pathname === href || pathname.startsWith(`${href}/`);
+const spmbUrl = pengaturanUtama.linkSpmb || '/spmb';
 ---
 <header class="site-nav" id="site-nav">
   <div class="site-nav__banner" id="site-banner">
     <p>
       Penerimaan murid baru sedang dibuka.
-      <a href="/spmb">Lihat informasi SPMB <span aria-hidden="true">→</span></a>
+      <a href={spmbUrl}>Lihat informasi SPMB <span aria-hidden="true">→</span></a>
     </p>
     <button class="site-nav__banner-close" id="banner-close" type="button" aria-label="Tutup pengumuman">
       <span class="material-symbols-outlined" aria-hidden="true">close</span>
@@ -49,7 +52,7 @@ const isCurrent = (href: string) => href === '/'
       </nav>
 
       <div class="site-nav__actions">
-        <a class="button button--primary site-nav__cta" href="/spmb" aria-current={isCurrent('/spmb') ? 'page' : undefined}>
+        <a class="button button--primary site-nav__cta" href={spmbUrl}>
           Daftar SPMB
         </a>
         <button class="site-nav__menu-button" id="mobile-menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka menu">
@@ -68,7 +71,7 @@ const isCurrent = (href: string) => href === '/'
       <a href="/program/sma" aria-current={isCurrent('/program/sma') ? 'page' : undefined}>Program SMA</a>
       <a href="/artikel" aria-current={isCurrent('/artikel') ? 'page' : undefined}>Artikel</a>
       <a href="/hubungi-kami" aria-current={isCurrent('/hubungi-kami') ? 'page' : undefined}>Hubungi Kami</a>
-      <a class="button button--primary" href="/spmb">Daftar SPMB</a>
+      <a class="button button--primary" href={spmbUrl}>Daftar SPMB</a>
     </nav>
   </div>
 </header>

@@ -34,10 +34,10 @@ const programmes = [
           lingkungan asrama.
         </p>
         <div class="split-hero__actions">
-          <a class="button button--primary" href="/spmb">Daftar SPMB</a>
+          <a class="button button--primary" href={pengaturanUtama.linkSpmb || '/spmb'}>Daftar SPMB</a>
           <a
             class="button button--secondary"
-            href={pengaturanUtama.linkBrosur || '/spmb'}
+            href={pengaturanUtama.linkBrosur || pengaturanUtama.linkSpmb || '/spmb'}
             target={pengaturanUtama.linkBrosur ? '_blank' : undefined}
             rel={pengaturanUtama.linkBrosur ? 'noopener noreferrer' : undefined}
           >
