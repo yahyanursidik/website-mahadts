@@ -20,6 +20,7 @@
   --color-danger: oklch(52% 0.20 25);
   --color-success: oklch(43% 0.12 145);
   --color-overlay: oklch(18% 0.03 135 / 0.48);
+  --color-hero-overlay: oklch(18% 0.03 135 / 0.68);
   --color-shadow: oklch(18% 0.03 135 / 0.12);
 
   --font-display: "Merriweather", ui-serif, serif;
