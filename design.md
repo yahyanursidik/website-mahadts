@@ -43,6 +43,8 @@ evaluating an Islamic education programme.
 - `--color-accent`: oklch(38% 0.10 140)
 - `--color-accent-warm`: oklch(62% 0.16 55)
 - `--color-focus`: oklch(32% 0.12 45)
+- `--color-hero-overlay`: oklch(18% 0.03 135 / 0.68), a translucent ink
+  layer for media-backed hero copy.
 
 ## Typography
 
@@ -118,6 +120,7 @@ gutters; interactive controls share a minimum 44 px height.
   --color-accent: oklch(38% 0.10 140);
   --color-accent-warm: oklch(62% 0.16 55);
   --color-focus: oklch(32% 0.12 45);
+  --color-hero-overlay: oklch(18% 0.03 135 / 0.68);
 }
 ```
 

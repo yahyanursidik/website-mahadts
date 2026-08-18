@@ -5,7 +5,7 @@ const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isCurrent = (href: string) => href === '/'
   ? pathname === '/'
   : pathname === href || pathname.startsWith(`${href}/`);
-const spmbUrl = pengaturanUtama.linkSpmb || '/spmb';
+const spmbUrl = pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com/login/spmb';
 ---
 <header class="site-nav" id="site-nav">
   <div class="site-nav__banner" id="site-banner">

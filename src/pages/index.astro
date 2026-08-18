@@ -25,19 +25,33 @@ const programmes = [
 
 <Layout title="Beranda - MTQ Tarbiyah Sunnah">
   <main>
-    <section class="split-hero">
-      <div class="split-hero__copy">
+    <section class="home-hero">
+      <div class="home-hero__media" aria-hidden="true">
+        <img
+          class="home-hero__poster"
+          src={heroImage}
+          alt=""
+          width="1600"
+          height="1200"
+          fetchpriority="high"
+        />
+        <video class="home-hero__video" autoplay muted loop playsinline preload="metadata" poster={heroImage}>
+          <source src="/videos/classroom-school.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="home-hero__overlay" aria-hidden="true"></div>
+      <div class="page-shell home-hero__content">
         <h1>Mendidik generasi Qur’ani yang teguh dan mandiri.</h1>
-        <p class="split-hero__lede">
+        <p class="home-hero__lede">
           Pendidikan SMP dan SMA khusus putra yang memadukan tahfizh Al-Qur’an,
           ilmu diniyah, bahasa Arab, akademik formal, dan pembinaan adab dalam
           lingkungan asrama.
         </p>
-        <div class="split-hero__actions">
-          <a class="button button--primary" href={pengaturanUtama.linkSpmb || '/spmb'}>Daftar SPMB</a>
+        <div class="home-hero__actions">
+          <a class="button button--primary" href={pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com/login/spmb'}>Daftar SPMB</a>
           <a
             class="button button--secondary"
-            href={pengaturanUtama.linkBrosur || pengaturanUtama.linkSpmb || '/spmb'}
+            href={pengaturanUtama.linkBrosur || pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com/login/spmb'}
             target={pengaturanUtama.linkBrosur ? '_blank' : undefined}
             rel={pengaturanUtama.linkBrosur ? 'noopener noreferrer' : undefined}
           >
@@ -48,15 +62,6 @@ const programmes = [
           </a>
         </div>
       </div>
-      <figure class="split-hero__media">
-        <img
-          src={heroImage}
-          alt="Kegiatan santri MTQ Tarbiyah Sunnah"
-          width="1600"
-          height="1200"
-          fetchpriority="high"
-        />
-      </figure>
     </section>
 
     <section class="page-section--paper-2">
@@ -122,7 +127,108 @@ const programmes = [
 </Layout>
 
 <style>
-  /* Hallmark · genre: editorial · macrostructure: Split Studio · design-system: design.md · designed-as-app */
+  /* Hallmark · genre: editorial · macrostructure: Split Studio · theme: Garden
+   * enrichment: E2 full-bleed decorative video · poster fallback · reduced-motion static image
+   * nav: N12 Announcement Banner + Retracting Nav · footer: Ft1 Mast-headed
+   * design-system: design.md · pre-emit critique: P5 H5 E5 S5 R5 V4
+   */
+  .home-hero {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    min-height: clamp(38rem, 74dvh, 48rem);
+    overflow: clip;
+    background: var(--color-ink);
+  }
+
+  .home-hero__media,
+  .home-hero__overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .home-hero__media {
+    z-index: -2;
+  }
+
+  .home-hero__poster,
+  .home-hero__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .home-hero__poster {
+    display: block;
+  }
+
+  .home-hero__video {
+    position: absolute;
+    inset: 0;
+  }
+
+  .home-hero__overlay {
+    z-index: -1;
+    background: var(--color-hero-overlay);
+  }
+
+  .home-hero__content {
+    align-self: center;
+    display: grid;
+    gap: var(--space-lg);
+    min-width: 0;
+    padding-block: var(--space-2xl) var(--space-3xl);
+  }
+
+  .home-hero h1 {
+    max-width: 13ch;
+    color: var(--color-paper);
+    font-size: var(--text-display-s);
+    line-height: 1.06;
+    overflow-wrap: anywhere;
+  }
+
+  .home-hero__lede {
+    max-width: 58ch;
+    margin: 0;
+    color: var(--color-paper);
+    font-size: var(--text-md);
+    line-height: 1.55;
+  }
+
+  .home-hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .home-hero .button--secondary {
+    border-color: var(--color-paper);
+    color: var(--color-paper);
+  }
+
+  .home-hero .editorial-link {
+    color: var(--color-paper);
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .home-hero .button--secondary:hover {
+      background: var(--color-paper);
+      color: var(--color-accent-deep);
+    }
+
+    .home-hero .editorial-link:hover {
+      color: var(--color-accent-soft);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-hero__video {
+      display: none;
+    }
+  }
+
   .program-list {
     display: grid;
     gap: var(--space-3xl);
