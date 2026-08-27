@@ -2,6 +2,20 @@
 import Layout from '../../layouts/Layout.astro';
 import pengaturanHalaman from '../../content/pengaturanHalaman/data.json';
 import pengaturanUtama from '../../content/pengaturanUtama/data.json';
+import { directusAssetUrl, getPageSettings, getSiteSettings } from '../../lib/directus';
+
+const [pageSettings, siteSettings] = await Promise.all([
+  getPageSettings('program-sma'),
+  getSiteSettings(),
+]);
+const heroImage = directusAssetUrl(pageSettings?.hero_image) || pengaturanHalaman.heroSma;
+const heroEyebrow = pageSettings?.hero_eyebrow || 'Pendidikan menengah atas';
+const heroTitle = pageSettings?.hero_title || 'SMA Tahfizh';
+const heroDescription = pageSettings?.hero_description || 'Membentuk pemuda Qur’ani yang matang dalam ilmu, fasih berbahasa Arab, dan siap menjadi teladan di tengah masyarakat.';
+const spmbUrl = siteSettings?.spmb_url || pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com/login/spmb';
+const brochureUrl = siteSettings?.brochure_url || pengaturanUtama.linkBrosur;
+const primaryCtaLabel = pageSettings?.primary_cta_label || 'Daftar SPMB';
+const primaryCtaUrl = pageSettings?.primary_cta_url || spmbUrl;
 
 const outcomes = [
   {
@@ -29,18 +43,17 @@ const graduateProfile = [
   <main>
     <section class="page-shell split-hero program-hero">
       <div class="split-hero__copy">
-        <p class="eyebrow">Pendidikan menengah atas</p>
-        <h1>SMA Tahfizh</h1>
+        <p class="eyebrow">{heroEyebrow}</p>
+        <h1>{heroTitle}</h1>
         <p class="lede">
-          Membentuk pemuda Qur’ani yang matang dalam ilmu, fasih berbahasa Arab,
-          dan siap menjadi teladan di tengah masyarakat.
+          {heroDescription}
         </p>
         <div class="button-row">
-          <a class="button button--primary" href={pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com/login/spmb'}>Daftar SPMB</a>
-          {pengaturanUtama.linkBrosur && (
+          <a class="button button--primary" href={primaryCtaUrl}>{primaryCtaLabel}</a>
+          {brochureUrl && (
             <a
               class="button button--secondary"
-              href={pengaturanUtama.linkBrosur}
+              href={brochureUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -51,7 +64,7 @@ const graduateProfile = [
       </div>
       <figure class="split-hero__media">
         <img
-          src={pengaturanHalaman.heroSma}
+          src={heroImage}
           alt="Kegiatan belajar santri SMA Tahfizh"
           width="960"
           height="1120"
@@ -90,7 +103,7 @@ const graduateProfile = [
       <div class="page-shell media-split media-split--reverse">
         <div class="media-split__visual">
           <img
-            src={pengaturanHalaman.heroSma}
+            src={heroImage}
             alt="Santri SMA mengikuti pembinaan di Ma’had"
             width="960"
             height="720"
@@ -136,7 +149,7 @@ const graduateProfile = [
           <p class="eyebrow">Langkah berikutnya</p>
           <h2>Kenali proses penerimaan santri baru.</h2>
         </div>
-        <a class="button button--light" href={pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com/login/spmb'}>Lihat alur SPMB</a>
+        <a class="button button--light" href={spmbUrl}>Lihat alur SPMB</a>
       </div>
     </section>
   </main>

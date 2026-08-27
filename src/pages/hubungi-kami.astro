@@ -1,6 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import pengaturanUtama from '../content/pengaturanUtama/data.json';
+import { getPageSettings } from '../lib/directus';
+
+const pageSettings = await getPageSettings('hubungi-kami');
+const heroEyebrow = pageSettings?.hero_eyebrow || 'Hubungi Ma’had';
+const heroTitle = pageSettings?.hero_title || 'Percakapan yang baik dimulai dari informasi yang jelas.';
+const heroDescription = pageSettings?.hero_description || 'Tanyakan program, proses SPMB, atau rencana kunjungan. Admin kami siap membantu melalui WhatsApp dan email.';
 
 const address =
   'Desa Selacau, Kampung Lembur Tengah RT.01/RW.05, Kec. Batujajar, Kab. Bandung Barat';
@@ -12,12 +18,11 @@ const email = 'mahad@tarbiyahsunnah.com';
   <main>
     <section class="page-shell contact-hero">
       <div>
-        <p class="eyebrow">Hubungi Ma’had</p>
-        <h1>Percakapan yang baik dimulai dari informasi yang jelas.</h1>
+        <p class="eyebrow">{heroEyebrow}</p>
+        <h1>{heroTitle}</h1>
       </div>
       <p class="lede">
-        Tanyakan program, proses SPMB, atau rencana kunjungan. Admin kami siap
-        membantu melalui WhatsApp dan email.
+        {heroDescription}
       </p>
     </section>
 

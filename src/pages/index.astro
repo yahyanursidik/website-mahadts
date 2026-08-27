@@ -2,9 +2,27 @@
 import Layout from '../layouts/Layout.astro';
 import pengaturanBeranda from '../content/pengaturanBeranda/data.json';
 import pengaturanUtama from '../content/pengaturanUtama/data.json';
+import { directusAssetUrl, getPageSettings, getSiteSettings } from '../lib/directus';
 
 const slideshowImages = pengaturanBeranda.slideshow || [];
-const heroImage = slideshowImages[0] || '/images/hero/heroSmp.webp';
+const [pageSettings, siteSettings] = await Promise.all([
+  getPageSettings('beranda'),
+  getSiteSettings(),
+]);
+const heroImage = directusAssetUrl(pageSettings?.hero_image) || slideshowImages[0] || '/images/hero/heroSmp.webp';
+const heroVideo = directusAssetUrl(pageSettings?.hero_video) || '/videos/classroom-school.mp4';
+const heroTitle = pageSettings?.hero_title || 'Mendidik generasi Qur’ani yang teguh dan mandiri.';
+const heroDescription = pageSettings?.hero_description || 'Pendidikan SMP dan SMA khusus putra yang memadukan tahfizh Al-Qur’an, ilmu diniyah, bahasa Arab, akademik formal, dan pembinaan adab dalam lingkungan asrama.';
+const spmbUrl = siteSettings?.spmb_url || pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com/login/spmb';
+const brochureUrl = siteSettings?.brochure_url || pengaturanUtama.linkBrosur;
+const primaryCtaLabel = pageSettings?.primary_cta_label || 'Daftar SPMB';
+const primaryCtaUrl = pageSettings?.primary_cta_url || spmbUrl;
+const secondaryCtaLabel = pageSettings?.secondary_cta_label || 'Lihat brosur';
+const secondaryCtaUrl = pageSettings?.secondary_cta_url || brochureUrl || spmbUrl;
+const heroOverlay = pageSettings?.hero_overlay === 'soft' ? 'soft' : 'dark';
+const showSummary = pageSettings?.show_summary ?? true;
+const showContent = pageSettings?.show_content ?? true;
+const showCta = pageSettings?.show_cta ?? true;
 const programmes = [
   {
     title: 'SMP Tahfizh',
@@ -25,7 +43,7 @@ const programmes = [
 
 <Layout title="Beranda - MTQ Tarbiyah Sunnah">
   <main>
-    <section class="home-hero">
+    <section class:list={['home-hero', `home-hero--overlay-${heroOverlay}`]}>
       <div class="home-hero__media" aria-hidden="true">
         <img
           class="home-hero__poster"
@@ -36,26 +54,24 @@ const programmes = [
           fetchpriority="high"
         />
         <video class="home-hero__video" autoplay muted loop playsinline preload="metadata" poster={heroImage}>
-          <source src="/videos/classroom-school.mp4" type="video/mp4" />
+          <source src={heroVideo} type="video/mp4" />
         </video>
       </div>
       <div class="home-hero__overlay" aria-hidden="true"></div>
       <div class="page-shell home-hero__content">
-        <h1>Mendidik generasi Qur’ani yang teguh dan mandiri.</h1>
+        <h1>{heroTitle}</h1>
         <p class="home-hero__lede">
-          Pendidikan SMP dan SMA khusus putra yang memadukan tahfizh Al-Qur’an,
-          ilmu diniyah, bahasa Arab, akademik formal, dan pembinaan adab dalam
-          lingkungan asrama.
+          {heroDescription}
         </p>
         <div class="home-hero__actions">
-          <a class="button button--primary" href={pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com/login/spmb'}>Daftar SPMB</a>
+          <a class="button button--primary" href={primaryCtaUrl}>{primaryCtaLabel}</a>
           <a
             class="button button--secondary"
-            href={pengaturanUtama.linkBrosur || pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com/login/spmb'}
-            target={pengaturanUtama.linkBrosur ? '_blank' : undefined}
-            rel={pengaturanUtama.linkBrosur ? 'noopener noreferrer' : undefined}
+            href={secondaryCtaUrl}
+            target={secondaryCtaUrl.startsWith('http') ? '_blank' : undefined}
+            rel={secondaryCtaUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
           >
-            Lihat brosur
+            {secondaryCtaLabel}
           </a>
           <a class="editorial-link" href="https://wa.me/6281210001476" target="_blank" rel="noopener noreferrer">
             Hubungi admin <span aria-hidden="true">→</span>
@@ -64,7 +80,7 @@ const programmes = [
       </div>
     </section>
 
-    <section class="page-section--paper-2">
+    {showSummary && <section class="page-section--paper-2">
       <div class="page-shell info-rail" aria-label="Ringkasan program">
         <div>
           <strong>SMP dan SMA khusus putra</strong>
@@ -75,9 +91,9 @@ const programmes = [
           <p>Pendidikan berasrama dengan pembinaan adab dan kemandirian.</p>
         </div>
       </div>
-    </section>
+    </section>}
 
-    <section class="page-section">
+    {showContent && <section class="page-section">
       <div class="page-shell">
         <div class="section-heading">
           <h2>Dua jenjang, satu arah pendidikan.</h2>
@@ -110,9 +126,9 @@ const programmes = [
           ))}
         </div>
       </div>
-    </section>
+    </section>}
 
-    <section class="page-section page-section--ink">
+    {showCta && <section class="page-section page-section--ink">
       <div class="page-shell vision-statement">
         <h2>Visi Ma’had</h2>
         <p>
@@ -122,7 +138,7 @@ const programmes = [
         </p>
         <a class="button button--secondary" href="/profil-mahad">Baca profil Ma’had</a>
       </div>
-    </section>
+    </section>}
   </main>
 </Layout>
 
@@ -171,6 +187,10 @@ const programmes = [
   .home-hero__overlay {
     z-index: -1;
     background: var(--color-hero-overlay);
+  }
+
+  .home-hero--overlay-soft .home-hero__overlay {
+    background: var(--color-overlay);
   }
 
   .home-hero__content {

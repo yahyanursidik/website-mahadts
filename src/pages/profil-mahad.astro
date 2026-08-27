@@ -1,6 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import pengaturanHalaman from '../content/pengaturanHalaman/data.json';
+import { directusAssetUrl, getPageSettings } from '../lib/directus';
+
+const pageSettings = await getPageSettings('profil');
+const heroImage = directusAssetUrl(pageSettings?.hero_image) || pengaturanHalaman.heroProfil;
+const heroTitle = pageSettings?.hero_title || 'Berakar pada Sunnah, tumbuh melalui ilmu.';
+const heroDescription = pageSettings?.hero_description || 'MTQ Tarbiyah Sunnah memadukan tradisi keilmuan Islam, tahfizh Al-Qur’an, pendidikan formal, dan pembinaan kehidupan berasrama.';
+const primaryCtaLabel = pageSettings?.primary_cta_label || 'Lihat program';
+const primaryCtaUrl = pageSettings?.primary_cta_url || '/program/smp';
 
 const missions = {
   smp: [
@@ -28,19 +36,18 @@ const leadership = [
   <main>
     <section class="split-hero split-hero--reverse">
       <div class="split-hero__copy">
-        <h1>Berakar pada Sunnah, tumbuh melalui ilmu.</h1>
+        <h1>{heroTitle}</h1>
         <p class="split-hero__lede">
-          MTQ Tarbiyah Sunnah memadukan tradisi keilmuan Islam, tahfizh
-          Al-Qur’an, pendidikan formal, dan pembinaan kehidupan berasrama.
+          {heroDescription}
         </p>
         <div class="split-hero__actions">
-          <a class="button button--primary" href="/program/smp">Lihat program</a>
+          <a class="button button--primary" href={primaryCtaUrl}>{primaryCtaLabel}</a>
           <a class="editorial-link" href="#sejarah">Baca perjalanan Ma’had <span aria-hidden="true">→</span></a>
         </div>
       </div>
       <figure class="split-hero__media">
         <img
-          src={pengaturanHalaman.heroProfil}
+          src={heroImage}
           alt="Lingkungan Ma’had Tahfizhul Qur’an Tarbiyah Sunnah"
           width="1600"
           height="1200"

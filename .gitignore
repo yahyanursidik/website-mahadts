@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # Local Netlify folder
 .netlify
+
+# Repository CMS terpisah yang dikloning lokal untuk deployment Railway.
+cmsmahad/

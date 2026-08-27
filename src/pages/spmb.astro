@@ -2,6 +2,17 @@
 import Layout from '../layouts/Layout.astro';
 import pengaturanHalaman from '../content/pengaturanHalaman/data.json';
 import pengaturanUtama from '../content/pengaturanUtama/data.json';
+import { directusAssetUrl, getPageSettings, getSiteSettings } from '../lib/directus';
+
+const [pageSettings, siteSettings] = await Promise.all([
+  getPageSettings('spmb'),
+  getSiteSettings(),
+]);
+const heroImage = directusAssetUrl(pageSettings?.hero_image) || pengaturanHalaman.heroSpmb;
+const heroEyebrow = pageSettings?.hero_eyebrow || 'Penerimaan murid baru';
+const heroTitle = pageSettings?.hero_title || 'Satu alur yang jelas untuk memulai.';
+const heroDescription = pageSettings?.hero_description || 'Kenali tahapan pendaftaran Ma’had Tahfizhul Qur’an Tarbiyah Sunnah, lalu konsultasikan kebutuhan calon santri bersama admin.';
+const brochureUrl = siteSettings?.brochure_url || pengaturanUtama.linkBrosur;
 
 const steps = [
   ['Informasi', 'Pelajari brosur, pilihan program, dan persyaratan pendaftaran.'],
@@ -18,18 +29,17 @@ const steps = [
   <main>
     <section class="page-shell split-hero spmb-hero">
       <div class="split-hero__copy">
-        <p class="eyebrow">Penerimaan murid baru</p>
-        <h1>Satu alur yang jelas untuk memulai.</h1>
+        <p class="eyebrow">{heroEyebrow}</p>
+        <h1>{heroTitle}</h1>
         <p class="lede">
-          Kenali tahapan pendaftaran Ma’had Tahfizhul Qur’an Tarbiyah Sunnah,
-          lalu konsultasikan kebutuhan calon santri bersama admin.
+          {heroDescription}
         </p>
         <div class="button-row">
           <a class="button button--primary" href="#alur-pendaftaran">Lihat alur</a>
-          {pengaturanUtama.linkBrosur ? (
+          {brochureUrl ? (
             <a
               class="button button--secondary"
-              href={pengaturanUtama.linkBrosur}
+              href={brochureUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -49,7 +59,7 @@ const steps = [
       </div>
       <figure class="split-hero__media">
         <img
-          src={pengaturanHalaman.heroSpmb}
+          src={heroImage}
           alt="Santri Ma’had Tarbiyah Sunnah sedang belajar"
           width="960"
           height="1120"

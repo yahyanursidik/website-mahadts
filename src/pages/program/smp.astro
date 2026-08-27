@@ -2,6 +2,21 @@
 import Layout from '../../layouts/Layout.astro';
 import pengaturanHalaman from '../../content/pengaturanHalaman/data.json';
 import pengaturanUtama from '../../content/pengaturanUtama/data.json';
+import { directusAssetUrl, getPageSettings, getSiteSettings } from '../../lib/directus';
+
+const [pageSettings, siteSettings] = await Promise.all([
+  getPageSettings('program-smp'),
+  getSiteSettings(),
+]);
+const heroImage = directusAssetUrl(pageSettings?.hero_image) || pengaturanHalaman.heroSmp;
+const heroTitle = pageSettings?.hero_title || 'SMP Tahfizh untuk pondasi yang kokoh.';
+const heroDescription = pageSettings?.hero_description || 'Tahfizh Al-Qur’an intensif, dirosah islamiyah, bahasa Arab, dan pendidikan akademik formal dalam pembinaan asrama.';
+const spmbUrl = siteSettings?.spmb_url || pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com/login/spmb';
+const brochureUrl = siteSettings?.brochure_url || pengaturanUtama.linkBrosur;
+const primaryCtaLabel = pageSettings?.primary_cta_label || 'Daftar SPMB';
+const primaryCtaUrl = pageSettings?.primary_cta_url || spmbUrl;
+const secondaryCtaLabel = pageSettings?.secondary_cta_label || 'Lihat brosur';
+const secondaryCtaUrl = pageSettings?.secondary_cta_url || brochureUrl || spmbUrl;
 
 const curriculum = [
   ['Tahfizh Al-Qur’an', 'Target hafalan mutqin minimal 20 juz melalui ziyadah dan muraja’ah yang terstruktur.'],
@@ -22,26 +37,25 @@ const outcomes = [
   <main>
     <section class="split-hero">
       <div class="split-hero__copy">
-        <h1>SMP Tahfizh untuk pondasi yang kokoh.</h1>
+        <h1>{heroTitle}</h1>
         <p class="split-hero__lede">
-          Tahfizh Al-Qur’an intensif, dirosah islamiyah, bahasa Arab, dan
-          pendidikan akademik formal dalam pembinaan asrama.
+          {heroDescription}
         </p>
         <div class="split-hero__actions">
-          <a class="button button--primary" href={pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com/login/spmb'}>Daftar SPMB</a>
+          <a class="button button--primary" href={primaryCtaUrl}>{primaryCtaLabel}</a>
           <a
             class="button button--secondary"
-            href={pengaturanUtama.linkBrosur || pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com/login/spmb'}
-            target={pengaturanUtama.linkBrosur ? '_blank' : undefined}
-            rel={pengaturanUtama.linkBrosur ? 'noopener noreferrer' : undefined}
+            href={secondaryCtaUrl}
+            target={secondaryCtaUrl.startsWith('http') ? '_blank' : undefined}
+            rel={secondaryCtaUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
           >
-            Lihat brosur
+            {secondaryCtaLabel}
           </a>
         </div>
       </div>
       <figure class="split-hero__media">
         <img
-          src={pengaturanHalaman.heroSmp}
+          src={heroImage}
           alt="Kegiatan santri Program SMP Tahfizh"
           width="1600"
           height="1200"
@@ -102,7 +116,7 @@ const outcomes = [
           <h2>Mulai dari informasi yang jelas.</h2>
           <p>Pelajari alur pendaftaran, berkas, dan tahapan seleksi santri baru.</p>
         </div>
-        <a class="button button--secondary" href={pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com/login/spmb'}>Buka panduan SPMB</a>
+        <a class="button button--secondary" href={spmbUrl}>Buka panduan SPMB</a>
       </div>
     </section>
   </main>
