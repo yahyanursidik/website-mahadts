@@ -55,6 +55,10 @@ function validLinks(value: unknown, fallback: SiteLink[]) {
   const links = value.filter(isObject).map((link) => ({ label: String(link.label ?? '').trim(), href: String(link.href ?? '').trim() })).filter((link) => link.label && link.href);
   return links.length ? links : fallback;
 }
+function absoluteMedia(value: string, baseUrl: string) { return value.startsWith('/api/media') ? `${baseUrl}${value}` : value; }
+function resolveMediaUrls(settings: PublicSiteSettings, baseUrl: string): PublicSiteSettings {
+  return { ...settings, branding: { ...settings.branding, faviconUrl: absoluteMedia(settings.branding.faviconUrl, baseUrl), logoUrl: absoluteMedia(settings.branding.logoUrl, baseUrl) }, hero: { ...settings.hero, posterUrl: absoluteMedia(settings.hero.posterUrl, baseUrl), videoUrl: absoluteMedia(settings.hero.videoUrl, baseUrl) }, pages: { ...settings.pages, profileHeroUrl: absoluteMedia(settings.pages.profileHeroUrl, baseUrl), smpHeroUrl: absoluteMedia(settings.pages.smpHeroUrl, baseUrl), smaHeroUrl: absoluteMedia(settings.pages.smaHeroUrl, baseUrl), spmbHeroUrl: absoluteMedia(settings.pages.spmbHeroUrl, baseUrl), historyImageUrl: absoluteMedia(settings.pages.historyImageUrl, baseUrl) }, seo: { ...settings.seo, ogImageUrl: absoluteMedia(settings.seo.ogImageUrl, baseUrl) } };
+}
 function merge(value: unknown): PublicSiteSettings {
   if (!isObject(value)) return fallbackSiteSettings;
   const section = <Key extends keyof PublicSiteSettings>(key: Key) => isObject(value[key]) ? value[key] : {};
@@ -74,7 +78,7 @@ export function getSiteSettings() {
       const response = await fetch(`${baseUrl}/api/settings`, { signal: AbortSignal.timeout(5000) });
       if (!response.ok) return fallbackSiteSettings;
       const payload = await response.json() as { data?: unknown };
-      return merge(payload.data);
+      return resolveMediaUrls(merge(payload.data), baseUrl);
     } catch { return fallbackSiteSettings; }
   })();
   return settingsRequest;
