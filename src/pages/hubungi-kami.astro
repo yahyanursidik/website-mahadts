@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import pengaturanUtama from '../content/pengaturanUtama/data.json';
+import { getSiteSettings } from '../lib/site-settings';
 
-const address =
-  'Desa Selacau, Kampung Lembur Tengah RT.01/RW.05, Kec. Batujajar, Kab. Bandung Barat';
-const whatsapp = '+62 812 1000 1476';
-const email = 'mahad@tarbiyahsunnah.com';
+const settings = await getSiteSettings();
+const address = settings.footer.address;
+const whatsapp = settings.footer.phone;
+const email = settings.footer.email;
 ---
 
 <Layout title="Hubungi Kami - MTQ Tarbiyah Sunnah">
@@ -42,7 +42,7 @@ const email = 'mahad@tarbiyahsunnah.com';
             <dd>{whatsapp}</dd>
             <span class="contact-list__actions">
               <a
-                href="https://wa.me/6281210001476?text=Bismillah%2C%20Admin%20Ma%27had%20Tarbiyah%20Sunnah%2C%20saya%20ingin%20bertanya."
+                href={settings.footer.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -86,7 +86,7 @@ const email = 'mahad@tarbiyahsunnah.com';
       <div class="map-frame">
         <iframe
           title="Peta lokasi Ma’had Tahfizhul Qur’an Tarbiyah Sunnah"
-          src={pengaturanUtama.googleMapsUrl}
+          src={settings.seo.googleMapsUrl}
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
           allowfullscreen

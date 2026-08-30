@@ -3,15 +3,16 @@ import '../../tokens.css';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import pengaturanUtama from '../content/pengaturanUtama/data.json';
+import { getSiteSettings } from '../lib/site-settings';
 
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
-const faviconUrl = pengaturanUtama.favicon || '/favicon.svg';
-const description = "Ma'had Tahfizhul Qur’an Tarbiyah Sunnah — pendidikan SMP dan SMA Tahfizh di Bandung Barat.";
+const settings = await getSiteSettings();
+const faviconUrl = settings.branding.faviconUrl || '/favicon.svg';
+const description = settings.seo.defaultDescription;
 ---
 
 <!DOCTYPE html>
@@ -20,6 +21,7 @@ const description = "Ma'had Tahfizhul Qur’an Tarbiyah Sunnah — pendidikan SM
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content={description} />
+  <meta property="og:image" content={settings.seo.ogImageUrl} />
   <link rel="icon" type="image/png" href={faviconUrl} />
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
@@ -31,10 +33,10 @@ const description = "Ma'had Tahfizhul Qur’an Tarbiyah Sunnah — pendidikan SM
 </head>
 <body class="site-body">
   <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
-  <Header />
+  <Header settings={settings} />
   <div class="site-content" id="main-content" tabindex="-1">
     <slot />
   </div>
-  <Footer />
+  <Footer settings={settings} />
 </body>
 </html>

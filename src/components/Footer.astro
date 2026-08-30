@@ -1,28 +1,26 @@
 ---
+import type { PublicSiteSettings } from '../lib/site-settings';
 const year = new Date().getFullYear();
+const { settings } = Astro.props as { settings: PublicSiteSettings };
 ---
 <footer class="site-footer">
   <div class="site-footer__inner">
     <div class="site-footer__mast">
       <a class="site-footer__brand" href="/">
-        <img src="/images/settings/favicon.png" width="784" height="560" alt="" loading="lazy" />
-        <span>MTQ Tarbiyah Sunnah</span>
+        <img src={settings.branding.logoUrl} width="784" height="560" alt="" loading="lazy" />
+        <span>{settings.branding.siteShortName}</span>
       </a>
-      <p>Mendidik generasi Qur’ani yang berakidah lurus, beradab mulia, dan mandiri.</p>
+      <p>{settings.footer.description}</p>
       <nav aria-label="Navigasi footer">
-        <a href="/profil-mahad">Profil</a>
-        <a href="/program/smp">SMP</a>
-        <a href="/program/sma">SMA</a>
-        <a href="/artikel">Artikel</a>
-        <a href="/hubungi-kami">Kontak</a>
+        {settings.navigation.footer.map((link) => <a href={link.href}>{link.label}</a>)}
       </nav>
     </div>
     <div class="site-footer__meta">
       <address>
-        Desa Selacau, Kampung Lembur Tengah RT.01/RW.05, Batujajar, Bandung Barat
+        {settings.footer.address}
       </address>
-      <a href="tel:+6281210001476">+62 812-1000-1476</a>
-      <p>© {year} Ma’had Tahfizhul Qur’an Tarbiyah Sunnah</p>
+      <a href={`tel:${settings.footer.phone.replace(/\s/g, '')}`}>{settings.footer.phone}</a>
+      <p>© {year} {settings.footer.copyrightOwner}</p>
     </div>
   </div>
 </footer>

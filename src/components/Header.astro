@@ -1,54 +1,36 @@
 ---
-import pengaturanUtama from '../content/pengaturanUtama/data.json';
+import type { PublicSiteSettings } from '../lib/site-settings';
 
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const { settings } = Astro.props as { settings: PublicSiteSettings };
 const isCurrent = (href: string) => href === '/'
   ? pathname === '/'
   : pathname === href || pathname.startsWith(`${href}/`);
-const spmbUrl = pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com/login/spmb';
+const spmbUrl = settings.header.spmbUrl;
 ---
 <header class="site-nav" id="site-nav">
-  <div class="site-nav__banner" id="site-banner">
+  {settings.header.announcementEnabled && <div class="site-nav__banner" id="site-banner">
     <p>
-      Penerimaan murid baru sedang dibuka.
-      <a href={spmbUrl}>Lihat informasi SPMB <span aria-hidden="true">→</span></a>
+      {settings.header.announcementText}
+      <a href={settings.header.announcementLink}>{settings.header.announcementLinkLabel} <span aria-hidden="true">→</span></a>
     </p>
     <button class="site-nav__banner-close" id="banner-close" type="button" aria-label="Tutup pengumuman">
       <span class="material-symbols-outlined" aria-hidden="true">close</span>
     </button>
-  </div>
+  </div>}
 
   <div class="site-nav__bar">
     <div class="site-nav__inner">
       <a class="site-brand" href="/" aria-label="MTQ Tarbiyah Sunnah — Beranda">
-        <img src="/images/settings/favicon.png" width="784" height="560" alt="" />
+        <img src={settings.branding.logoUrl} width="784" height="560" alt="" />
         <span>
-          <strong>MTQ</strong>
-          <small>Tarbiyah Sunnah</small>
+          <strong>{settings.branding.siteShortName.split(' ')[0]}</strong>
+          <small>{settings.branding.siteShortName.replace(/^\S+\s*/, '')}</small>
         </span>
       </a>
 
       <nav class="site-nav__links" aria-label="Navigasi utama">
-        <a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Beranda</a>
-        <a href="/profil-mahad" aria-current={isCurrent('/profil-mahad') ? 'page' : undefined}>Profil</a>
-        <details class="site-nav__program">
-          <summary aria-current={pathname.startsWith('/program') ? 'page' : undefined}>
-            Program
-            <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
-          </summary>
-          <div class="site-nav__dropdown">
-            <a href="/program/smp" aria-current={isCurrent('/program/smp') ? 'page' : undefined}>
-              <span>Program SMP</span>
-              <small>Tahfizh dan akademik tingkat menengah pertama</small>
-            </a>
-            <a href="/program/sma" aria-current={isCurrent('/program/sma') ? 'page' : undefined}>
-              <span>Program SMA</span>
-              <small>Persiapan studi lanjut dengan pembinaan terpadu</small>
-            </a>
-          </div>
-        </details>
-        <a href="/artikel" aria-current={isCurrent('/artikel') ? 'page' : undefined}>Artikel</a>
-        <a href="/hubungi-kami" aria-current={isCurrent('/hubungi-kami') ? 'page' : undefined}>Kontak</a>
+        {settings.navigation.main.map((link) => <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}</a>)}
       </nav>
 
       <div class="site-nav__actions">
@@ -64,13 +46,7 @@ const spmbUrl = pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com
 
   <div class="mobile-menu" id="mobile-menu" hidden>
     <nav aria-label="Navigasi seluler">
-      <a href="/" aria-current={isCurrent('/') ? 'page' : undefined}>Beranda</a>
-      <a href="/profil-mahad" aria-current={isCurrent('/profil-mahad') ? 'page' : undefined}>Profil Ma’had</a>
-      <span class="mobile-menu__label">Program</span>
-      <a href="/program/smp" aria-current={isCurrent('/program/smp') ? 'page' : undefined}>Program SMP</a>
-      <a href="/program/sma" aria-current={isCurrent('/program/sma') ? 'page' : undefined}>Program SMA</a>
-      <a href="/artikel" aria-current={isCurrent('/artikel') ? 'page' : undefined}>Artikel</a>
-      <a href="/hubungi-kami" aria-current={isCurrent('/hubungi-kami') ? 'page' : undefined}>Hubungi Kami</a>
+      {settings.navigation.main.map((link) => <a href={link.href} aria-current={isCurrent(link.href) ? 'page' : undefined}>{link.label}</a>)}
       <a class="button button--primary" href={spmbUrl}>Daftar SPMB</a>
     </nav>
   </div>

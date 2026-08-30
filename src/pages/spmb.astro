@@ -1,7 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import pengaturanHalaman from '../content/pengaturanHalaman/data.json';
-import pengaturanUtama from '../content/pengaturanUtama/data.json';
+import { getSiteSettings } from '../lib/site-settings';
+
+const settings = await getSiteSettings();
 
 const steps = [
   ['Informasi', 'Pelajari brosur, pilihan program, dan persyaratan pendaftaran.'],
@@ -26,10 +27,10 @@ const steps = [
         </p>
         <div class="button-row">
           <a class="button button--primary" href="#alur-pendaftaran">Lihat alur</a>
-          {pengaturanUtama.linkBrosur ? (
+          {settings.header.brochureUrl ? (
             <a
               class="button button--secondary"
-              href={pengaturanUtama.linkBrosur}
+              href={settings.header.brochureUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -38,7 +39,7 @@ const steps = [
           ) : (
             <a
               class="button button--secondary"
-              href="https://wa.me/6281210001476"
+              href={settings.footer.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -49,7 +50,7 @@ const steps = [
       </div>
       <figure class="split-hero__media">
         <img
-          src={pengaturanHalaman.heroSpmb}
+          src={settings.pages.spmbHeroUrl}
           alt="Santri Ma’had Tarbiyah Sunnah sedang belajar"
           width="960"
           height="1120"
@@ -100,7 +101,7 @@ const steps = [
         </div>
         <a
           class="button button--primary"
-          href="https://wa.me/6281210001476?text=Bismillah%2C%20saya%20ingin%20bertanya%20tentang%20SPMB."
+          href={settings.footer.whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
         >

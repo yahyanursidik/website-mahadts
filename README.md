@@ -1,4 +1,20 @@
-# Astro Starter Kit: Minimal
+# Website Mahad Tarbiyah Sunnah
+
+> Panduan bawaan Astro di bawah tetap berlaku untuk pengembangan lokal.
+
+## Pengaturan dari CMS
+
+Situs dapat membaca pengaturan publik dari CMS Refine pada saat proses build: identitas dan favicon, banner/header, hero beranda, gambar hero halaman, kontak/footer, menu, serta SEO.
+
+Di Netlify project situs utama, buat environment variable berikut:
+
+```text
+CMS_API_URL=https://cms.mahadtarbiyahsunnah.com
+```
+
+Tidak ada rahasia atau kredensial yang disimpan di project situs. Setelah pengaturan di CMS disimpan, jalankan deploy ulang situs utama supaya nilai terbaru ikut diprerender. Jika `CMS_API_URL` belum diisi atau CMS tidak dapat dijangkau, situs tetap memakai pengaturan bawaan yang ada di repository.
+
+---
 
 ```sh
 npm create astro@latest -- --template minimal

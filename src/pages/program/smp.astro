@@ -1,7 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import pengaturanHalaman from '../../content/pengaturanHalaman/data.json';
-import pengaturanUtama from '../../content/pengaturanUtama/data.json';
+import { getSiteSettings } from '../../lib/site-settings';
+
+const settings = await getSiteSettings();
 
 const curriculum = [
   ['Tahfizh Al-Qur’an', 'Target hafalan mutqin minimal 20 juz melalui ziyadah dan muraja’ah yang terstruktur.'],
@@ -28,12 +29,12 @@ const outcomes = [
           pendidikan akademik formal dalam pembinaan asrama.
         </p>
         <div class="split-hero__actions">
-          <a class="button button--primary" href={pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com/login/spmb'}>Daftar SPMB</a>
+          <a class="button button--primary" href={settings.header.spmbUrl}>Daftar SPMB</a>
           <a
             class="button button--secondary"
-            href={pengaturanUtama.linkBrosur || pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com/login/spmb'}
-            target={pengaturanUtama.linkBrosur ? '_blank' : undefined}
-            rel={pengaturanUtama.linkBrosur ? 'noopener noreferrer' : undefined}
+            href={settings.header.brochureUrl || settings.header.spmbUrl}
+            target={settings.header.brochureUrl ? '_blank' : undefined}
+            rel={settings.header.brochureUrl ? 'noopener noreferrer' : undefined}
           >
             Lihat brosur
           </a>
@@ -41,7 +42,7 @@ const outcomes = [
       </div>
       <figure class="split-hero__media">
         <img
-          src={pengaturanHalaman.heroSmp}
+          src={settings.pages.smpHeroUrl}
           alt="Kegiatan santri Program SMP Tahfizh"
           width="1600"
           height="1200"
@@ -71,7 +72,7 @@ const outcomes = [
       <div class="page-shell media-split media-split--reverse">
         <figure class="media-split__figure">
           <img
-            src={pengaturanHalaman.gambarSejarahProfil}
+            src={settings.pages.historyImageUrl}
             alt="Pembelajaran dan pembinaan santri SMP"
             width="1200"
             height="900"
@@ -102,7 +103,7 @@ const outcomes = [
           <h2>Mulai dari informasi yang jelas.</h2>
           <p>Pelajari alur pendaftaran, berkas, dan tahapan seleksi santri baru.</p>
         </div>
-        <a class="button button--secondary" href={pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com/login/spmb'}>Buka panduan SPMB</a>
+        <a class="button button--secondary" href={settings.header.spmbUrl}>Buka panduan SPMB</a>
       </div>
     </section>
   </main>

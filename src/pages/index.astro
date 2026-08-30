@@ -1,10 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import pengaturanBeranda from '../content/pengaturanBeranda/data.json';
-import pengaturanUtama from '../content/pengaturanUtama/data.json';
+import { getSiteSettings } from '../lib/site-settings';
 
-const slideshowImages = pengaturanBeranda.slideshow || [];
-const heroImage = slideshowImages[0] || '/images/hero/heroSmp.webp';
+const settings = await getSiteSettings();
+const heroImage = settings.hero.posterUrl;
 const programmes = [
   {
     title: 'SMP Tahfizh',
@@ -36,29 +35,27 @@ const programmes = [
           fetchpriority="high"
         />
         <video class="home-hero__video" autoplay muted loop playsinline preload="metadata" poster={heroImage}>
-          <source src="/videos/classroom-school.mp4" type="video/mp4" />
+          <source src={settings.hero.videoUrl} type="video/mp4" />
         </video>
       </div>
       <div class="home-hero__overlay" aria-hidden="true"></div>
       <div class="page-shell home-hero__content">
-        <h1>Mendidik generasi Qur’ani yang teguh dan mandiri.</h1>
+        <h1>{settings.hero.headline}</h1>
         <p class="home-hero__lede">
-          Pendidikan SMP dan SMA khusus putra yang memadukan tahfizh Al-Qur’an,
-          ilmu diniyah, bahasa Arab, akademik formal, dan pembinaan adab dalam
-          lingkungan asrama.
+          {settings.hero.lede}
         </p>
         <div class="home-hero__actions">
-          <a class="button button--primary" href={pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com/login/spmb'}>Daftar SPMB</a>
+          <a class="button button--primary" href={settings.header.spmbUrl}>{settings.hero.primaryLabel}</a>
           <a
             class="button button--secondary"
-            href={pengaturanUtama.linkBrosur || pengaturanUtama.linkSpmb || 'https://hub.mahadtarbiyahsunnah.com/login/spmb'}
-            target={pengaturanUtama.linkBrosur ? '_blank' : undefined}
-            rel={pengaturanUtama.linkBrosur ? 'noopener noreferrer' : undefined}
+            href={settings.header.brochureUrl || settings.header.spmbUrl}
+            target={settings.header.brochureUrl ? '_blank' : undefined}
+            rel={settings.header.brochureUrl ? 'noopener noreferrer' : undefined}
           >
-            Lihat brosur
+            {settings.hero.secondaryLabel}
           </a>
-          <a class="editorial-link" href="https://wa.me/6281210001476" target="_blank" rel="noopener noreferrer">
-            Hubungi admin <span aria-hidden="true">→</span>
+          <a class="editorial-link" href={settings.hero.contactUrl} target="_blank" rel="noopener noreferrer">
+            {settings.hero.contactLabel} <span aria-hidden="true">→</span>
           </a>
         </div>
       </div>

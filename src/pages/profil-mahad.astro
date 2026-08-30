@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import pengaturanHalaman from '../content/pengaturanHalaman/data.json';
+import { getSiteSettings } from '../lib/site-settings';
+
+const settings = await getSiteSettings();
 
 const missions = {
   smp: [
@@ -40,7 +42,7 @@ const leadership = [
       </div>
       <figure class="split-hero__media">
         <img
-          src={pengaturanHalaman.heroProfil}
+          src={settings.pages.profileHeroUrl}
           alt="Lingkungan Ma’had Tahfizhul Qur’an Tarbiyah Sunnah"
           width="1600"
           height="1200"
@@ -59,7 +61,7 @@ const leadership = [
       <div class="page-shell media-split">
         <figure class="media-split__figure">
           <img
-            src={pengaturanHalaman.gambarSejarahProfil}
+            src={settings.pages.historyImageUrl}
             alt="Kegiatan pendidikan dalam perjalanan MTQ Tarbiyah Sunnah"
             width="1200"
             height="900"
