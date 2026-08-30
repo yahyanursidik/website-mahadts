@@ -2,17 +2,20 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { getSiteSettings } from '../lib/site-settings';
+import { getCmsArticles } from '../lib/cms-articles';
 
 const settings = await getSiteSettings();
 const content = settings.content.articles;
-const allArticles = await getCollection('artikel');
+const cmsArticles = await getCmsArticles();
+const localArticles = await getCollection('artikel');
+const allArticles = cmsArticles ? cmsArticles.map((article) => ({ id: article.slug, title: article.title, summary: article.summary, category: article.category, coverImage: article.coverImage, date: article.date })) : localArticles.map((article) => ({ id: article.id, title: article.data.title, summary: article.data.summary ?? '', category: article.data.category ?? 'Artikel', coverImage: article.data.coverImage ?? '', date: String(article.data.date ?? '') }));
 const sortedArticles = allArticles.sort(
-  (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
+  (a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf(),
 );
 const featuredArticle = sortedArticles[0];
 const regularArticles = sortedArticles.slice(1);
 const categoryCounts = sortedArticles.reduce<Record<string, number>>((counts, article) => {
-  const category = article.data.category || 'Artikel';
+  const category = article.category || 'Artikel';
   counts[category] = (counts[category] || 0) + 1;
   return counts;
 }, {});
@@ -39,9 +42,9 @@ const formatDate = (date: string | Date) =>
       <>
         <section class="page-shell featured-story" aria-labelledby="featured-title">
           <div class="featured-story__visual">
-            {featuredArticle.data.coverImage ? (
+            {featuredArticle.coverImage ? (
               <img
-                src={featuredArticle.data.coverImage}
+                src={featuredArticle.coverImage}
                 alt=""
                 width="960"
                 height="720"
@@ -53,15 +56,15 @@ const formatDate = (date: string | Date) =>
           </div>
           <div class="featured-story__copy">
             <p class="article-meta">
-              <span>{featuredArticle.data.category || 'Artikel'}</span>
-              <time datetime={String(featuredArticle.data.date)}>
-                {formatDate(featuredArticle.data.date)}
+              <span>{featuredArticle.category || 'Artikel'}</span>
+              <time datetime={String(featuredArticle.date)}>
+                {formatDate(featuredArticle.date)}
               </time>
             </p>
             <h2 id="featured-title">
-              <a href={`/artikel/${featuredArticle.id}`}>{featuredArticle.data.title}</a>
+              <a href={`/artikel/${featuredArticle.id}`}>{featuredArticle.title}</a>
             </h2>
-            <p>{featuredArticle.data.summary}</p>
+            <p>{featuredArticle.summary}</p>
             <a class="text-link" href={`/artikel/${featuredArticle.id}`}>Baca artikel <span aria-hidden="true">→</span></a>
           </div>
         </section>
@@ -90,16 +93,16 @@ const formatDate = (date: string | Date) =>
                     <li>
                       <div>
                         <p class="article-meta">
-                          <span>{article.data.category || 'Artikel'}</span>
-                          <time datetime={String(article.data.date)}>{formatDate(article.data.date)}</time>
+                          <span>{article.category || 'Artikel'}</span>
+                          <time datetime={String(article.date)}>{formatDate(article.date)}</time>
                         </p>
-                        <h3><a href={`/artikel/${article.id}`}>{article.data.title}</a></h3>
-                        <p>{article.data.summary}</p>
+                        <h3><a href={`/artikel/${article.id}`}>{article.title}</a></h3>
+                        <p>{article.summary}</p>
                       </div>
                       <a
                         class="story-list__arrow"
                         href={`/artikel/${article.id}`}
-                        aria-label={`Baca ${article.data.title}`}
+                        aria-label={`Baca ${article.title}`}
                       >
                         →
                       </a>

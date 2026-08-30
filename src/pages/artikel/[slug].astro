@@ -1,8 +1,11 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import { getCmsArticles, renderTiptapDocument } from '../../lib/cms-articles';
 
 export async function getStaticPaths() {
+  const cmsArticles = await getCmsArticles();
+  if (cmsArticles) return cmsArticles.map((article) => ({ params: { slug: article.slug }, props: { cmsArticle: article } }));
   const articles = await getCollection('artikel');
   return articles.map((entry) => ({
     params: { slug: entry.id },
@@ -10,32 +13,33 @@ export async function getStaticPaths() {
   }));
 }
 
-const { entry } = Astro.props;
-const { Content } = await render(entry);
-const publishedDate = new Date(entry.data.date).toLocaleDateString('id-ID', {
+const { entry, cmsArticle } = Astro.props;
+const { Content } = entry ? await render(entry) : { Content: null };
+const article = cmsArticle ? { title: cmsArticle.title, summary: cmsArticle.summary, category: cmsArticle.category, coverImage: cmsArticle.coverImage, date: cmsArticle.date } : { title: entry.data.title, summary: entry.data.summary, category: entry.data.category, coverImage: entry.data.coverImage, date: entry.data.date };
+const publishedDate = new Date(article.date).toLocaleDateString('id-ID', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
 });
 ---
 
-<Layout title={`${entry.data.title} - MTQ Tarbiyah Sunnah`}>
+<Layout title={`${article.title} - MTQ Tarbiyah Sunnah`}>
   <main>
     <article>
       <header class="article-hero page-shell">
         <a class="back-link" href="/artikel"><span aria-hidden="true">←</span> Semua artikel</a>
         <p class="article-meta">
-          <span>{entry.data.category || 'Artikel'}</span>
-          <time datetime={String(entry.data.date)}>{publishedDate}</time>
+          <span>{article.category || 'Artikel'}</span>
+          <time datetime={String(article.date)}>{publishedDate}</time>
         </p>
-        <h1>{entry.data.title}</h1>
-        {entry.data.summary && <p class="lede">{entry.data.summary}</p>}
+        <h1>{article.title}</h1>
+        {article.summary && <p class="lede">{article.summary}</p>}
       </header>
 
-      {entry.data.coverImage && (
+      {article.coverImage && (
         <figure class="article-cover page-shell">
           <img
-            src={entry.data.coverImage}
+            src={article.coverImage}
             alt=""
             width="1280"
             height="720"
@@ -48,10 +52,10 @@ const publishedDate = new Date(entry.data.date).toLocaleDateString('id-ID', {
         <aside class="article-aside">
           <p class="eyebrow">Diterbitkan</p>
           <p>{publishedDate}</p>
-          <p>{entry.data.category || 'Artikel'}</p>
+          <p>{article.category || 'Artikel'}</p>
         </aside>
         <div class="article-prose">
-          <Content />
+          {cmsArticle ? <div set:html={renderTiptapDocument(cmsArticle.body)} /> : Content && <Content />}
         </div>
       </div>
 
