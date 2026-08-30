@@ -7,7 +7,7 @@ export async function getCmsArticles(): Promise<CmsArticle[] | null> {
   const baseUrl = import.meta.env.CMS_API_URL?.replace(/\/$/, '');
   if (!baseUrl) return null;
   try {
-    const response = await fetch(`${baseUrl}/api/content?resource=articles`);
+    const response = await fetch(`${baseUrl}/api/content?resource=articles`, { signal: AbortSignal.timeout(5000) });
     if (!response.ok) return null;
     const payload = await response.json() as { data?: unknown };
     if (!Array.isArray(payload.data)) return null;

@@ -15,7 +15,7 @@ const spmbUrl = settings.header.spmbUrl;
       <a href={settings.header.announcementLink}>{settings.header.announcementLinkLabel} <span aria-hidden="true">→</span></a>
     </p>
     <button class="site-nav__banner-close" id="banner-close" type="button" aria-label="Tutup pengumuman">
-      <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      <span class="site-nav__icon" aria-hidden="true">×</span>
     </button>
   </div>}
 
@@ -38,7 +38,7 @@ const spmbUrl = settings.header.spmbUrl;
           Daftar SPMB
         </a>
         <button class="site-nav__menu-button" id="mobile-menu-button" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Buka menu">
-          <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+          <span class="site-nav__icon" aria-hidden="true">☰</span>
         </button>
       </div>
     </div>
@@ -58,7 +58,7 @@ const spmbUrl = settings.header.spmbUrl;
     const bannerClose = document.getElementById('banner-close');
     const menuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    const menuIcon = menuButton?.querySelector('.material-symbols-outlined');
+    const menuIcon = menuButton?.querySelector('.site-nav__icon');
     let previousY = window.scrollY;
 
     if (!header || header.dataset.navigationReady === 'true') return;
@@ -69,7 +69,7 @@ const spmbUrl = settings.header.spmbUrl;
       menuButton.setAttribute('aria-expanded', 'false');
       menuButton.setAttribute('aria-label', 'Buka menu');
       mobileMenu.hidden = true;
-      if (menuIcon) menuIcon.textContent = 'menu';
+      if (menuIcon) menuIcon.textContent = '☰';
     };
 
     const onScroll = () => {
@@ -99,7 +99,7 @@ const spmbUrl = settings.header.spmbUrl;
       mobileMenu.hidden = !willOpen;
       menuButton.setAttribute('aria-expanded', String(willOpen));
       menuButton.setAttribute('aria-label', willOpen ? 'Tutup menu' : 'Buka menu');
-      if (menuIcon) menuIcon.textContent = willOpen ? 'close' : 'menu';
+      if (menuIcon) menuIcon.textContent = willOpen ? '×' : '☰';
     });
 
     document.addEventListener('keydown', (event) => {

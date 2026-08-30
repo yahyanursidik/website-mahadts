@@ -34,8 +34,8 @@ const programmes = [
           height="1200"
           fetchpriority="high"
         />
-        <video class="home-hero__video" autoplay muted loop playsinline preload="metadata" poster={heroImage}>
-          <source src={settings.hero.videoUrl} type="video/mp4" />
+        <video class="home-hero__video" muted loop playsinline preload="none" aria-hidden="true">
+          <source data-src={settings.hero.videoUrl} type="video/mp4" />
         </video>
       </div>
       <div class="home-hero__overlay" aria-hidden="true"></div>
@@ -123,6 +123,29 @@ const programmes = [
   </main>
 </Layout>
 
+<script>
+  const video = document.querySelector<HTMLVideoElement>('.home-hero__video');
+  const source = video?.querySelector<HTMLSourceElement>('source[data-src]');
+  const connection = navigator.connection as (NetworkInformation & { saveData?: boolean }) | undefined;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const startVideo = () => {
+    if (!video || !source || reduceMotion || connection?.saveData) return;
+    source.src = source.dataset.src ?? '';
+    video.addEventListener('canplay', () => {
+      video.classList.add('is-ready');
+      void video.play().catch(() => undefined);
+    }, { once: true });
+    video.load();
+  };
+
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(startVideo, { timeout: 2500 });
+  } else {
+    window.setTimeout(startVideo, 1200);
+  }
+</script>
+
 <style>
   /* Hallmark · genre: editorial · macrostructure: Split Studio · theme: Garden
    * enrichment: E2 full-bleed decorative video · poster fallback · reduced-motion static image
@@ -163,7 +186,10 @@ const programmes = [
   .home-hero__video {
     position: absolute;
     inset: 0;
+    visibility: hidden;
   }
+
+  .home-hero__video.is-ready { visibility: visible; }
 
   .home-hero__overlay {
     z-index: -1;

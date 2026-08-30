@@ -278,7 +278,7 @@
   cursor: pointer;
 }
 
-.site-nav__banner-close .material-symbols-outlined {
+.site-nav__banner-close .site-nav__icon {
   font-size: var(--text-md);
 }
 

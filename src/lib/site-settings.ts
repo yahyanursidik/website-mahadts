@@ -41,12 +41,27 @@ export const fallbackSiteSettings: PublicSiteSettings = {
 };
 
 function isObject(value: unknown): value is Record<string, unknown> { return Boolean(value) && typeof value === 'object' && !Array.isArray(value); }
+function mergeSection<T extends Record<string, unknown>>(fallback: T, value: unknown): T {
+  if (!isObject(value)) return fallback;
+  const result = { ...fallback };
+  for (const [key, candidate] of Object.entries(value)) {
+    if (candidate === null || candidate === undefined || (typeof candidate === 'string' && !candidate.trim())) continue;
+    result[key as keyof T] = candidate as T[keyof T];
+  }
+  return result;
+}
+function validLinks(value: unknown, fallback: SiteLink[]) {
+  if (!Array.isArray(value)) return fallback;
+  const links = value.filter(isObject).map((link) => ({ label: String(link.label ?? '').trim(), href: String(link.href ?? '').trim() })).filter((link) => link.label && link.href);
+  return links.length ? links : fallback;
+}
 function merge(value: unknown): PublicSiteSettings {
   if (!isObject(value)) return fallbackSiteSettings;
   const section = <Key extends keyof PublicSiteSettings>(key: Key) => isObject(value[key]) ? value[key] : {};
   const navigation = section('navigation');
+  const content = section('content');
   return {
-    branding: { ...fallbackSiteSettings.branding, ...section('branding') }, header: { ...fallbackSiteSettings.header, ...section('header') }, hero: { ...fallbackSiteSettings.hero, ...section('hero') }, pages: { ...fallbackSiteSettings.pages, ...section('pages') }, footer: { ...fallbackSiteSettings.footer, ...section('footer') }, seo: { ...fallbackSiteSettings.seo, ...section('seo') }, navigation: { main: Array.isArray(navigation.main) ? navigation.main as SiteLink[] : fallbackSiteSettings.navigation.main, footer: Array.isArray(navigation.footer) ? navigation.footer as SiteLink[] : fallbackSiteSettings.navigation.footer }, content: { profile: { ...fallbackSiteSettings.content.profile, ...section('content').profile }, smp: { ...fallbackSiteSettings.content.smp, ...section('content').smp }, sma: { ...fallbackSiteSettings.content.sma, ...section('content').sma }, spmb: { ...fallbackSiteSettings.content.spmb, ...section('content').spmb }, contact: { ...fallbackSiteSettings.content.contact, ...section('content').contact }, articles: { ...fallbackSiteSettings.content.articles, ...section('content').articles } },
+    branding: mergeSection(fallbackSiteSettings.branding, section('branding')), header: mergeSection(fallbackSiteSettings.header, section('header')), hero: mergeSection(fallbackSiteSettings.hero, section('hero')), pages: mergeSection(fallbackSiteSettings.pages, section('pages')), footer: mergeSection(fallbackSiteSettings.footer, section('footer')), seo: mergeSection(fallbackSiteSettings.seo, section('seo')), navigation: { main: validLinks(navigation.main, fallbackSiteSettings.navigation.main), footer: validLinks(navigation.footer, fallbackSiteSettings.navigation.footer) }, content: { profile: mergeSection(fallbackSiteSettings.content.profile, content.profile), smp: mergeSection(fallbackSiteSettings.content.smp, content.smp), sma: mergeSection(fallbackSiteSettings.content.sma, content.sma), spmb: mergeSection(fallbackSiteSettings.content.spmb, content.spmb), contact: mergeSection(fallbackSiteSettings.content.contact, content.contact), articles: mergeSection(fallbackSiteSettings.content.articles, content.articles) },
   };
 }
 
@@ -56,7 +71,7 @@ export function getSiteSettings() {
     const baseUrl = import.meta.env.CMS_API_URL?.replace(/\/$/, '');
     if (!baseUrl) return fallbackSiteSettings;
     try {
-      const response = await fetch(`${baseUrl}/api/settings`);
+      const response = await fetch(`${baseUrl}/api/settings`, { signal: AbortSignal.timeout(5000) });
       if (!response.ok) return fallbackSiteSettings;
       const payload = await response.json() as { data?: unknown };
       return merge(payload.data);
