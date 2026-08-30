@@ -1,22 +1,26 @@
-export type CmsArticle = { id: string; slug: string; title: string; summary: string; body: string; category: string; coverImage: string; date: string };
+export type CmsResource = 'pages' | 'programs' | 'articles';
+export type CmsContentItem = { id: string; slug: string; title: string; summary: string; body: string; category: string; coverImage: string; date: string };
+export type CmsArticle = CmsContentItem;
 
 function isObject(value: unknown): value is Record<string, unknown> { return Boolean(value) && typeof value === 'object' && !Array.isArray(value); }
 function absoluteMedia(value: string, baseUrl: string) { return value.startsWith('/api/media') ? `${baseUrl}${value}` : value; }
 
-export async function getCmsArticles(): Promise<CmsArticle[] | null> {
+export async function getCmsContent(resource: CmsResource): Promise<CmsContentItem[] | null> {
   const baseUrl = import.meta.env.CMS_API_URL?.replace(/\/$/, '');
   if (!baseUrl) return null;
   try {
-    const response = await fetch(`${baseUrl}/api/content?resource=articles`, { signal: AbortSignal.timeout(5000) });
+    const response = await fetch(`${baseUrl}/api/content?resource=${resource}`, { signal: AbortSignal.timeout(5000) });
     if (!response.ok) return null;
     const payload = await response.json() as { data?: unknown };
     if (!Array.isArray(payload.data)) return null;
     return payload.data.filter(isObject).map((item) => {
       const metadata = isObject(item.metadata) ? item.metadata : {};
       return { id: String(item.id ?? ''), slug: String(item.slug ?? ''), title: String(item.title ?? ''), summary: String(item.summary ?? ''), body: String(item.body ?? ''), category: String(metadata.category ?? 'Artikel'), coverImage: absoluteMedia(String(metadata.coverImage ?? ''), baseUrl), date: String(item.updated_at ?? new Date().toISOString()) };
-    }).filter((article) => article.slug && article.title);
+    }).filter((item) => item.slug && item.title);
   } catch { return null; }
 }
+
+export function getCmsArticles() { return getCmsContent('articles'); }
 
 function escapeHtml(value: string) { return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
 function safeUrl(value: unknown, baseUrl: string) {
@@ -29,7 +33,9 @@ export function renderTiptapDocument(value: string) {
   try {
     const document = JSON.parse(value) as unknown;
     return renderNode(document, baseUrl);
-  } catch { return `<p>${escapeHtml(value)}</p>`; }
+  } catch {
+    return value.split(/\n{2,}/).map((paragraph) => `<p>${escapeHtml(paragraph).replace(/\n/g, '<br>')}</p>`).join('');
+  }
 }
 
 function renderNode(value: unknown, baseUrl: string): string {

@@ -23,7 +23,7 @@ const publishedDate = new Date(article.date).toLocaleDateString('id-ID', {
 });
 ---
 
-<Layout title={`${article.title} - MTQ Tarbiyah Sunnah`}>
+<Layout title={`${article.title} - MTQ Tarbiyah Sunnah`} description={article.summary} image={article.coverImage} type="article">
   <main>
     <article>
       <header class="article-hero page-shell">

@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCmsContent, renderTiptapDocument } from '../../lib/cms-articles';
+
+export async function getStaticPaths() {
+  const programs = await getCmsContent('programs');
+  return (programs ?? []).filter((program) => !['smp', 'sma'].includes(program.slug)).map((program) => ({ params: { slug: program.slug }, props: { program } }));
+}
+
+const { program } = Astro.props;
+---
+
+<Layout title={`${program.title} - MTQ Tarbiyah Sunnah`} description={program.summary} image={program.coverImage}>
+  <main>
+    <article>
+      <header class="program-hero page-shell">
+        <a class="back-link" href="/">← Kembali ke beranda</a>
+        <p class="eyebrow">Program Ma’had</p>
+        <h1>{program.title}</h1>
+        {program.summary && <p class="lede">{program.summary}</p>}
+      </header>
+      {program.coverImage && <figure class="program-cover page-shell"><img src={program.coverImage} alt="" width="1280" height="720" loading="eager" /></figure>}
+      <div class="article-prose" set:html={renderTiptapDocument(program.body)} />
+      <footer class="program-action page-shell"><a class="button button--primary" href="https://hub.mahadtarbiyahsunnah.com/login/spmb">Daftar melalui SPMB</a></footer>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .program-hero { padding-block: clamp(3.5rem, 8vw, 8rem) clamp(2.5rem, 5vw, 5rem); border-bottom: 1px solid var(--color-rule); }
+  .back-link { display: inline-flex; margin-bottom: var(--space-7); color: var(--color-ink-2); font-weight: 700; }
+  .program-hero h1 { max-width: 16ch; font-size: var(--text-display-s); line-height: 1.06; }
+  .program-hero .lede { max-width: 44rem; }
+  .program-cover { max-width: 80rem; padding-top: var(--space-7); }
+  .program-cover img { width: 100%; max-height: 42rem; object-fit: cover; }
+  .program-action { max-width: 52rem; padding-bottom: var(--space-8); }
+</style>

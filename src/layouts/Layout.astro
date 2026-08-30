@@ -7,12 +7,18 @@ import { getSiteSettings } from '../lib/site-settings';
 
 interface Props {
   title: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, description: descriptionProp, image, type = 'website', noindex = false } = Astro.props;
 const settings = await getSiteSettings();
 const faviconUrl = settings.branding.faviconUrl || '/favicon.svg';
-const description = settings.seo.defaultDescription;
+const description = descriptionProp || settings.seo.defaultDescription;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const socialImage = image || settings.seo.ogImageUrl;
 ---
 
 <!DOCTYPE html>
@@ -21,7 +27,17 @@ const description = settings.seo.defaultDescription;
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content={description} />
-  <meta property="og:image" content={settings.seo.ogImageUrl} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content={type} />
+  <meta property="og:url" content={canonical} />
+  {socialImage && <meta property="og:image" content={socialImage} />}
+  <meta name="twitter:card" content={socialImage ? 'summary_large_image' : 'summary'} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  {socialImage && <meta name="twitter:image" content={socialImage} />}
+  {noindex && <meta name="robots" content="noindex, follow" />}
   <link rel="icon" type="image/png" href={faviconUrl} />
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>

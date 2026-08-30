@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Halaman tidak ditemukan - MTQ Tarbiyah Sunnah" description="Halaman yang Anda cari tidak tersedia." noindex>
+  <main class="not-found page-shell">
+    <p class="eyebrow">404 · Halaman tidak ditemukan</p>
+    <h1>Mari kembali ke informasi yang tersedia.</h1>
+    <p class="lede">Alamat mungkin berubah atau halaman sudah dipindahkan. Gunakan tautan berikut untuk melanjutkan.</p>
+    <nav aria-label="Tautan pemulihan">
+      <a class="button button--primary" href="/">Kembali ke beranda</a>
+      <a class="button button--secondary" href="/hubungi-kami">Hubungi Ma’had</a>
+    </nav>
+  </main>
+</Layout>
+
+<style>
+  .not-found { min-height: 60vh; padding-block: clamp(5rem, 12vw, 10rem); }
+  .not-found h1 { max-width: 18ch; font-size: var(--text-display-s); line-height: 1.06; }
+  .not-found .lede { max-width: 42rem; }
+  .not-found nav { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-7); }
+</style>

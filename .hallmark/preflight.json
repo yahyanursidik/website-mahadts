@@ -1,5 +1,5 @@
 {
-  "date": "2026-07-27",
+  "date": "2026-08-30",
   "framework": "Astro 7 with Tailwind CSS 4",
   "font_stack": [
     "Merriweather 700",
@@ -8,11 +8,11 @@
   "palette": "Existing green/orange brand palette, migrated to OKLCH tokens",
   "motion": "motion-cut; no animation library installed",
   "spacing": "Existing 4px-based scale",
-  "assets": "Local hero and slideshow WebP photography",
+  "assets": "Local hero/video assets plus CMS-managed Contabo Object Storage media",
   "preserve": [
     "routes",
-    "content collections",
-    "Keystatic integration",
+    "Astro content collection fallback",
+    "Refine CMS and Neon integration",
     "brand palette",
     "font pairing",
     "local photography"
