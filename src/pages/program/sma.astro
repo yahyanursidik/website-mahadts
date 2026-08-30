@@ -1,40 +1,22 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getSiteSettings } from '../../lib/site-settings';
+import { lines, pairs } from '../../lib/content-format';
 
 const settings = await getSiteSettings();
-
-const outcomes = [
-  {
-    title: 'Hafalan 10 juz',
-    text: 'Hafalan dibangun secara mutqin—kuat, lancar, dan disertai upaya memahami makna ayat.',
-  },
-  {
-    title: 'Bahasa Arab aktif',
-    text: 'Muhadatsah, qira’ah, dan kitabah menjadi alat untuk mengakses literatur keislaman secara mandiri.',
-  },
-  {
-    title: 'Ilmu syar’i mendalam',
-    text: 'Aqidah, fikih, dan sirah dipelajari sebagai bekal bersikap dan beribadah dalam kehidupan nyata.',
-  },
-];
-
-const graduateProfile = [
-  'Siap melanjutkan studi dengan bekal akademik dan hafalan Al-Qur’an.',
-  'Mampu memahami dasar agama dan teks syar’i secara lebih mandiri.',
-  'Menunjukkan adab, kemandirian, dan tanggung jawab kepada diri serta umat.',
-];
+const content = settings.content.sma;
+const outcomes = pairs(content.targets).map(([title, text]) => ({ title, text }));
+const graduateProfile = lines(content.graduateItems);
 ---
 
 <Layout title="Program SMA Tahfizh - MTQ Tarbiyah Sunnah">
   <main>
     <section class="page-shell split-hero program-hero">
       <div class="split-hero__copy">
-        <p class="eyebrow">Pendidikan menengah atas</p>
-        <h1>SMA Tahfizh</h1>
+        <p class="eyebrow">{content.eyebrow}</p>
+        <h1>{content.heroTitle}</h1>
         <p class="lede">
-          Membentuk pemuda Qur’ani yang matang dalam ilmu, fasih berbahasa Arab,
-          dan siap menjadi teladan di tengah masyarakat.
+          {content.heroLede}
         </p>
         <div class="button-row">
           <a class="button button--primary" href={settings.header.spmbUrl}>Daftar SPMB</a>
@@ -68,11 +50,8 @@ const graduateProfile = [
     <section class="page-section page-shell" aria-labelledby="target-title">
       <header class="section-heading">
         <p class="eyebrow">Target utama</p>
-        <h2 id="target-title">Tiga bekal yang bertumbuh bersama</h2>
-        <p>
-          Kurikulum dirancang agar hafalan, bahasa, dan pemahaman agama tidak
-          berjalan sendiri-sendiri.
-        </p>
+        <h2 id="target-title">{content.targetTitle}</h2>
+        <p>{content.targetLede}</p>
       </header>
       <ol class="curriculum-list">
         {outcomes.map((item, index) => (
@@ -99,16 +78,11 @@ const graduateProfile = [
           />
         </div>
         <div class="media-split__copy">
-          <p class="eyebrow">Program unggulan</p>
-          <h2>Kaderisasi imam dan khatib</h2>
-          <p>
-            Santri dilatih menyampaikan kebaikan dengan hikmah dan hadir
-            sebagai pribadi yang bermanfaat bagi lingkungannya.
-          </p>
+          <p class="eyebrow">{content.focusEyebrow}</p>
+          <h2>{content.focusTitle}</h2>
+          <p>{content.focusText}</p>
           <ul class="check-list">
-            <li>Keberanian dan retorika dakwah yang santun.</li>
-            <li>Penguasaan fikih ibadah praktis kemasyarakatan.</li>
-            <li>Praktik menjadi imam rawatib dan khatib Jumat.</li>
+            {lines(content.focusItems).map((item) => <li>{item}</li>)}
           </ul>
         </div>
       </div>
@@ -118,7 +92,7 @@ const graduateProfile = [
       <div class="outcome-layout">
         <header>
           <p class="eyebrow">Profil lulusan</p>
-          <h2 id="graduate-title">Siap melanjutkan perjalanan</h2>
+          <h2 id="graduate-title">{content.graduateTitle}</h2>
         </header>
         <ol class="graduate-list">
           {graduateProfile.map((item, index) => (
@@ -135,7 +109,7 @@ const graduateProfile = [
       <div class="page-shell cta-band">
         <div>
           <p class="eyebrow">Langkah berikutnya</p>
-          <h2>Kenali proses penerimaan santri baru.</h2>
+          <h2>{content.ctaTitle}</h2>
         </div>
         <a class="button button--light" href={settings.header.spmbUrl}>Lihat alur SPMB</a>
       </div>

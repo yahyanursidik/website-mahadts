@@ -1,29 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getSiteSettings } from '../lib/site-settings';
+import { pairs } from '../lib/content-format';
 
 const settings = await getSiteSettings();
-
-const steps = [
-  ['Informasi', 'Pelajari brosur, pilihan program, dan persyaratan pendaftaran.'],
-  ['Formulir online', 'Lengkapi data calon santri melalui formulir resmi.'],
-  ['Berkas', 'Siapkan dan unggah dokumen persyaratan yang diminta.'],
-  ['Seleksi', 'Ikuti tes akademik serta tes kepesantrenan sesuai jadwal.'],
-  ['Wawancara', 'Calon santri dan orang tua mengikuti sesi wawancara.'],
-  ['Pengumuman', 'Hasil seleksi disampaikan melalui kanal resmi Ma’had.'],
-  ['Daftar ulang', 'Selesaikan administrasi untuk mengamankan tempat belajar.'],
-];
+const content = settings.content.spmb;
+const steps = pairs(content.steps);
 ---
 
 <Layout title="SPMB - MTQ Tarbiyah Sunnah">
   <main>
     <section class="page-shell split-hero spmb-hero">
       <div class="split-hero__copy">
-        <p class="eyebrow">Penerimaan murid baru</p>
-        <h1>Satu alur yang jelas untuk memulai.</h1>
+        <p class="eyebrow">{content.eyebrow}</p>
+        <h1>{content.heroTitle}</h1>
         <p class="lede">
-          Kenali tahapan pendaftaran Ma’had Tahfizhul Qur’an Tarbiyah Sunnah,
-          lalu konsultasikan kebutuhan calon santri bersama admin.
+          {content.heroLede}
         </p>
         <div class="button-row">
           <a class="button button--primary" href="#alur-pendaftaran">Lihat alur</a>
@@ -58,7 +50,7 @@ const steps = [
         />
         <figcaption>
           <span>Status</span>
-          <strong>Informasi pendaftaran tersedia</strong>
+          <strong>{content.statusText}</strong>
         </figcaption>
       </figure>
     </section>
@@ -68,11 +60,10 @@ const steps = [
         <header class="section-heading section-heading--split">
           <div>
             <p class="eyebrow">Alur pendaftaran</p>
-            <h2 id="flow-title">Tujuh tahap, dari informasi hingga daftar ulang.</h2>
+            <h2 id="flow-title">{content.flowTitle}</h2>
           </div>
           <p>
-            Urutan ini membantu keluarga menyiapkan setiap tahap tanpa melewatkan
-            dokumen atau agenda penting.
+            {content.flowLede}
           </p>
         </header>
         <ol class="registration-flow">
@@ -92,12 +83,9 @@ const steps = [
     <section class="page-section">
       <div class="page-shell inquiry-block">
         <div>
-          <p class="eyebrow">Butuh bantuan?</p>
-          <h2>Pastikan informasi sebelum mengirim berkas.</h2>
-          <p>
-            Admin siap membantu menjelaskan persyaratan, program, serta jadwal
-            yang berlaku.
-          </p>
+          <p class="eyebrow">{content.helpEyebrow}</p>
+          <h2>{content.helpTitle}</h2>
+          <p>{content.helpText}</p>
         </div>
         <a
           class="button button--primary"

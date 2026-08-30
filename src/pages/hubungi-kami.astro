@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { getSiteSettings } from '../lib/site-settings';
 
 const settings = await getSiteSettings();
+const content = settings.content.contact;
 const address = settings.footer.address;
 const whatsapp = settings.footer.phone;
 const email = settings.footer.email;
@@ -12,24 +13,20 @@ const email = settings.footer.email;
   <main>
     <section class="page-shell contact-hero">
       <div>
-        <p class="eyebrow">Hubungi Ma’had</p>
-        <h1>Percakapan yang baik dimulai dari informasi yang jelas.</h1>
+        <p class="eyebrow">{content.eyebrow}</p>
+        <h1>{content.heroTitle}</h1>
       </div>
       <p class="lede">
-        Tanyakan program, proses SPMB, atau rencana kunjungan. Admin kami siap
-        membantu melalui WhatsApp dan email.
+        {content.heroLede}
       </p>
     </section>
 
     <section class="page-section page-section--tint">
       <div class="page-shell contact-directory">
         <div class="contact-directory__intro">
-          <p class="eyebrow">Direktori</p>
-          <h2>Pilih kanal yang paling nyaman.</h2>
-          <p>
-            Untuk kunjungan, mohon lakukan konfirmasi paling lambat satu hari
-            sebelum kedatangan.
-          </p>
+          <p class="eyebrow">{content.directoryEyebrow}</p>
+          <h2>{content.directoryTitle}</h2>
+          <p>{content.directoryText}</p>
         </div>
         <dl class="contact-list">
           <div>
@@ -61,8 +58,8 @@ const email = settings.footer.email;
           </div>
           <div>
             <dt>Waktu kunjungan</dt>
-            <dd>Senin–Sabtu, 08.00–15.00 WIB</dd>
-            <p>Konfirmasi minimal H-1 sebelum kedatangan.</p>
+            <dd>{content.visitHours}</dd>
+            <p>{content.visitHelp}</p>
           </div>
         </dl>
       </div>
@@ -72,7 +69,7 @@ const email = settings.footer.email;
       <header class="map-section__heading">
         <div>
           <p class="eyebrow">Lokasi</p>
-          <h2 id="map-title">Temukan Ma’had di Batujajar.</h2>
+          <h2 id="map-title">{content.mapTitle}</h2>
         </div>
         <a
           class="button button--secondary"

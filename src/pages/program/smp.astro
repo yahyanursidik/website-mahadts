@@ -1,32 +1,21 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getSiteSettings } from '../../lib/site-settings';
+import { pairs } from '../../lib/content-format';
 
 const settings = await getSiteSettings();
-
-const curriculum = [
-  ['Tahfizh Al-Qur’an', 'Target hafalan mutqin minimal 20 juz melalui ziyadah dan muraja’ah yang terstruktur.'],
-  ['Dirosah Islamiyah', 'Aqidah, fiqih, sirah, dan adab berlandaskan pemahaman manhaj salafus shalih.'],
-  ['Bahasa Arab', 'Nahwu, shorof, dan muhadatsah sebagai dasar memahami literatur Islam.'],
-  ['Pendidikan Akademik', 'Kurikulum nasional untuk membekali santri melanjutkan pendidikan ke jenjang berikutnya.'],
-];
-
-const outcomes = [
-  ['Hafal 20 juz', 'Bacaan tartil dan mutqin sesuai kaidah tajwid.'],
-  ['Berakidah lurus', 'Pemahaman agama sesuai manhaj salaful ummah.'],
-  ['Bahasa Arab dasar', 'Mampu memahami kaidah dan literatur syar’i dasar.'],
-  ['Ijazah formal SMP', 'Ijazah kelulusan yang diakui negara.'],
-];
+const content = settings.content.smp;
+const curriculum = pairs(content.curriculum);
+const outcomes = pairs(content.outcomes);
 ---
 
 <Layout title="Program SMP - MTQ Tarbiyah Sunnah">
   <main>
     <section class="split-hero">
       <div class="split-hero__copy">
-        <h1>SMP Tahfizh untuk pondasi yang kokoh.</h1>
+        <h1>{content.heroTitle}</h1>
         <p class="split-hero__lede">
-          Tahfizh Al-Qur’an intensif, dirosah islamiyah, bahasa Arab, dan
-          pendidikan akademik formal dalam pembinaan asrama.
+          {content.heroLede}
         </p>
         <div class="split-hero__actions">
           <a class="button button--primary" href={settings.header.spmbUrl}>Daftar SPMB</a>
@@ -54,8 +43,8 @@ const outcomes = [
     <section class="page-section page-section--paper-2">
       <div class="page-shell">
         <div class="section-heading">
-          <h2>Kurikulum yang saling menguatkan.</h2>
-          <p>Ilmu syar’i dan akademik dipelajari sebagai satu bekal pendidikan santri.</p>
+          <h2>{content.curriculumTitle}</h2>
+          <p>{content.curriculumLede}</p>
         </div>
         <div class="programme-spec">
           {curriculum.map(([title, description]) => (
@@ -80,11 +69,8 @@ const outcomes = [
           />
         </figure>
         <div class="media-split__copy">
-          <h2>Profil lulusan SMP</h2>
-          <p>
-            Lulusan disiapkan agar kuat dalam hafalan, lurus dalam akidah,
-            memahami bahasa Arab dasar, dan siap melanjutkan pendidikan.
-          </p>
+          <h2>{content.graduateTitle}</h2>
+          <p>{content.graduateText}</p>
           <dl class="outcome-list">
             {outcomes.map(([title, description]) => (
               <div>
@@ -100,8 +86,8 @@ const outcomes = [
     <section class="page-section page-section--ink">
       <div class="page-shell programme-cta">
         <div>
-          <h2>Mulai dari informasi yang jelas.</h2>
-          <p>Pelajari alur pendaftaran, berkas, dan tahapan seleksi santri baru.</p>
+          <h2>{content.ctaTitle}</h2>
+          <p>{content.ctaText}</p>
         </div>
         <a class="button button--secondary" href={settings.header.spmbUrl}>Buka panduan SPMB</a>
       </div>

@@ -1,39 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getSiteSettings } from '../lib/site-settings';
+import { lines, pairs, paragraphs } from '../lib/content-format';
 
 const settings = await getSiteSettings();
-
-const missions = {
-  smp: [
-    'Menanamkan akidah Ahlussunnah wal Jamaah serta membimbing adab dan akhlak Islami.',
-    'Membimbing santri menghafal Al-Qur’an dengan target 20 juz.',
-    'Memperkenalkan keterampilan bahasa Arab dan dasar-dasar ilmu syar’i.',
-    'Memberikan pengetahuan umum serta membina disiplin dan tanggung jawab di asrama.',
-  ],
-  sma: [
-    'Menguatkan akidah, adab, akhlak Islami, dan pemahaman ilmu syar’i.',
-    'Membimbing santri menghafal Al-Qur’an dengan target tambahan 10 juz.',
-    'Meningkatkan kemampuan bahasa Arab serta kesiapan menjadi imam dan khatib.',
-    'Membina kedewasaan, kemandirian, dan kesiapan studi ke jenjang berikutnya.',
-  ],
-};
-
-const leadership = [
-  ['Ustadz Abu Haidar As-Sundawy', 'Pembina'],
-  ['Ustadz Mochammad Hilman Al Fiqhy, M.A.', 'Ketua Bidang Pendidikan'],
-  ['Ustadz Haidar Askarulqohar, Lc.', 'Mudir'],
-];
+const content = settings.content.profile;
+const missions = { smp: lines(content.smpMissions), sma: lines(content.smaMissions) };
+const leadership = pairs(content.leadership);
 ---
 
 <Layout title="Profil Ma’had - MTQ Tarbiyah Sunnah">
   <main>
     <section class="split-hero split-hero--reverse">
       <div class="split-hero__copy">
-        <h1>Berakar pada Sunnah, tumbuh melalui ilmu.</h1>
+        <h1>{content.heroTitle}</h1>
         <p class="split-hero__lede">
-          MTQ Tarbiyah Sunnah memadukan tradisi keilmuan Islam, tahfizh
-          Al-Qur’an, pendidikan formal, dan pembinaan kehidupan berasrama.
+          {content.heroLede}
         </p>
         <div class="split-hero__actions">
           <a class="button button--primary" href="/program/smp">Lihat program</a>
@@ -69,21 +51,8 @@ const leadership = [
           />
         </figure>
         <div class="media-split__copy">
-          <h2>Dari kaderisasi da’i menuju pendidikan berjenjang.</h2>
-          <p>
-            Di bawah naungan Yayasan Tarbiyah Sunnah Bandung, Ma’had hadir
-            untuk menghidupkan pendidikan Al-Qur’an melalui tahfizh, tajwid,
-            talaqqi, dan pembinaan adab terhadap kalamullah.
-          </p>
-          <p>
-            Ma’had ini berkembang dari Tadribut Du’at, program kaderisasi yang
-            menyiapkan para da’i dengan hafalan Al-Qur’an, dasar ilmu syar’i,
-            bahasa Arab, adab, dan kesiapan berdakwah.
-          </p>
-          <p>
-            Semangat tersebut kini diteruskan dalam pendidikan SMP dan SMA
-            khusus putra, lengkap dengan pendidikan umum dan kehidupan asrama.
-          </p>
+          <h2>{content.historyTitle}</h2>
+          {paragraphs(content.historyBody).map((paragraph) => <p>{paragraph}</p>)}
         </div>
       </div>
     </section>
@@ -91,12 +60,8 @@ const leadership = [
     <section class="page-section page-section--paper-2" id="visi-misi">
       <div class="page-shell">
         <div class="vision-copy">
-          <h2>Visi yang menjaga arah.</h2>
-          <p>
-            “Menjadi lembaga pendidikan Islam yang unggul dalam mencetak
-            penghafal Al-Qur’an yang berakidah Ahlussunnah wal Jamaah,
-            berakhlak mulia, mampu berbahasa Arab, berilmu, dan mandiri.”
-          </p>
+          <h2>{content.visionTitle}</h2>
+          <p>{content.visionText}</p>
         </div>
         <div class="mission-columns">
           <article>

@@ -1,7 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import { getSiteSettings } from '../lib/site-settings';
 
+const settings = await getSiteSettings();
+const content = settings.content.articles;
 const allArticles = await getCollection('artikel');
 const sortedArticles = allArticles.sort(
   (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
@@ -25,11 +28,10 @@ const formatDate = (date: string | Date) =>
 <Layout title="Artikel - MTQ Tarbiyah Sunnah">
   <main>
     <header class="page-shell article-header">
-      <p class="eyebrow">Catatan Ma’had</p>
-      <h1>Artikel &amp; wawasan</h1>
+      <p class="eyebrow">{content.eyebrow}</p>
+      <h1>{content.title}</h1>
       <p class="lede">
-        Tulisan tentang tahfizh, adab, parenting Islami, serta kabar dari
-        Ma’had Tahfizhul Qur’an Tarbiyah Sunnah.
+        {content.lede}
       </p>
     </header>
 
@@ -116,7 +118,7 @@ const formatDate = (date: string | Date) =>
       </>
     ) : (
       <section class="page-section page-shell">
-        <p class="empty-note">Belum ada artikel yang dipublikasikan.</p>
+        <p class="empty-note">{content.emptyText}</p>
       </section>
     )}
   </main>
