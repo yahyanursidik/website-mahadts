@@ -12,6 +12,7 @@ export default defineConfig({
   site: 'https://mahadtarbiyahsunnah.com',
   integrations: [markdoc()],
   adapter: netlify(),
+  // Routes with `prerender = false` render on demand; other routes stay static.
   output: 'static',
 
   vite: {

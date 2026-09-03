@@ -1,18 +1,16 @@
 ---
+export const prerender = false;
+
 import Layout from '../../layouts/Layout.astro';
 import { getCmsContent, renderTiptapDocument } from '../../lib/cms-articles';
 
-export async function getStaticPaths() {
-  const programs = await getCmsContent('programs');
-  return (programs ?? []).filter((program) => !['smp', 'sma'].includes(program.slug)).map((program) => ({ params: { slug: program.slug }, props: { program } }));
-}
-
-const { program } = Astro.props;
+const program = (await getCmsContent('programs'))?.find((item) => item.slug === Astro.params.slug && !['smp', 'sma'].includes(item.slug));
+if (!program) Astro.response.status = 404;
 ---
 
-<Layout title={`${program.title} - MTQ Tarbiyah Sunnah`} description={program.summary} image={program.coverImage}>
+<Layout title={`${program?.title ?? 'Program tidak ditemukan'} - MTQ Tarbiyah Sunnah`} description={program?.summary} image={program?.coverImage} noindex={!program}>
   <main>
-    <article>
+    {program ? <article>
       <header class="program-hero page-shell">
         <a class="back-link" href="/">← Kembali ke beranda</a>
         <p class="eyebrow">Program Ma’had</p>
@@ -22,7 +20,7 @@ const { program } = Astro.props;
       {program.coverImage && <figure class="program-cover page-shell"><img src={program.coverImage} alt="" width="1280" height="720" loading="eager" /></figure>}
       <div class="article-prose" set:html={renderTiptapDocument(program.body)} />
       <footer class="program-action page-shell"><a class="button button--primary" href="https://hub.mahadtarbiyahsunnah.com/login/spmb">Daftar melalui SPMB</a></footer>
-    </article>
+    </article> : <section class="program-hero page-shell"><p class="eyebrow">404</p><h1>Program tidak ditemukan.</h1></section>}
   </main>
 </Layout>
 

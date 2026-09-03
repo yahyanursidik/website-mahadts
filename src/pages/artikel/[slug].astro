@@ -1,21 +1,16 @@
 ---
+export const prerender = false;
+
 import { getCollection, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { getCmsArticles, renderTiptapDocument } from '../../lib/cms-articles';
 
-export async function getStaticPaths() {
-  const cmsArticles = await getCmsArticles();
-  if (cmsArticles) return cmsArticles.map((article) => ({ params: { slug: article.slug }, props: { cmsArticle: article } }));
-  const articles = await getCollection('artikel');
-  return articles.map((entry) => ({
-    params: { slug: entry.id },
-    props: { entry },
-  }));
-}
-
-const { entry, cmsArticle } = Astro.props;
+const slug = Astro.params.slug ?? '';
+const cmsArticle = (await getCmsArticles())?.find((item) => item.slug === slug);
+const entry = cmsArticle ? undefined : (await getCollection('artikel')).find((item) => item.id === slug);
+if (!cmsArticle && !entry) Astro.response.status = 404;
 const { Content } = entry ? await render(entry) : { Content: null };
-const article = cmsArticle ? { title: cmsArticle.title, summary: cmsArticle.summary, category: cmsArticle.category, coverImage: cmsArticle.coverImage, date: cmsArticle.date } : { title: entry.data.title, summary: entry.data.summary, category: entry.data.category, coverImage: entry.data.coverImage, date: entry.data.date };
+const article = cmsArticle ? { title: cmsArticle.title, summary: cmsArticle.summary, category: cmsArticle.category, coverImage: cmsArticle.coverImage, date: cmsArticle.date } : entry ? { title: entry.data.title, summary: entry.data.summary, category: entry.data.category, coverImage: entry.data.coverImage, date: entry.data.date } : { title: 'Artikel tidak ditemukan', summary: 'Artikel yang diminta tidak tersedia.', category: '', coverImage: '', date: new Date().toISOString() };
 const publishedDate = new Date(article.date).toLocaleDateString('id-ID', {
   year: 'numeric',
   month: 'long',
