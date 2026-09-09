@@ -1,5 +1,15 @@
 [
   {
+    "date": "2026-09-09",
+    "scope": "homepage section",
+    "macrostructure": "Split Studio",
+    "theme": "Garden",
+    "enrichment": "E8 supplied SPMB poster",
+    "nav": "N12 Announcement Banner + Retracting Nav",
+    "footer": "Ft1 Mast-headed",
+    "brief": "Add an informative SPMB 2027/2028 admissions section to the MTQ homepage"
+  },
+  {
     "date": "2026-07-27",
     "scope": "app",
     "macrostructure": "Split Studio / Ecosystem Index / Long Document",

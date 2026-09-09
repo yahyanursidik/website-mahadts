@@ -76,6 +76,55 @@ const programmes = [
       </div>
     </section>
 
+    <section class="spmb-notice" aria-labelledby="spmb-title">
+      <div class="page-shell">
+        <div class="spmb-notice__heading">
+          <div>
+            <p class="eyebrow">Penerimaan murid baru</p>
+            <h2 id="spmb-title">SPMB 2027/2028</h2>
+          </div>
+          <p>Informasi penting untuk keluarga yang sedang menyiapkan pendidikan SMP atau SMA Tahfizh putra.</p>
+        </div>
+
+        <div class="spmb-notice__layout">
+          <figure class="spmb-notice__poster">
+            <img src="/images/spmb/spmb-2027-2028.jpeg" alt="Poster Sistem Penerimaan Murid Baru Ma’had Tahfizhul Qur’an Tarbiyah Sunnah tahun ajaran 2027/2028" width="600" height="1600" loading="lazy" />
+            <figcaption>Informasi lengkap SPMB Ma’had Tahfizhul Qur’an Tarbiyah Sunnah.</figcaption>
+          </figure>
+
+          <div class="spmb-notice__content">
+            <div class="spmb-notice__signal"><span aria-hidden="true"></span> Pendaftaran sedang dibuka</div>
+            <h3>Mulai dengan informasi yang jelas.</h3>
+            <p class="spmb-notice__lede">Kuota terbatas untuk santri putra jenjang SMP dan SMA, dengan program Tahfizh hingga 30 juz.</p>
+
+            <dl class="spmb-notice__facts">
+              <div><dt>Jenjang</dt><dd>SMP &amp; SMA putra</dd></div>
+              <div><dt>Program</dt><dd>Tahfizh Al-Qur’an 30 juz</dd></div>
+              <div><dt>Pendaftaran</dt><dd>01 Sep — 20 Okt 2026</dd></div>
+              <div><dt>Hasil seleksi</dt><dd>27 Okt 2026</dd></div>
+            </dl>
+
+            <div class="spmb-notice__costs" aria-label="Ringkasan biaya">
+              <p>Ringkasan biaya</p>
+              <dl>
+                <div><dt>Pendaftaran</dt><dd>Rp500.000</dd></div>
+                <div><dt>SPP per bulan</dt><dd>Rp1.650.000</dd></div>
+                <div><dt>Uang masuk</dt><dd>Rp21.500.000</dd></div>
+                <div><dt>Daftar ulang</dt><dd>Rp2.000.000</dd></div>
+              </dl>
+              <small>Uang masuk mencakup kitab, ekstrakurikuler, riblah, dan kegiatan tahunan.</small>
+            </div>
+
+            <div class="spmb-notice__actions">
+              <a class="button button--primary" href={settings.header.spmbUrl}>Daftar SPMB</a>
+              <a class="button button--secondary" href={settings.header.brochureUrl || settings.header.spmbUrl} target={settings.header.brochureUrl ? '_blank' : undefined} rel={settings.header.brochureUrl ? 'noopener noreferrer' : undefined}>Lihat brosur</a>
+            </div>
+            <p class="spmb-notice__help">Butuh bantuan pendaftaran? <a href="tel:+6281210001476">0812-1000-1476</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="page-section">
       <div class="page-shell">
         <div class="section-heading">
@@ -150,9 +199,11 @@ const programmes = [
 
 <style>
   /* Hallmark · genre: editorial · macrostructure: Split Studio · theme: Garden
-   * enrichment: E2 full-bleed decorative video · poster fallback · reduced-motion static image
+   * enrichment: E2 full-bleed decorative video + E8 supplied SPMB poster · poster fallback · reduced-motion static image
    * nav: N12 Announcement Banner + Retracting Nav · footer: Ft1 Mast-headed
-   * design-system: design.md · pre-emit critique: P5 H5 E5 S5 R5 V4
+   * audience: calon wali santri · use: memahami SPMB lalu mendaftar · tone: editorial-hangat
+   * design-system: design.md · pre-emit critique: P5 H5 E5 S5 R5 V5
+   * contrast: pass (40–41) · slop: pass (5, 8, 10–57) · responsive: pass (34, 49, 50–57)
    */
   .home-hero {
     position: relative;
@@ -254,6 +305,192 @@ const programmes = [
     }
   }
 
+  .spmb-notice {
+    background: var(--color-paper);
+    padding-block: var(--space-4xl);
+  }
+
+  .spmb-notice__heading {
+    align-items: end;
+    display: grid;
+    gap: var(--space-lg);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .spmb-notice__heading h2 {
+    color: var(--color-ink);
+    font-size: var(--text-3xl);
+    line-height: 1.12;
+    margin: 0;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .spmb-notice__heading > p {
+    color: var(--color-ink-2);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 45ch;
+  }
+
+  .spmb-notice__layout {
+    align-items: stretch;
+    display: grid;
+    gap: clamp(var(--space-xl), 6vw, var(--space-4xl));
+    grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+  }
+
+  .spmb-notice__poster {
+    align-self: start;
+    margin: 0;
+  }
+
+  .spmb-notice__poster img {
+    aspect-ratio: 3 / 8;
+    border: var(--rule-hair) solid var(--color-rule-strong);
+    display: block;
+    height: auto;
+    max-height: 46rem;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .spmb-notice__poster figcaption {
+    color: var(--color-muted);
+    font-size: var(--text-xs);
+    line-height: 1.5;
+    margin-top: var(--space-sm);
+  }
+
+  .spmb-notice__content {
+    align-content: start;
+    display: grid;
+    gap: var(--space-lg);
+    padding-block: var(--space-lg);
+  }
+
+  .spmb-notice__signal {
+    align-items: center;
+    color: var(--color-accent-deep);
+    display: inline-flex;
+    font-size: var(--text-sm);
+    font-weight: 700;
+    gap: var(--space-xs);
+    width: fit-content;
+  }
+
+  .spmb-notice__signal span {
+    background: var(--color-success);
+    border-radius: var(--radius-pill);
+    height: var(--space-xs);
+    width: var(--space-xs);
+  }
+
+  .spmb-notice__content h3 {
+    font-size: clamp(var(--text-xl), 3vw, var(--text-3xl));
+    line-height: 1.14;
+    margin: 0;
+    max-width: 16ch;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .spmb-notice__lede {
+    color: var(--color-ink-2);
+    line-height: 1.65;
+    margin: 0;
+    max-width: 58ch;
+  }
+
+  .spmb-notice__facts,
+  .spmb-notice__costs dl {
+    display: grid;
+    gap: 0;
+    margin: 0;
+  }
+
+  .spmb-notice__facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .spmb-notice__facts div,
+  .spmb-notice__costs dl div {
+    border-top: var(--rule-hair) solid var(--color-rule);
+    display: grid;
+    gap: var(--space-2xs);
+    padding: var(--space-md) var(--space-sm) var(--space-md) 0;
+  }
+
+  .spmb-notice__facts div:nth-child(odd) {
+    padding-right: var(--space-lg);
+  }
+
+  .spmb-notice__facts dt,
+  .spmb-notice__costs dt {
+    color: var(--color-muted);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .spmb-notice__facts dd,
+  .spmb-notice__costs dd {
+    color: var(--color-ink);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .spmb-notice__costs {
+    background: var(--color-accent-soft);
+    border-block-start: var(--rule-hair) solid var(--color-accent-warm-deep);
+    padding: var(--space-lg);
+  }
+
+  .spmb-notice__costs > p {
+    color: var(--color-accent-deep);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    margin: 0 0 var(--space-sm);
+  }
+
+  .spmb-notice__costs dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .spmb-notice__costs dl div:nth-child(odd) {
+    padding-right: var(--space-md);
+  }
+
+  .spmb-notice__costs small {
+    color: var(--color-ink-2);
+    display: block;
+    font-size: var(--text-xs);
+    line-height: 1.55;
+    margin-top: var(--space-sm);
+  }
+
+  .spmb-notice__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .spmb-notice__help {
+    color: var(--color-ink-2);
+    font-size: var(--text-sm);
+    margin: 0;
+  }
+
+  .spmb-notice__help a {
+    color: var(--color-accent-deep);
+    font-weight: 700;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.2em;
+  }
+
   .program-list {
     display: grid;
     gap: var(--space-3xl);
@@ -297,6 +534,41 @@ const programmes = [
 
     .vision-statement .button {
       grid-column: 2;
+    }
+  }
+
+  @media (max-width: 59.99rem) {
+    .spmb-notice__heading,
+    .spmb-notice__layout {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .spmb-notice__heading > p {
+      max-width: 58ch;
+    }
+
+    .spmb-notice__poster {
+      max-width: 27rem;
+    }
+  }
+
+  @media (max-width: 40rem) {
+    .spmb-notice {
+      padding-block: var(--space-3xl);
+    }
+
+    .spmb-notice__facts,
+    .spmb-notice__costs dl {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .spmb-notice__facts div:nth-child(odd),
+    .spmb-notice__costs dl div:nth-child(odd) {
+      padding-right: 0;
+    }
+
+    .spmb-notice__actions .button {
+      width: 100%;
     }
   }
 </style>
