@@ -125,6 +125,29 @@ const programmes = [
       </div>
     </section>
 
+    <section class="profile-video" aria-labelledby="profile-video-title">
+      <div class="page-shell profile-video__layout">
+        <div class="profile-video__copy">
+          <p class="eyebrow">Mengenal Ma’had</p>
+          <h2 id="profile-video-title">Lihat keseharian santri di Ma’had.</h2>
+          <p>Kenali suasana belajar, pembinaan, dan lingkungan pendidikan Ma’had Tahfizhul Qur’an Tarbiyah Sunnah melalui tayangan singkat ini.</p>
+          <a class="editorial-link" href="https://youtu.be/fvYwyIZ7KV4" target="_blank" rel="noopener noreferrer">
+            Tonton di YouTube <span aria-hidden="true">→</span>
+          </a>
+        </div>
+        <div class="profile-video__frame">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/fvYwyIZ7KV4"
+            title="Video profil Ma’had Tahfizhul Qur’an Tarbiyah Sunnah"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
     <section class="page-section">
       <div class="page-shell">
         <div class="section-heading">
@@ -491,6 +514,58 @@ const programmes = [
     text-underline-offset: 0.2em;
   }
 
+  .profile-video {
+    background: var(--color-paper-2);
+    border-block: var(--rule-hair) solid var(--color-rule);
+    padding-block: var(--space-4xl);
+  }
+
+  .profile-video__layout {
+    align-items: center;
+    display: grid;
+    gap: clamp(var(--space-xl), 6vw, var(--space-4xl));
+    grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
+  }
+
+  .profile-video__copy {
+    display: grid;
+    gap: var(--space-lg);
+    min-width: 0;
+  }
+
+  .profile-video__copy h2 {
+    font-size: clamp(var(--text-xl), 3.5vw, var(--text-3xl));
+    line-height: 1.14;
+    max-width: 15ch;
+  }
+
+  .profile-video__copy > p:not(.eyebrow) {
+    color: var(--color-ink-2);
+    line-height: 1.65;
+    margin: 0;
+    max-width: 52ch;
+  }
+
+  .profile-video__copy .editorial-link {
+    color: var(--color-accent-deep);
+    font-weight: 700;
+    width: fit-content;
+  }
+
+  .profile-video__frame {
+    aspect-ratio: 16 / 9;
+    background: var(--color-ink);
+    border: var(--rule-hair) solid var(--color-rule-strong);
+    min-width: 0;
+  }
+
+  .profile-video__frame iframe {
+    border: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+
   .program-list {
     display: grid;
     gap: var(--space-3xl);
@@ -539,7 +614,8 @@ const programmes = [
 
   @media (max-width: 59.99rem) {
     .spmb-notice__heading,
-    .spmb-notice__layout {
+    .spmb-notice__layout,
+    .profile-video__layout {
       grid-template-columns: minmax(0, 1fr);
     }
 
@@ -550,10 +626,18 @@ const programmes = [
     .spmb-notice__poster {
       max-width: 27rem;
     }
+
+    .profile-video__copy h2 {
+      max-width: 22ch;
+    }
   }
 
   @media (max-width: 40rem) {
     .spmb-notice {
+      padding-block: var(--space-3xl);
+    }
+
+    .profile-video {
       padding-block: var(--space-3xl);
     }
 
